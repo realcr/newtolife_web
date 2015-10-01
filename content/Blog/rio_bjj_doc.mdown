@@ -1,0 +1,744 @@
+Title: 1 month of BJJ training in Rio
+Date: 2015-09-25 12:23
+Author: newtolife
+
+![Açaí]({filename}/images/bjj_rio/acai.jpg)
+
+(Açaí)
+
+# Intro
+
+Hi. I recently came back from a 2 months trip to Brazil (7-8/2015). On the
+first month I was doing some [Brazilian Jiu
+Jitsu](https://en.wikipedia.org/wiki/Brazilian_jiu-jitsu) in Rio de Janeiro. I
+want to tell you about the experience, and provide you some useful information
+if you ever want to do this yourself. While the phenomenon of strangers coming
+to Brazil for BJJ (Brazilian Jiu Jitsu) is not something new, it is still
+somewhat difficult to find information online about how to do it properly. I
+thought I can add my 1 month of knowledge here.
+
+This document is by no means an official guide. It contains mostly my opinion
+about things, and may also contain wrong or outdated facts. Make sure to
+doublecheck anything before relying on this information.
+
+For any questions or suggestions you are more than welcome to mail me at
+thenewtolife(&)outlook.com. (Just replace the & with a @).
+
+# About myself
+
+I was born in 1987. I am not a very experienced BJJ fighter. I started my BJJ
+trainings somewhere in 2014, about 1 year ago, and I still proudly wear my white
+belt. My main background in martial arts is Judo. I currently own a blue belt,
+and I am training for about 24 years, probably since 1991.
+
+Judo has mainly two parts for the fight: The standing part, where the main goal
+is to throw people to the ground and win points, and the ground part 
+([newaza](https://en.wikipedia.org/wiki/Grappling#Ground_grappling)), where you
+are supposed to hold your opponent back to the ground for long enough time, or
+apply some submission like a choke or an armbar. In the judo clubs where I was
+trained, the standing game was the main part, and ground game took only about
+20% or even less from the total time of training.
+
+I didn't know about BJJ until recently. Being an innocent Judoka I believed for
+many years that my ground game was really good. It rarely happened to me that I
+met another Judoka that won me on the ground. In competitions, people always
+tried to avoid spending time with me on the ground.
+
+On my [stay at the kodokan]({filename}kodokan_doc.mdown) I met a few guys that
+beat me really hard on the ground. I had to ask where did the learn this kind of
+Judo, and they answered that it's not Judo, it's BJJ. Coming back home from
+Japan I found a good BJJ academy and started training. After about one year I
+decided to check out how Brazilian Jiu Jitsu looks like at the origin.
+
+
+# Some history
+You don't have to be a genius to see that there is some relation between Judo
+and BJJ. They have somewhat the same kimonos (Although the BJJ ones are a bit
+more colorful, one must admit), and the main rules are similar.
+
+In the beginning of the 20th century Kano Jigoro, the founder of
+Judo, has sent few Judokas to spread the art of Judo overseas. One of those
+Judokas was [Mitsuyo Maeda](https://en.wikipedia.org/wiki/Mitsuyo_Maeda), which
+was also known to be a judo groundwork expert. 
+
+Maeda has arrived to Brazil in 1914 and started teaching Judo to his first
+Brazilian students. A notable student was [Carlos
+Gracie](https://en.wikipedia.org/wiki/Carlos_Gracie), which also continued to
+teach the art to his siblings. His brother, [Hélio
+Gracie](https://en.wikipedia.org/wiki/H%C3%A9lio_Gracie) continued to develop an
+art called the Gracie Jiu Jitsu, an adaptation of Judo that focused on ground
+work, because he was not able to perform judo moves that required direct
+strength against the opponent. 
+
+Another school of Judo in Brazil originated from [Geo
+Omori](https://en.wikipedia.org/wiki/Geo_Omori), a Japanese that opened the
+first Judo school in Brazil in 1909. One of his notable students was [Luiz
+França](https://en.wikipedia.org/wiki/Luiz_Fran%C3%A7a).
+
+The new form of groundwork based Judo in Brazil has evolved over the years to
+what is called today Brazilian Jiu Jitsu.
+
+Note that BJJ is not the same as [Jiu
+Jitsu](https://en.wikipedia.org/wiki/Jujutsu), which is a pretty old Japanese
+martial art. The correct order of things would be: Jiu Jitsu -> Judo ->
+Brazilian Jiu Jitsu.
+
+# A place to train and a place to sleep
+
+Finding a good BJJ academy to train and a place to stay were my first priorities
+when planning the trip to Rio. 
+
+Most websites mention [ConnectionRio](http://www.connectionrio.com/) as a place
+to stay together with likely minded BJJ fighters. I eventually didn't stay there
+because there weren't available double rooms at the time (I came to Rio with my
+girlfriend, she is probably not dorms material). I did have the opportunity to
+talk to Dennis Asche from ConnectionRio over mail and he seemed to be a great
+guy. If I was arriving to Rio by myself I would have probably chosen to stay at
+the dorms at ConnectionRio.
+
+I searched the web for active BJJ academies around Rio. Some academies that were
+mentioned by many are Academia Gracie, Terere Academy, Gracie Tijuca, Academia
+Gordo and Equipe Fabricio Jiu Jitsu. You can see them here, on the map:
+
+<iframe src="https://www.google.com/maps/d/embed?mid=zSWPS0CFAI0M.kseH1z5zmEME" 
+width="640" height="480"></iframe>
+
+I assumed that any of those academies would be good enough for a beginner like
+myself, so it was just about finding a place to stay in a good location which is
+close enough to one of those academies.
+
+I considered staying at a hostel somewhere nearby, but I found out that hostels
+around Rio could be pretty expensive. In addition, I came to the conclusion that
+a hostel doesn't have the facilities needed for a person that trains twice a
+day. I also thought about renting a place in Rio, however without any local help
+I realized that it might take a while before I managed to find a good deal, and
+I didn't have much time to waste.
+
+I heard about [Airbnb](https://www.airbnb.com/) as a good method of renting a
+place for short periods of time. I managed to find a pretty nice apartment
+through Airbnb which was 3 minutes walk from Equipe Fabricio Jiu Jitsu Academy.
+I paid for it 1500 US dollars (Including airbnb's commission and all the other
+expenses). It was an apartment suitable for 2 people, it included a working
+laundry machine (Very important if you are training a lot!) and a guard at the
+entrance. Note that it was a pretty fancy choice. You can probably find a
+cheaper apartment if you show up alone.
+
+That said, I think this apartment was the best thing I could do with my money
+with respect to accommodation. It felt pretty safe (The building had a personal
+guard!), I could make my own food at the kitchen, clean my clothes using the
+laundry machine, and wake up 20 minutes before the morning training starts,
+without having to worry about being late. In addition, the beach was about 8
+minutes of walk away. So, thank you airbnb :)
+
+
+# Equipe Fabricio Academy
+
+![Equipe Fabricio]({filename}/images/bjj_rio/equipe_fabricio.jpg)
+
+
+Equipe Fabricio Jiu Jitsu Academy is located in the street of Nossa Senhora de
+Copacabana, number 1017. (See the map above) You can't really miss it, it has a
+super big plastic yellow window, and there are always some kimonos hanging from
+it.
+
+It was founded by master Fabricio Martins, a 7th dan degree coral belt of BJJ.
+Fabricio Martins himself still teaches in this academy a couple of nights a
+week.
+
+I don't know Fabricio Martins personally, but on my only meeting with him he
+appeared to be a really cool person. He went out of his way to shake my hand and
+welcome me to his academy.
+
+I found about Equipe Fabricio Jiu Jitsu academy by searching the web (As
+mentioned above). It has a pretty active [facebook
+page](https://www.facebook.com/EquipeFabricioJiuJitsu) with daily pictures of
+training sessions and competition days. You can also find information about it
+at the [trainbjjinrio website](http://trainbjjinrio.com/fabricio-jiu-jitsu/).
+
+On my first day in Rio I went to the academy to find out where it is and check
+the training hours. Thinking about it now, it was probably a bad idea to just
+show up and not send a message to the academy ahead of time, but everything
+worked just fine. Everyone was very nice and friendly (As Brazilians always are
+:)). Despite my lousy Portuguese people at the academy were very patient and
+explained the training hours. 
+
+![Training hours]({filename}/images/bjj_rio/training_hours.jpg)
+
+(The training hours as written by the coach)
+
+- There are training sessions every morning at 7:00 at all days (Except Sunday).
+- At Tuesday and Thursday there is a training session at 6:00 in the morning.
+- At Monday, Wednesday and Friday there are training sessions at 10:30, 12:00
+  and 16:00.
+- There are training sessions every night at 18:00 and 19:30 (That's where
+  master Fabricio Martins sometimes shows up).
+- At Saturday there is an open mat training session (Mostly fights) at 10:30 in
+  the morning.
+
+Generally, there is a training session going on at all times, except for when
+people sleep or eat lunch.
+
+If I remember correctly it costs about 180
+[reals](https://en.wikipedia.org/wiki/Brazilian_real) to train as much as you
+want for a whole month.
+
+I showed up twice a day to the training of 7:00 in the morning and to the
+evening training of 18:00. The morning training session was mostly about basic
+techniques (Most of them were very new to me), and it also included lots of
+fights. It is usually 2 hours, sometimes a bit more. 
+
+At the evening training session of 18:00 you can meet some really tough
+fighters. Usually at least third of the participants were not from Brazil. I met
+there people from Chile, Argentina, Jordan, Belgium and more. 
+
+# Etiquette
+I was never given a brochure about etiquette when training BJJ in Brazil, but I
+did manage to infer some ideas from my stay in Rio, and generally from my
+experience on the mat. The following advice can help you keep your friends on
+the mat:
+
+1. Don't stink. Always wash your Gi (They call it Kimono in Rio) immediately
+   after you finish training. If you plan to train more than once a day, bring
+   more than one Gi.  (I had three Gis with me). 
+   You can really stink if you use the same Gi for a few days without washing
+   it. In addition, it endangers your health and your friends health.
+   In addition, make sure to wash yourself immediately after training. Somewhat
+   of a trivial advice, but it could be useful if nobody ever told you about it.
+
+2. Don't change your pants on the mat. There is a toilet room in every mat, and
+   you should change your pants there. This one was not trivial for me. In my
+   local club people don't really care where you change your pants, but then
+   again, all of us are guys back home. On the other side, it seemed like
+   changing your shirt on the mat is not a problem.
+
+3. Be careful with new opponents. If this is your first fight with an opponent
+   you don't have experience with, start easy. Even if your opponent has a very
+   high belt, he might have not trained for a long time, or maybe has recovered
+   from an injury. You don't know, so start easy. As the fight progresses you
+   can sense if you can use more power and speed.
+   Generally, don't go crazy. Remember that there is another training at the
+   evening :)
+
+4. Be on time. It seems like in Brazil being late is the usual thing. In many
+   training sessions people only showed up 10 or 15 minutes after the training
+   session has begun. However, I think that people will appreciate if you show
+   up on time, especially if you are a guest in the academy. Being on time
+   implicitly means that you appreciate other people's time, and the teacher's
+   time. (It's just my opinion though. Maybe the guys there thought that there
+   is something strange with me showing up on time...)
+
+5. Respect the teacher ('Professor' in Portuguese) of the dojo and people of
+   higher rank. Even if you think you know some technique better, or you have a
+   better idea about how to do something, make sure to try first what the
+   teacher suggests.
+
+# The BJJ training
+
+I have only trained in Equipe Fabricio Jiu Jitsu so my experiences mostly relate
+to that academy. I can only assume that training in other places in Rio are
+somewhat similar, though I can't know for sure.
+
+The [dojo](https://en.wikipedia.org/wiki/Dojo) was made of two rooms with mats.
+There were mats on the walls too, which means you can roll all the way without
+being afraid of the walls.
+
+The room on the right is mostly for the younger ones, and the beginners. That
+said, you can find there many tough black belts that probably want to review
+their basics (Or just enjoy kicking your ass). The morning training of 07:00
+every day happened there.
+
+The room on the left usually hosted more advanced training sessions. The evening
+training session of 18:00 usually happened there.
+
+## The 07:00-09:00 morning training session
+
+The training usually begins with a run around the mat, then some power
+exercises. Usually a lot of abdominal exercise. Next is some crawling on the
+mat. I don't know how is this called, but BJJ people have some really
+interesting techniques for crawling on their backs on the mat.
+The warmup part is usually about 20 minutes more or less.
+
+Next comes the technique part. The coach explains some basic BJJ technique, like
+getting out of mount, getting out of a
+[guard](https://en.wikipedia.org/wiki/Guard_%28grappling%29), a sweep or a basic
+Judo Uchi komi (Static practice of throwing techniques, usually without actually
+throwing). 
+
+Finally there are some fights. The coach pairs people on the mat together for
+fights. This is very different from my Judo club, where you have to be somewhat
+pushy to get a fight with a good opponent. Usually in every training session you
+get to have something like 3-6 fights. The fights put emphasis on correct
+technique, and less on great force.
+
+Although many of the fights were pretty tough, my opponents always took care of
+me and made sure that I stayed alive and safe, which was pretty nice. I noticed
+that the higher the rank of my opponent, the smoother the fight was. The higher
+belts didn't use much force at all (Yet still managed to beat me every time).
+
+Usually in every morning training session there was at least one fighter with a
+purple or higher belt, but in many cases there were even 2 or 3 black belt
+fighters.
+
+## The 18:00-19:30 evening training session
+
+The evening training session is instructed by a different coach.
+
+The training session begins with a warmup most of the times. (There were a few
+times where the training began immediately with fights). The warmup is usually a
+run around the mat, some power exercises (Mostly abdominals. Sometimes it was
+400-600 reps) and some BJJ crawls on the mat.
+
+Next comes the technique part. The techniques at the evening session were more
+advanced than the ones at the morning sessions. During my month in Rio, the
+techniques were mostly about fighting a standing person when you are on the
+ground. It was a real experience watching the coach demonstrating those
+techniques. He was really good.
+
+Finally, there are some fights. There are usually many people in the evening
+training session, so you get to do less fights, but you do get to watch some
+really good fights. In a usual training session I got to participate in about
+3-4 fights.
+
+In a usual evening training session almost everyone has at least a purple belt,
+and sometimes you will meet even 6 or 7 black belt fighters. Many of the people
+in this training session are not from Brazil, so you get to feel many different
+fighting techniques.
+
+## Main stuff that I have learned
+
+I showed up knowing almost nothing about BJJ, and I learned a lot during one
+month of intensive training. Some of the main things I have learned and managed
+to apply in my fights:
+
+- How to get out of an opponent's guard, and how to do it without getting my
+  hand broken.
+- How to pass an opponent's guard from standing.
+- Some techniques for getting out of an opponent's mount.
+- Never give your back.
+- Some Judo throws can put you into a trap when applied in a BJJ fight.
+
+
+# Comparison to Judo
+
+From my experience, A BJJ fight doesn't feel like a Judo fight at all. I will
+list here the main differences and similarity points that I have noticed:
+
+- You can stand both in Judo and BJJ. In Judo, you can finish your fight with a
+  throw, however in BJJ a throw will only give you a few points (and a position
+  advantage), however, it won't finish the fight. You still have to come up with
+  some submission to finish the fight.
+
+  Another thing is the idea of "Pulling a guard". In BJJ it is allowed to jump
+  over your opponent and catch him with the legs. In all my years of training
+  Judo I have never even thought about doing this (I think that it is not
+  allowed), but in BJJ this is the usual.
+
+  This has a very strange effect on how BJJ fighters fight. In competitions a
+  BJJ fight will begin from standing. BJJ fighters usually don't stand high.
+  They stand in some kind of a crouch, ready to jump over their opponent to grab
+  a good position on the ground. Their crouch probably defends from a possible
+  sudden guard pull of their opponent.
+
+- BJJ fighters don't spend much of their time learning Judo throws (Takedowns in
+  BJJ language). This is somewhat dual to the fact that many Judo fighters don't
+  spend much of their time learning newaza techniques. In a competitive Judo
+  fight the referee will stop the ground work pretty quickly if nothing
+  interesting happens. I heard that this is about to change, but probably it
+  won't change too much.
+
+- More things are allowed on the ground in BJJ. You can pretty much make a bar
+  out of anything. Leg bars and other strange bars are allowed. The fight never
+  really stops. Your opponent can be standing while your are on the ground, and
+  the fight will still continue.
+
+Doing groundwork fights in Judo some time ago, I can recognize now many basic
+mistakes I was making. In the hope that these will be useful to other Judokas
+out there, I will list them here:
+
+- Some Judo fighters think that groundwork is just like standing, but on
+  the knees. I was famous for this mistake. The two Judo fighters walk on their
+  knees and try to "throw" each other on the mat. In BJJ experienced fighters
+  sometimes start the fight on the opposite base: on their butt.
+
+- Using your back as defense. It is a common Judo groundwork technique to lay on
+  your stomach and close yourself for defense. I think Judo fighters can get
+  away with this just because the competition referee will usually stop the
+  fight at this point. If you do this at a BJJ fight you will soon be in
+  trouble. It is very hard to save yourself after you have given your back to
+  your opponent. Giving your back to your opponent exposes you to all kinds of
+  chokes and unfortunate things.
+
+- Trying to choke your opponent when you are inside his guard. Big mistake! It
+  is very hard to choke someone when you are inside his guard. In addition, you
+  put your arms in danger. You have to get out of the guard first. They have a
+  saying in BJJ: Position before Submission. You have to get to a good position
+  before you can go for the choke.
+
+
+If you wonder how effective is Judo groundwork in a BJJ fight, I can give you my
+personal perspective. On my first days in Rio, except for a few real beginners,
+everyone on the mat would beat me. On my last days there I could manage to beat
+most blue belts on the mat, and have a decent fight with the purple belts. The
+brown and black belts had a level of technique that was way beyond anything I
+could handle :)
+
+# Injuries
+
+Generally, I didn't experience any serious injury. Many fights were intense,
+but it seemed like people really take care of each other. Most of the people
+didn't use too much force when finishing a submission. 
+
+I was told that it is a good practice to tap early, and I made sure to follow
+this advice. This practice helps you focus on technique and not on using force
+to escape submissions. It also lets your opponent have the experience of
+applying a technique successfully.
+
+On my first week of training I had some cuts on my skin in a few fingers and
+toes, and also in both of my elbows. For a while it was pretty painful to sit on
+my knees because of the toe cuts. I made sure to cover all my cuts with tape. 
+
+I was worried that those cuts will get worse, but they somehow healed after the
+first week and never appeared again. My skin in those places became a bit
+tougher. I assume that those cuts happened because my skin in those places has
+not yet got used to the BJJ training.
+
+I used mouthguard in some of the fights, mostly at the evening training, where
+fights could get tougher. I didn't use Earguards (but maybe that's because I
+still lack some knowledge about life).
+
+Generally I was impressed that BJJ is a sport where you can train a lot and
+still stay alive if you are being reasonable with your training. I don't think I
+would have been able to do Judo the same amount of time per day and stay in one
+part.
+
+That said, I did manage to meet some people on the BJJ mat that were taking it
+easy because of injuries they have. It's a martial art, after all, and injuries
+are probably inevitable part of the game.
+
+# Competitions
+
+I went to see one BJJ competition during my month in Rio (I didn't participate,
+though). It was a great experience.
+
+The competition was divided over a few days, where each day was dedicated for
+different sets of belts and weight classes. I went to see the black belts
+competition day.
+
+Outside the competition stadium there were some stands that sold cold
+[Açaí](https://en.wikipedia.org/wiki/A%C3%A7a%C3%AD_palm) and BJJ Kimonos. The
+entry was free for observers.
+
+There were about 8 different mats with fights happening simultaneously. The mats
+were inside a big cage, most likely to stop the crazy crowd from stepping into
+the fights. Every fighter came with his whole team, and the team members made
+sure to support their fighters very loudly :)
+
+The fights were very technical but still involved lots of speed and power. For
+most of the fights I understood very little of what I saw, but I could still
+appreciate the quality of the fights.
+
+The whole event had a great vibe to it. Highly recommended.
+
+![BJJ Competition]({filename}/images/bjj_rio/bjj_competition.jpg)
+
+(A Brazilian Jiu Jitsu Competition)
+
+# The Portuguese language
+
+Portuguese is the official language in Brazil. People in Brazil can sometimes
+understand some really basic English or Spanish, but don't count on it. That
+said, Brazilians (And Rio's [Cariocas](https://en.wikipedia.org/wiki/Carioca)
+especially) are generally very friendly people and they will try to help you
+even if you don't speak a word in Portuguese.
+
+I brought with me
+[Pimsleur](http://www.pimsleur.com/learn-portuguese-brazilian/) Brazilian
+Portuguese audio course together with an old MP3 player, and learned a bit every
+day. It really helped. If you know some English or Spanish, you can catch up the
+basics of Portuguese pretty quickly. My language is written from right to left.
+If I managed to learn some Portuguese you have no excuses.
+
+Knowing even a little Portuguese can really help you with the daily logistics
+and also on the BJJ training sessions. On the very least, it shows people that
+you made some effort, so they can make their effort to meet you halfway.
+
+# Safety
+
+When I told some of my friends that I am going to visit Brazil, I was
+immediately warned that Brazil could be a dangerous place. I have to admit that
+during my 2 months in Brazil nothing bad happened to me. On the contrary: The
+Brazilian people were very friendly.
+
+I think that if you follow some general reasonable safety guidelines nothing
+bad should happen to you (At least not too often).
+
+These are my main conclusions regarding safety in Rio, and generally in Brazil.
+I got most of these pieces of advice from locals.
+
+- Most of the people in Brazil are extremely friendly and helpful. Like in any
+  other place in the world, there is a very small minority of people that might
+  be dangerous for you.
+
+- Never walk with too much money in wallet. Have about enough for the day. If
+  somebody ever tries to rob you, just give him the wallet. Don't fight for 100
+  reals, your life doesn't worth it.
+
+- Don't put all your money in one pocket. Split it between 2 or more, so that if
+  you get robbed, you can still recover and buy a metro ticket back home.
+  Another idea is to have two wallets. I usually walk with two wallets when I
+  visit far places in the world.
+
+- Don't take your passport with you. Leave your passport at home / hostel /
+  hotel, and take a copy with you instead. During my stay in Brazil I was only
+  asked for my passport when moving to another major destination: In long term
+  buses or Flights. You don't need your passport on the street.
+
+- Don't wear shiny valuables. I did see some of the locals wear valuables,
+  so this might be an outdated advice, but still: If something is important to
+  you, don't bring it to the street.
+
+- Don't walk with a big backpackers bag at the streets. A small simple backpack
+  is ok.
+
+- Walk with comfortable shoes. Heels are not made to survive Rio's streets.
+
+- Beware of ATM scams. (Especially in GIG airport) Before you head to Brazil
+  tell your credit card company that you are going to do so. If you can, come
+  with two different international credit cards. 
+  Be alert when you go to withdraw cash from ATMs. Use only ATMs inside banks,
+  prefer the ones that have a guard. Look closely at the ATM and make sure that
+  it looks reasonable. Try to move the plastic where you enter your card, to
+  make sure nothing was installed there. Cover the keypad with your other hand
+  when you type in your PIN, to make sure it is not filmed.
+
+- Don't walk to strange places at night. Some places should not be visited even
+  during the day.
+
+# Food
+
+Rio de Janeiro is a place that understands the needs of the BJJ fighter. You can
+find quality healthy food at reasonable prices. I don't eat meat so I can not
+share a first-hand experience of trying it, but people say that the meat in
+Brazil is pretty good.
+
+I mostly ate at [Kilo Restaurants](https://en.wikipedia.org/wiki/Buffet). Those
+are restaurants where you choose whatever you want and you pay by the weight. I
+ate very often at [Restaurante Temperarte](http://www.temperarte.com.br/) in Rua
+Bolivar, where a big meal should cost about 40 reals. (It depends of course, on
+how much you eat). Most likely you can find a 30 reals big meal in a less fancy
+Kilo restaurant.
+
+![Food at Restaurante Temperarte]({filename}/images/bjj_rio/temperarte.jpg)
+
+(Food at Restaurante Temperarte)
+
+Another great feature of the Brazilian food are the fruit shakes, that are
+virtually everywhere. There is a fruit shake stand every 300 meters or so.
+
+I really liked the [Açaí](https://en.wikipedia.org/wiki/A%C3%A7a%C3%AD_palm). I
+think that I ate at least half a kilo of Açaí every day. You can get half a kilo
+for about 10-15 reals. When I came back home I tried to buy some frozen Açaí and
+make it with my own blender, but whatever I tried, it was never as good as the
+Açaí I ate in Rio.
+
+Finally, there are the supermarkets. There are pretty big supermarkets in Rio.
+If you have a kitchen, you can buy some groceries and make your own food. It's
+probably the cheapest option for food in Rio.
+
+# Gear
+
+I don't have much experience with BJJ gear, but I was told you shouldn't expect
+any great bargains for BJJ gear in Brazil. If you have stuff that you need on
+the mat, you should probably bring it with you.
+
+I write here the list of stuff I brought (That is related to BJJ training). It
+might be different for you, but at least it could give you some ideas.
+
+- Two Gis. I brought two white Judo Gis, and bought a black BJJ Kimono at Equipe
+  Fabricio's Academy. (About 350 reals) I learned why BJJ people love black so
+  much: If your Gi is white, it will turn black after a while anyways from all
+  the time spent on the mat. 
+  I think that three Gis is a good number if you want to train twice a day and
+  show up with a clean dry Gi every time. You can do with less, but then you
+  might show up with a dry dirty Gi or a clean wet Gi. (It's somewhat of a
+  philosophical question what is worse).
+
+- Knee and elbow protectors. I think that I have used one of the elbow
+  protectors for one training session, but that's all.
+
+- [Tiger balm](https://en.wikipedia.org/wiki/Tiger_Balm). I used it about once
+  for my shoulder.
+
+- [Traumeel ointment](http://www.traumeel.com/). It saved me once at home, so I
+  took it with me to Rio. I used it a few times in the first week for an
+  inflammation on my elbow, which happened because of an old Judo injury (Lots
+  of [Seoi Nage](https://en.wikipedia.org/wiki/Seoi_nage)). The inflammation was
+  gone, though I'm not sure if it's the ointment that made it happen.
+
+
+- Tape. Quality sport tape is hard to find where I live, so I assumed it might
+  be rare in other parts of the world too. I brought two rolls. I didn't use
+  much of the tape I brought, just a bit on the first two weeks. I don't know if
+  you can find good sport tape in Rio.
+
+
+![My Gis, drying]({filename}/images/bjj_rio/gis_drying.jpg)
+
+(My Gis, drying)
+
+I was planning to travel Brazil after my first month in Rio, so after my last
+training session I washed my clothes, packed everything into a box and sent it
+by mail back home. Gis can be pretty heavy and I didn't want them on my back for
+another month. It cost about 400 reals to send the three Gis (And some other
+stuff) back home. The package arrived after about one month.
+
+![Gis Package]({filename}/images/bjj_rio/package.jpg)
+
+(This package has arrived after about one month)
+
+# Stuff to do in Rio de Janeiro
+
+Rio de Janeiro is a great city. 
+
+One of the things I liked the most about Rio is the people: The
+[Cariocas](https://en.wikipedia.org/wiki/Carioca). Most people in Rio are very
+warm and expressive. I lost my way more than once in Rio and people went out of
+their way to help me, despite my poor Portuguese. The people in Rio generally
+seem to be pretty happy and easy going. Nobody is in a hurry. Everyone is a bit
+late, but nobody is really worried about it. 
+
+Almost everyone walk in [Havaianas](https://en.wikipedia.org/wiki/Havaianas)
+with a great skill, even on the rough street floors (I tried to do it myself,
+but I think I was not born with the required skill). During the day you can see
+many people with their swimsuit on, and it seems like there are always people
+at the beach.
+
+There is a high awareness for health and sport, or at least this is what it
+feels like. There are many shops for healthy food, and many people on the
+street look very fit. There are trails near the beach for runners and bike
+riders, and people are using them during all the times of the day. It is also
+pretty hard to ignore all the martial art academies signs on the streets, and
+the street commercials for UFC fights.
+
+I collected here some of the places I enjoyed visiting in Rio:
+
+- The beach. Rio is famous for its beaches, and rightly so. I visited the beach
+  of Copacabana and the beach of Ipanema. Both are really nice. You can get a
+  chair for the whole day for about 5 reals. The sun is good and the people
+  are beautiful. Don't miss it.
+
+- The Corcovado mountain, and the statue of [Christ the
+  Redeemer](https://en.wikipedia.org/wiki/Christ_the_Redeemer_%28statue%29)
+  (Cristo Redentor in portuguese). It's a pretty high mountain that has the
+  statue of Jesus with his hands to the sides. The statue itself is pretty big.
+  There is a train that takes you to the top of the mountain, and you can see
+  all of Rio from above. On the way up you can buy small status of Jesus that
+  glow in the dark. At the top you can also see many tourists that try to take
+  a selfie picture with Jesus Christ. If only Jesus had known...
+
+- The [Sugarloaf mountain](https://en.wikipedia.org/wiki/Sugarloaf_Mountain) is
+  another very high mountain next to sea. You get to see a beautiful view of
+  Rio and to buy Açaí at the top. I have also seen some small monkeys at the
+  top.
+
+- The [Hippie fair](http://www.feirahippieipanema.com/) in Rio. It is open
+  every Sunday. This is a pretty large market that is made of many booths. You
+  can buy there all kinds of Brazilian souvenirs, jewelery and art. Above all I
+  recommend the cakes sold on each of four sides of the market square. 
+
+- Nossa Senhora de Copacabana street. This street is one of my favourites in
+  Rio. It is a pretty long street, and it is pretty crowded most of the day.
+  You can see there many people in swimsuits walking to the see, many shops and
+  restaurants, and various booths that sell stuff. Equipe Fabricio Jiu Jitsu
+  Academy is on this street too.
+
+- [Rio's National Museum](http://www.museunacional.ufrj.br/) and the park
+  around it. When I visited there they had some dinosaur skeletons and some
+  mummies.
+
+![View from the way to the Corcovado]({filename}/images/bjj_rio/corcovado_view.jpg)
+
+(View from the way to the Corcovado)
+
+# Transportation
+
+I mostly used the metro lines when travelling around. The metro doesn't cover a
+big part of Rio, but it does reach some interesting places. You can buy a metro
+ticket for about 3.5 reals for the whole day. If you use it a lot, consider
+getting a metro card and load it ahead of time. I don't think you get any
+discount for doing that, but it will save you the hassle of waiting at the
+line.
+
+For anywhere that the metro doesn't reach, I took a taxi. Taxis in Rio are not
+so expensive. I remember one taxi ride that took about 30 minutes, and I ended
+up paying about 30 reals. Taxis in Rio use a counter to determine the final
+price of the drive, so make sure your driver uses a counter.
+
+If you plan on using a taxi, I recommend checking out the
+[99taxis](http://www.99taxis.com/en/) mobile app. It can help you connect with
+reliable taxi drivers. If you don't have internet connection, in most places it
+should not be too difficult to hail a taxi from the street. Before you get in,
+make sure that the driver has a counter and a taxi license. The Taxi license
+should be somewhere on the front, with his picture on it.
+
+I haven't tried the buses, so I don't have much to say about them.
+
+# Money
+
+## Costs
+
+The currency used in Brazil is
+[real](https://en.wikipedia.org/wiki/Brazilian_real). I think that Brazil is a
+bit more expensive to live in than most of its Spanish speaking neighbours. 
+
+These are my estimated costs if you plan on staying in Rio for BJJ training for
+one month.
+
+-   Flight: Check how much it costs to fly to Rio from your country.
+
+-   Accommodation: About $1000 - $1500 (US dollars) if you use airbnb to rent an
+    apartment. You can find a cheaper apartment if you manage to rent directly
+    from someone in Rio, but it will take you some more logistics. 
+
+-   Food: About 70-100 reals a day. It depends how much you eat out (And
+    where). If you make all your food yourself, it will probably be even
+    cheaper. Remember that if you train every day, you have to eat well.
+
+-   BJJ training: About 180 reals for a month.
+
+Simple math will give you a maximum cost of $2300 US dollars per month, without
+the flight.
+
+## Managing your money
+
+Regarding managing your money in Rio: I mentioned in the safety part some
+safety tips about your money and ATMs. In addition, you should know that
+getting money out of ATMs in Rio could sometimes be a hard task.
+
+My advice to you: Show up with two different international credit cards. I came
+with a Visa and a Mastercard. This is useful because if one of your cards does
+not work with some bank, your other card might work. Also, in case one of your
+credit cards will be cancelled by the credit card company (Due to some credit
+card fraud).
+
+I managed to withdraw money from the following banks: Itaú, Santander and
+Bradesco. (All of them are somewhat red or orange). I never managed to withdraw
+money from any other bank. You might have a different experience.
+
+Also be aware that the money runs out in most of the ATMs in Sunday, so be sure
+to withdraw enough money to survive the weekend.
+
+Every withdraw from the ATMs has costed me some constant commission, so in
+every withdraw I took the maximum amount of money possible (800 reals).
+
+I always paid with cash, but it seemed like the locals pay with credit card
+even for pretty cheap things, like a small meal at a cafe.
+
+# Final Notes
+
+Training BJJ in Rio was one of my best martial art experiences ever. I learned
+a lot during this month and I already miss the people in Equipe Fabricio Jiu
+Jitsu Academy.
+
+If you are not sure if it worth it, then let me tell you, it does. Buy the
+flight ticket and start rolling on the mat.
