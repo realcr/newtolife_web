@@ -2,7 +2,7 @@ Title: 1 month of BJJ training in Rio
 Date: 2015-09-25 12:23
 Author: newtolife
 
-![Açaí]({filename}/images/bjj_rio/acai.jpg)
+![Açaí]({filename}images/acai.jpg)
 
 (Açaí)
 
@@ -44,7 +44,7 @@ many years that my ground game was really good. It rarely happened to me that I
 met another Judoka that won me on the ground. In competitions, people always
 tried to avoid spending time with me on the ground.
 
-On my [stay at the kodokan]({filename}kodokan_doc.mdown) I met a few guys that
+On my [stay at the kodokan]({filename}/blog/kodokan_doc/kodokan_doc.mdown) I met a few guys that
 beat me really hard on the ground. I had to ask where did the learn this kind of
 Judo, and they answered that it's not Judo, it's BJJ. Coming back home from
 Japan I found a good BJJ academy and started training. After about one year I
@@ -133,7 +133,7 @@ minutes of walk away. So, thank you airbnb :)
 
 # Equipe Fabricio Academy
 
-![Equipe Fabricio]({filename}/images/bjj_rio/equipe_fabricio.jpg)
+![Equipe Fabricio]({filename}images/equipe_fabricio.jpg)
 
 
 Equipe Fabricio Jiu Jitsu Academy is located in the street of Nossa Senhora de
@@ -162,7 +162,7 @@ worked just fine. Everyone was very nice and friendly (As Brazilians always are
 :)). Despite my lousy Portuguese people at the academy were very patient and
 explained the training hours. 
 
-![Training hours]({filename}/images/bjj_rio/training_hours.jpg)
+![Training hours]({filename}images/training_hours.jpg)
 
 (The training hours as written by the coach)
 
@@ -439,7 +439,7 @@ appreciate the quality of the fights.
 
 The whole event had a great vibe to it. Highly recommended.
 
-![BJJ Competition]({filename}/images/bjj_rio/bjj_competition.jpg)
+![BJJ Competition]({filename}images/bjj_competition.jpg)
 
 (A Brazilian Jiu Jitsu Competition)
 
@@ -528,7 +528,7 @@ Bolivar, where a big meal should cost about 40 reals. (It depends of course, on
 how much you eat). Most likely you can find a 30 reals big meal in a less fancy
 Kilo restaurant.
 
-![Food at Restaurante Temperarte]({filename}/images/bjj_rio/temperarte.jpg)
+![Food at Restaurante Temperarte]({filename}images/temperarte.jpg)
 
 (Food at Restaurante Temperarte)
 
@@ -582,7 +582,7 @@ might be different for you, but at least it could give you some ideas.
   you can find good sport tape in Rio.
 
 
-![My Gis, drying]({filename}/images/bjj_rio/gis_drying.jpg)
+![My Gis, drying]({filename}images/gis_drying.jpg)
 
 (My Gis, drying)
 
@@ -592,7 +592,7 @@ by mail back home. Gis can be pretty heavy and I didn't want them on my back for
 another month. It cost about 400 reals to send the three Gis (And some other
 stuff) back home. The package arrived after about one month.
 
-![Gis Package]({filename}/images/bjj_rio/package.jpg)
+![Gis Package]({filename}images/package.jpg)
 
 (This package has arrived after about one month)
 
@@ -656,7 +656,7 @@ I collected here some of the places I enjoyed visiting in Rio:
   around it. When I visited there they had some dinosaur skeletons and some
   mummies.
 
-![View from the way to the Corcovado]({filename}/images/bjj_rio/corcovado_view.jpg)
+![View from the way to the Corcovado]({filename}images/corcovado_view.jpg)
 
 (View from the way to the Corcovado)
 

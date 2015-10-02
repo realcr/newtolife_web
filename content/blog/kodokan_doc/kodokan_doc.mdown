@@ -2,7 +2,7 @@ Title: 2 months of training at the Kodokan
 Date: 2014-08-30 12:13
 Author: newtolife
 
-![A sign with the Judo spirits in Japanese]({filename}/images/kodokan/judo_spirits.jpg)
+![A sign with the Judo spirits in Japanese]({filename}images/judo_spirits.jpg)
 
 (A sign at the Kodokan Hostel)
 
@@ -39,7 +39,7 @@ days it can be found in Bunkyo, Tokyo (Japan), near the Kasuga station.
 # The Building Structure
 The Kodokan is an 8 levels building (Plus a basement floor). 
 A visual description could be found
-[here]({filename}/docs/kodokan_quick_guide.pdf).
+[here]({filename}docs/kodokan_quick_guide.pdf).
 
 The first floor is where you will usually enter the building from. This is also
 where the souvenir shop is located. At the shop You can find some books about
@@ -88,7 +88,7 @@ that floor to take pictures. This floor is also very crowded with spectators
 during competition days.
 
 ![The 8th and 7th floor during a competition day at the
-Kodokan]({filename}/images/kodokan/kodokan_competition.jpg)
+Kodokan]({filename}images/kodokan_competition.jpg)
 
 (The 8th and 7th floor during a competition day at the Kodokan)
 
@@ -116,7 +116,7 @@ ground floor of the office building. Between the 8 floors building and the
 International department you can also see the statue of Kano. 
 
 ![The Statue of Kano, outside the Kodokan
-building]({filename}/images/kodokan/kano_statue.jpg)
+building]({filename}images/kano_statue.jpg)
 
 (The statue of Kano Jigoro, outside the Kodokan building)
 
@@ -130,7 +130,7 @@ Kodokan. I'm sorry for the Fluff before, but you had to know it to understand
 this section.
 
 ## Courses
-There are a few [different courses]({filename}/docs/general_info.pdf) you can
+There are a few [different courses]({filename}docs/general_info.pdf) you can
 take at the Kodokan. I mostly participated in the Randori session myself, so I
 know little of the other courses, but I have some speculations from what I have
 seen.
@@ -189,7 +189,7 @@ As a westerner, you might not understand why would I mention these kind of
 subjects here, however in Japan and generally in places in the east, ettiquite
 could be very important. This is especially relevant to the Dojo. I cover here
 the real basics. You can also find those in the [dojo
-ettiquite]({filename}/docs/etiquette_eng.pdf) document from the Kodokan.
+ettiquite]({filename}docs/etiquette_eng.pdf) document from the Kodokan.
 
 You should show up at the dojo with a white Judogi (Only white. Other colors
 like blue are not allowed. If you are a guy, you can't wear anything beneath
@@ -324,7 +324,7 @@ There is a class though for judokas with a rank lower than a Shodan.
 I was also told that judokas which manage to score a few consecutive ippons in
 this contest are awarded the next judo rank.
 
-![Judo competition at the Kodokan]({filename}/images/kodokan/kodokan_competition_2.jpg)
+![Judo competition at the Kodokan]({filename}images/kodokan_competition_2.jpg)
 
 (A competition at the Kodokan)
 
@@ -359,7 +359,7 @@ Kata](http://en.wikipedia.org/wiki/Nage-no-kata).
 
 # The Kodokan Hostel
 Document about the Kodokan hostel rules could be found
-[here]({filename}/docs/kodokan_hostel_rules.pdf).
+[here]({filename}docs/kodokan_hostel_rules.pdf).
 
 The Kodokan hostel is at the 3rd floor. It is not really a hostel in the
 traveller's sense. It's basically a floor with a lobby, a few rooms, toilets
@@ -390,7 +390,7 @@ is needed.
 
 The dormitories don't have any windows, but they have a strong air conditioner.
 
-![The Kodokan Hostel's dormitories]({filename}/images/kodokan/kodokan_dorms.jpg)
+![The Kodokan Hostel's dormitories]({filename}images/kodokan_dorms.jpg)
 
 (The Kodokan Hostel's dormitories)
 
@@ -406,7 +406,7 @@ There are two coin operated washing machine at the toilet room. If I remember
 correctly, using the washing machine costs 200 JPY. Note that there are no
 dryers.
 
-![Kodokan hostel's washing machines]({filename}/images/kodokan/washing_machines.jpg)
+![Kodokan hostel's washing machines]({filename}images/washing_machines.jpg)
 
 (The Kodokan Hostel's washing machines, at the males' toilets room)
 
@@ -416,7 +416,7 @@ vending machine for drinks, and a vending machine for noodles with hot water.
 There is also free wifi around the lobby (It is harder to catch from inside the
 dormitory, but it is possible if done correctly).
 
-![The Kodokan Hostel lobby]({filename}/images/kodokan/kodokan_hostel_lobby.jpg)
+![The Kodokan Hostel lobby]({filename}images/kodokan_hostel_lobby.jpg)
 
 (The Kodokan Hostel Lobby)
 
@@ -433,7 +433,7 @@ things that you might need: A stove, a fridge, rice machine and lots of cooking
 pots. If you ever get there, know that the knifes are under the sink. It took
 us a month to find it out.
 
-![The Kodokan Kitchen]({filename}/images/kodokan/kodokan_kitchen.jpg)
+![The Kodokan Kitchen]({filename}images/kodokan_kitchen.jpg)
 
 (The Kodokan Kitchen)
 
@@ -537,11 +537,11 @@ usually costs 690 JPY, and can go up to 900 JPY if you decide to be fancy. From
 my experience you will need about 4 such meals per day (or more) to survive a
 training day at the Kodokan.
 
-![Udon and Tuna]({filename}/images/kodokan/udon_and_tuna.jpg)
+![Udon and Tuna]({filename}images/udon_and_tuna.jpg)
 
 (A dish of Udon and Tuna at OOO restaurant, Hakusan Dori)
 
-![Salmon and Avocado]({filename}/images/kodokan/salmon_and_avocado.jpg)
+![Salmon and Avocado]({filename}images/salmon_and_avocado.jpg)
 
 (A dish of Salmon and Avocado, Hakusan Dori, Tokyo Dome)
 
@@ -606,7 +606,7 @@ subway does not work between 00:00 to about 5:30, and also that the Kodokan is
 closed in those hours. If you are outside in this range of hours, you are on
 your own.
 
-![Walking around in Tokyo's Parks]({filename}/images/kodokan/tokyo_park.jpg)
+![Walking around in Tokyo's Parks]({filename}images/tokyo_park.jpg)
 
 (Walking around in Tokyo's parks)
 
@@ -701,7 +701,7 @@ Kasuga station (Also known as Korakuen station) using the subway. The Kodokan
 is right there.
 
 ![Hakusan dori and Kasuga dori
-intersection]({filename}/images/kodokan/hakusan_dori.jpg)
+intersection]({filename}images/hakusan_dori.jpg)
 
 (Hakusan dori and Kasuga dori intersection. The Kodokan building is the gray
 building next to the roller coaster.)
