@@ -2,15 +2,24 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-STATIC_PATHS = ['blog']
-ARTICLE_PATHS = ['blog']
+STATIC_PATHS = ['articles']
+ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
+# Directories and categories settings.
+# Every article will be in a single directory, which will
+# also contain the images and other related files.
+
+# We don't use the directory name as the category, as we have many nested
+# directories. Instead, we use the default category 'Blog':
 USE_FOLDER_AS_CATEGORY = False
-DEFAULT_CATEGORY = 'Blog'
+DEFAULT_CATEGORY = 'Articles'
+
+# We display pages and categories on the website menu:
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
 
+THEME = 'tuxlite_tbs'
 
 AUTHOR = u'new'
 SITENAME = u'newtolife'
