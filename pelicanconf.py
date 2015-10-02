@@ -19,7 +19,7 @@ DEFAULT_CATEGORY = 'Articles'
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
 
-THEME = 'tuxlite_tbs'
+THEME = 'newtolife_theme'
 
 AUTHOR = u'new'
 SITENAME = u'newtolife'
