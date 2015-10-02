@@ -2,7 +2,15 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-STATIC_PATHS = ['images','docs']
+STATIC_PATHS = ['blog']
+ARTICLE_PATHS = ['blog']
+PAGE_PATHS = ['pages']
+
+USE_FOLDER_AS_CATEGORY = False
+DEFAULT_CATEGORY = 'Blog'
+DISPLAY_PAGES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = True
+
 
 AUTHOR = u'new'
 SITENAME = u'newtolife'
