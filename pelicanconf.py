@@ -21,7 +21,7 @@ DISPLAY_CATEGORIES_ON_MENU = True
 
 THEME = 'newtolife_theme'
 
-AUTHOR = u'new'
+AUTHOR = u'real'
 SITENAME = u'newtolife'
 SITEURL = 'https://www.newtolife.net'
 
