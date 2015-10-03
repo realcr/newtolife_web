@@ -1,28 +1,15 @@
-<%inherit file="/article.makoa"/>
+Title: Basic DHT security concepts
+Date: 2014-11-27 10:03
+Author: real
+status: draft
 
-<%def name="post_metadata()">
-<%
-    return {\
-    "title": "Basic DHT security concepts",\
-    "date": "2014-11-27 10:03",\
-    "author": "real",\
-    "number":5,\
-    "tags": [],\
-    "draft":"False",\
-    "description":"Basic ideas regarding the security of a DHT."}
-
-%>
-</%def>
-
-<%block name="article_body" filter="self.filters.math_mdown">
 <!--
 ceil and floor latex macros:
 -->
-\(
+$$
 \newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
 \newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
-  
-\)
+$$
 
 <h4>Abstract</h4>
 We are going to talk about some very basic techniques of securing a DHT
@@ -37,7 +24,7 @@ down to earth introduction to the subject.
 <h5>DHT Reminder</h5>
 Before we move on to talk about security , We review again the basic functions
 of our DHT. In the lower level of the DHT structure, it means the ability to
-search for node \(\floor{v}\) given the value \(v\). In the higher level
+search for node $\floor{v}$ given the value $v$. In the higher level
 (Thinking about a Distributed Hash table), it is the ability to store pairs of
 (key,value), or retrieve a correct value given a key.
 
@@ -122,13 +109,13 @@ things the adversary can do:
   disconnected. 
 
 - Blocking or Changing specific keys: Assume that the adversary doesn't want
-  some key to be accessible (It will not be possible to get the value \(v\) for
-  a key \(k\)).  To do this, The adversary could insert many nodes into the
+  some key to be accessible (It will not be possible to get the value $v$ for
+  a key $k$).  To do this, The adversary could insert many nodes into the
   network with random IDs (Remember that every node has some ID). If the
   adversary has a very big amount of nodes, with some high probability the key
-  \(k\) will be under the responsibility of a corrupt node. Then whenever that
-  key is asked for, the adversary could return some other value \(v'\) instead
-  of \(v\), or just not return anything.
+  $k$ will be under the responsibility of a corrupt node. Then whenever that
+  key is asked for, the adversary could return some other value $v'$ instead
+  of $v$, or just not return anything.
 
 As we mentioned above though (In the philosophical paragraph), if the adversary
 wanted he could make anything out of this network, because really, he owns this
@@ -150,18 +137,18 @@ We have seen that we can't defend ourselves at this point from an adversary that
 inserts unlimited amount of nodes into the network. So let's put a limit to the
 amount of nodes the adversary can insert.
 
-Assuming that there are \(n\) nodes in the network, a reasonable bound might be
-\(\alpha \cdot n\), where \(0 < \alpha < 0.5\). In other words, the maximal amount
+Assuming that there are $n$ nodes in the network, a reasonable bound might be
+$\alpha \cdot n$, where $0 < \alpha < 0.5$. In other words, the maximal amount
 of corrupt nodes is a constant fraction of the total size of the network. Why do
-we pick \(\alpha\) smaller than half? That is because (As we noted above) if the
+we pick $\alpha$ smaller than half? That is because (As we noted above) if the
 adversary has more than half the nodes im the network, he pretty much owns the
 network. Just as a sanity check, note that the amount of correct nodes in the
-network is \((1 - \alpha)n\).
+network is $(1 - \alpha)n$.
 
-The adversary has a collection of \(\alpha n\) corrupt nodes. He can insert
+The adversary has a collection of $\alpha n$ corrupt nodes. He can insert
 each of those nodes into the DHT, and also remove each of them from the DHT.
 The adversary has much freedom to move the corrupt nodes around, however he
-owns only \(\alpha n\) nodes.
+owns only $\alpha n$ nodes.
 
 You might be thinking how come we get to choose the abilities of our adversary.
 For example - How can we allow ourselves to bound the amount of corrupt nodes?
@@ -190,7 +177,7 @@ to perform.
 
 In the following sections we will try to deal with various security issues that
 might arise in a DHT. We have met the [Chord
-DHT](${self.utils.rel_file_link("articles/dht_intro.html")}) but this might
+DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown) but this might
 apply to a wider range of DHT structures.
 
 Regarding the Adversarial model: We are going to assume a Node Bounded Slow
@@ -199,8 +186,8 @@ the Adversary, we will call it just Adversary on the rest of this text.
 
 Most of our security considerations presented here will relate to the way we
 choose the Identities of nodes in the network. I remind you that in Chord, every
-node has an Identity number which is from a set \(B_s := \{0,1,2,\dots,2^{s}-1
-\}\) (A number of size \(s\) bits). Identities in a DHT are very important, as
+node has an Identity number which is from a set $B_s := \{0,1,2,\dots,2^{s}-1
+\}$ (A number of size $s$ bits). Identities in a DHT are very important, as
 they determine the range of keys a node has responsibility over.
 
 Given that we know the set of possible identities, we are left with the task of
@@ -211,22 +198,22 @@ methods here.
 
 A simple solution for the Identity choice would be to let every new node in the
 network pick a random Identity number. If we are talking about Chord, that random
-Identity number will be a random bit string of size \(s\) bits. If all the nodes
-are correct and \(s\) is [large
+Identity number will be a random bit string of size $s$ bits. If all the nodes
+are correct and $s$ is [large
 enough](http://en.wikipedia.org/wiki/Birthday_problem), we can be pretty sure
 that no two nodes are going to have the exact same Identity number.
 
 However, if we take into consideration an Adversary as discussed above, we are
 expected to have problems. One thing the adversary can do, for example, is to
 block or modify the value for any wanted key. Assume that the Adversary wants
-to block the value of key \(k\). It is enough that the Adversary will insert
-just one corrupt node \(z\) into the network, choosing for him the Identity
-\(k\).
+to block the value of key $k$. It is enough that the Adversary will insert
+just one corrupt node $z$ into the network, choosing for him the Identity
+$k$.
 
-Then for sure the node \(z\) will have the responsibility of keeping the key
-\(k\) and its corresponding value. Whenever some other node \(x\) will search
-for the key \(k\) and ask for its value, the node \(z\) could not respond (Thus
-blocking access to the key \(k\)), or give a different value \(v'\).
+Then for sure the node $z$ will have the responsibility of keeping the key
+$k$ and its corresponding value. Whenever some other node $x$ will search
+for the key $k$ and ask for its value, the node $z$ could not respond (Thus
+blocking access to the key $k$), or give a different value $v'$.
 
 The idea of Random Identities gets us started, but obviously it can not deal
 with our Adversary.
@@ -244,8 +231,8 @@ known as Public key Cryptography).
 
 In this method, every node that joins the network first generates a key pair of
 public key and private key. Then the node uses his own public key as his DHT
-Identity. Whenever a node \(y\) comes in contact with a node \(x\), \(y\) will
-ask \(x\) to prove his claimed identity. \(x\) will then prove his identity
+Identity. Whenever a node $y$ comes in contact with a node $x$, $y$ will
+ask $x$ to prove his claimed identity. $x$ will then prove his identity
 using the Public Key Cryptography system. This way the Adversary will have to
 use a valid Identity for his corrupt nodes, if he wants to be able to
 communicate with correct nodes.
@@ -289,11 +276,11 @@ I don't want to get too abstract on you, so let me follow with a real example of
 a Public Key Cryptography system. A famous example is
 [RSA](http://en.wikipedia.org/wiki/RSA_%28cryptosystem%29). If Alice wants to
 generate a key pair, she has to generate two big random prime numbers. Let's
-call those \(p,q\). Then Alice multiplies them, to get the value \(N=pq\). \(N\)
-is then called the public key, and \(p,q\) are the private keys. Alice can share
-the public key (\(N\)) with anyone, however she will never tell \(p,q\). This is
-the private (Or secret) key. Note that concluding the numbers \(p,q\) knowing
-only \(N\) is considered to be a difficult computational problem. (See [Integer
+call those $p,q$. Then Alice multiplies them, to get the value $N=pq$. $N$
+is then called the public key, and $p,q$ are the private keys. Alice can share
+the public key ($N$) with anyone, however she will never tell $p,q$. This is
+the private (Or secret) key. Note that concluding the numbers $p,q$ knowing
+only $N$ is considered to be a difficult computational problem. (See [Integer
 Factorization](http://en.wikipedia.org/wiki/Integer_factorization))
 
 In RSA the public key could be used to Encrypt messages, and the private key
@@ -306,59 +293,59 @@ the same as encrypting a message using the public key.
 <h6>Using Public keys as Identities</h6>
 
 As we mentioned in the beginning of this section, we planned that every node
-\(x\) will generate a key pair, and use the Public key as a DHT Identity.
-When a node \(x\) joins the network and presents his Public key (Which is his
+$x$ will generate a key pair, and use the Public key as a DHT Identity.
+When a node $x$ joins the network and presents his Public key (Which is his
 claimed DHT Identity), we will send him to prove his identity.
 
-How could we ask \(x\) to prove it his identity? A naive method would be to send
-him some random value \(t\), and ask him ask him to sign it. If \(x\) manages to
-create a valid signature over \(t\), we will conclude that his identity is
+How could we ask $x$ to prove it his identity? A naive method would be to send
+him some random value $t$, and ask him ask him to sign it. If $x$ manages to
+create a valid signature over $t$, we will conclude that his identity is
 confirmed.
 
-Again let's assume that the Adversary wants to block some key \(k\) in the DHT,
+Again let's assume that the Adversary wants to block some key $k$ in the DHT,
 and see what happens in this case. The Adversary has to position some corrupt
-node with an Identity very close to \(k\) (But not bigger than \(k\)) inside the
+node with an Identity very close to $k$ (But not bigger than $k$) inside the
 network. If we are dealing with RSA, then all the Adversary needs to do is find
-some two prime number \(p,q\) such that \(pq\) is very close to \(k\). Then the
-adversary will use \(N=pq\) as the corrupt node's Identity (Public Key), and
-\(p,q\) as the private key. 
+some two prime number $p,q$ such that $pq$ is very close to $k$. Then the
+adversary will use $N=pq$ as the corrupt node's Identity (Public Key), and
+$p,q$ as the private key. 
 
 There are many prime numbers, so this should not really be a problem. It's a bit
 harder than the previous case, where the Adversary could just pick and Identity
 that he wants for his corrupt nodes, however it is not much harder.
 
-(One could also say that it might be not needed to supply a value \(N\) that is
+(One could also say that it might be not needed to supply a value $N$ that is
 really made of a multiplication of two primes, but we don't need to get into
-this. Even if we follow the rules and create \(N\) as a multiplication of two
-primes, it seems to be pretty easy to get close as we want to \(k\)).
+this. Even if we follow the rules and create $N$ as a multiplication of two
+primes, it seems to be pretty easy to get close as we want to $k$).
 
 <h6>Using Hashed Public Keys as identities</h6>
-We could make it a bit harder, though. For a node \(x\) with public key \(N\)
-and private key \(p,q\), we could declare \(x\)'s identity to be \(f(N)\), where
-\(f\) is some [cryptographic hash
+We could make it a bit harder, though. For a node $x$ with public key $N$
+and private key $p,q$, we could declare $x$'s identity to be $f(N)$, where
+$f$ is some [cryptographic hash
 function](http://en.wikipedia.org/wiki/Cryptographic_hash_function).
 
-Let's again go over all the process of \(x\) joining the network to make sure
-that this makes sense. \(x\) first generates a pair \(p,q\) of random big
-primes, and then derives \(N=pq\) to be his public key. Next, \(x\) calculates
-\(Id=f(N)\), and this is \(x\)'s DHT Identity.
+Let's again go over all the process of $x$ joining the network to make sure
+that this makes sense. $x$ first generates a pair $p,q$ of random big
+primes, and then derives $N=pq$ to be his public key. Next, $x$ calculates
+$Id=f(N)$, and this is $x$'s DHT Identity.
 
-When \(x\) joins the network, he has to confirm his identity. He will claim his
-identity to be \(Id=F(N)\), and he will also supply the value \(N\). (The verifier
-will check that \(Id=F(N)\)). Next, the verifier will send \(x\) some random
-value \(t\), and ask \(x\) to sign it. \(x\) will create a signature over \(t\)
+When $x$ joins the network, he has to confirm his identity. He will claim his
+identity to be $Id=F(N)$, and he will also supply the value $N$. (The verifier
+will check that $Id=F(N)$). Next, the verifier will send $x$ some random
+value $t$, and ask $x$ to sign it. $x$ will create a signature over $t$
 and send it back to the verifier. The verifier will then make sure that the
-signature is correct. If it is, \(x\)'s identity is confirmed (With respect to
+signature is correct. If it is, $x$'s identity is confirmed (With respect to
 this verifier).
 
 Now let's see what happens if the adversary wants to take control over a key
-\(k\). The adversary has to create a corrupt node with Identity close to \(k\)
-but no bigger than \(k\). Eventually, the Identity is \(f(N)\). \(N\) has to be
+$k$. The adversary has to create a corrupt node with Identity close to $k$
+but no bigger than $k$. Eventually, the Identity is $f(N)$. $N$ has to be
 created in a specific way (Probably a multiplication of two primes), however we
-could be generous and assume that the Adversary could get to any \(N\) that it
-wants. All that is left is finding \(N\) such that \(f(N)\) is close to \(k\).
+could be generous and assume that the Adversary could get to any $N$ that it
+wants. All that is left is finding $N$ such that $f(N)$ is close to $k$.
 If the adversary could do that, he will be able to take control over the key
-\(k\).
+$k$.
 
 We assume that the adversary is computationally bounded. (He can only compute
 things in polynomial time). So far we didn't discuss this property of our
@@ -366,63 +353,61 @@ adversary, however this might be a good place to add this assumption. Basically
 it means that we assume that adversary doesn't have too much computation power.
 
 Without thinking about any specific properties of the cryptographic hash
-function \(f\), a good idea to find a correct \(N\) will to be generate random
-numbers and check if \(d(f(a),k)\) is small enough. (Recall that \(d(a,b)\) is
-the distance between two identity numbers on the ring). As we expect \(f\) to be
-somewhat random, we expect that for some number \(a\), we will get that
-\(d(f(a),k)\) is distributed uniformly on \([0,2^s)\). In simpler words, it
-means that \(f(a)\) has the same likelihood of being anywhere on the ring.
-By creating lots of numbers \(N=pq\) for many different primes \(p,q\), we can
-generate many values \(f(N)\) that distribute uniformly on the ring.
+function $f$, a good idea to find a correct $N$ will to be generate random
+numbers and check if $d(f(a),k)$ is small enough. (Recall that $d(a,b)$ is
+the distance between two identity numbers on the ring). As we expect $f$ to be
+somewhat random, we expect that for some number $a$, we will get that
+$d(f(a),k)$ is distributed uniformly on $[0,2^s)$. In simpler words, it
+means that $f(a)$ has the same likelihood of being anywhere on the ring.
+By creating lots of numbers $N=pq$ for many different primes $p,q$, we can
+generate many values $f(N)$ that distribute uniformly on the ring.
 
 We have some interval that we want to "land on", when getting a random value
-\(f(a)\). This interval is exactly between \(\floor{k}\) and \(k\) - Right
-between the node that is currently responsible over the key \(k\), and the key
-\(k\) itself.
+$f(a)$. This interval is exactly between $\floor{k}$ and $k$ - Right
+between the node that is currently responsible over the key $k$, and the key
+$k$ itself.
 
-<img class="wimage"
-src="${self.utils.rel_file_link("articles/dht_basic_security/wanted_interval_floor_k.svg")}"/>
-<div class="pict_desc">
+![Wanted interval floor k]({filename}images/wanted_interval_floor_k.svg)
+
 In the picture: The interval that the Adversary wants to land on to take over
-the key \(k\) is marked with the green color.</div>
-<br/><br/>
+the key $k$ is marked with the green color.
 
-Now we want to know how many different values \(N=pq\) we have to generate
-before we get that \(f(N)\) is inside the wanted interval on the ring.
+Now we want to know how many different values $N=pq$ we have to generate
+before we get that $f(N)$ is inside the wanted interval on the ring.
 A simple calculation shows that the expected number of tries is going to be The
 size of the ring divided by the size of the interval. (Think if it makes sense
-for an interval of size \(\frac{1}{4}\) of the ring, for example).
+for an interval of size $\frac{1}{4}$ of the ring, for example).
 
 We still don't know the size of the interval, though. We want to evaluate
-somehow the value \(d(\floor{k},k)\) for some key \(k\). We could get a rough
+somehow the value $d(\floor{k},k)$ for some key $k$. We could get a rough
 estimation of this value by thinking about the easy case, where all the nodes
-are distributed evenly on the ring. In that case, if there are \(n\) nodes, we
-expect that the distance between two consecutive nodes will be exactly \(\frac{2^s}{n}\).
+are distributed evenly on the ring. In that case, if there are $n$ nodes, we
+expect that the distance between two consecutive nodes will be exactly $\frac{2^s}{n}$.
 
 Finally to get the amount of tries, we divide the size of the ring by the our
 rough estimation of the size of the interval. We get
-\(\frac{2^s}{\frac{2^s}{n}}=n\). Therefore we expect about \(n\) tries before we
-get a number \(N\) such that \(d(f(N),k) < d(\floor{k},k)\). Recall that \(n\)
+$\frac{2^s}{\frac{2^s}{n}}=n$. Therefore we expect about $n$ tries before we
+get a number $N$ such that $d(f(N),k) < d(\floor{k},k)$. Recall that $n$
 is the amount of nodes in the network. This number is probably not larget than
-\(2^40\) in most cases.
+$2^40$ in most cases.
 
-As a short summary, the adversary could gain control over any specific key \(k\)
+As a short summary, the adversary could gain control over any specific key $k$
 using this algorithm:
 
-1. Generate two random primes \(p,q\). Calculate \(N=pq\).
-2. Calculate \(f(N)\).
-3. If \(d(f(N),k) < d(\floor{k},k)\) then return (p,q). Else go back to 1.
+1. Generate two random primes $p,q$. Calculate $N=pq$.
+2. Calculate $f(N)$.
+3. If $d(f(N),k) < d(\floor{k},k)$ then return (p,q). Else go back to 1.
 
-By our estimations we expect this algorithm to loop about \(n\) times, before a
-suitable pair of \(p,q\) is found.
+By our estimations we expect this algorithm to loop about $n$ times, before a
+suitable pair of $p,q$ is found.
 
 Also note that the Adversary doesn't have to use more than one corrupt node in
-the network to gain control over the key \(k\). Most of the calculation is done
+the network to gain control over the key $k$. Most of the calculation is done
 offline, ahead of time.
 
 We can conclude that this method can not help us deal with this adversary, but
 we did make some progress. Recall that in the previous sections the adversary
-could gain control over some key \(k\) without much effort. Here the adversary
+could gain control over some key $k$ without much effort. Here the adversary
 has to do some effort to take control over some key.
 
 <h5>Hashing IPs</h5>
@@ -433,32 +418,32 @@ use the hash of a the IP address of a node as its DHT Identity. This solution
 relies on the hierarchical structure of the Internet and the fact that it is
 hard to obtain many different IP addresses (At least for simple Adversaries).
 
-Let's be more detailed. For a new node \(x\) with IP Address \(x_a\) that wants
-to join the DHT, we define \(x\)'s Identity to be \(f(x_a)\), where \(f\) is a
-known cryptographic hash function. Every other node \(y\) on the network that
-contacts \(x\) knows \(x\)'s IP Address (Or else, how could \(y\) contact \(x\)
-from the first place). Therefore \(y\) knows automatically the value \(f(x_a)\)
-which is \(x\)'s DHT Identity.
+Let's be more detailed. For a new node $x$ with IP Address $x_a$ that wants
+to join the DHT, we define $x$'s Identity to be $f(x_a)$, where $f$ is a
+known cryptographic hash function. Every other node $y$ on the network that
+contacts $x$ knows $x$'s IP Address (Or else, how could $y$ contact $x$
+from the first place). Therefore $y$ knows automatically the value $f(x_a)$
+which is $x$'s DHT Identity.
 
-This time, if an Adversary wants to take control over a key \(k\) in the DHT,
-he will have to create a corrupt node with IP address \(a\) such that \(f(a)\)
-is close to the value \(k\) (But not bigger than \(k\)).
+This time, if an Adversary wants to take control over a key $k$ in the DHT,
+he will have to create a corrupt node with IP address $a$ such that $f(a)$
+is close to the value $k$ (But not bigger than $k$).
 
-In IPv4 There are no more than \(2^{32}\) possible addresses. By the calculations
+In IPv4 There are no more than $2^{32}$ possible addresses. By the calculations
 we have seen in the idea of Public keys as Identities, we conclude that about
-\(\frac{2^{32}}{n}\) Addresses will be suitable for the adversary if he wants
-to take control over some specific key \(k\). 
+$\frac{2^{32}}{n}$ Addresses will be suitable for the adversary if he wants
+to take control over some specific key $k$. 
 
 Obtaining specific IPs could be pretty hard these days (Though not impossible).
 Therefore this method does make it hard to take control over a specific key in
-the DHT. Thinking about it, the change to IPv6 (Where there are \(2^{128}\)
+the DHT. Thinking about it, the change to IPv6 (Where there are $2^{128}$
 possible addresses) might make this method less effective. 
 
 Generally speaking, in a network where every node has the freedom to choose his
 Address in some fast manner (And there are many possibilities for addresses),
 this method might not work well. The Adversary could generate many Addresses
-(We have seen that about \(n\) addresses should be enough), until one address
-has a hash value in the correct range. Assuming that \(n\) is not too big, this
+(We have seen that about $n$ addresses should be enough), until one address
+has a hash value in the correct range. Assuming that $n$ is not too big, this
 shouldn't be a hard calculation.
 
 <h4>Bounding the Adversary</h4>
@@ -506,21 +491,19 @@ special riddles that are very easy to generate, very hard to solve but it is
 very easy to verify their solution.
 
 We will extend the idea of heartbeat, by adding a difficult riddle to
-the heartbeat. If \(x\) and \(y\) are two linked nodes in the DHT, \(x\) will
-send a riddle to \(y\) every 10 seconds, for example. \(x\) will then expect
-\(y\) to answer the riddle in a short time. If \(y\) doesn't manage to solve
-the riddle, \(x\) will disconnect the link to \(y\). The same happens the other
-way: \(y\) will send \(x\) periodic riddles, and ask \(x\) to solve those
-riddles. If \(x\) doesn't manage to solve the riddles in time, \(y\) will
-disconnect \(x\).
+the heartbeat. If $x$ and $y$ are two linked nodes in the DHT, $x$ will
+send a riddle to $y$ every 10 seconds, for example. $x$ will then expect
+$y$ to answer the riddle in a short time. If $y$ doesn't manage to solve
+the riddle, $x$ will disconnect the link to $y$. The same happens the other
+way: $y$ will send $x$ periodic riddles, and ask $x$ to solve those
+riddles. If $x$ doesn't manage to solve the riddles in time, $y$ will
+disconnect $x$.
 
+![Riddle Exchange]({filename}images/riddle_exchange.svg)
 
-<img class="wimage"
-src="${self.utils.rel_file_link("articles/dht_basic_security/riddle_exchange.svg")}"/>
-<div class="pict_desc">
 In the picture: Illustration of the riddles exchange between two linked nodes.
 Each node sends periodically a riddle to the other, and waits for a correct
-solution.</div><br/><br/>
+solution.
 
 This is somehow like the alarm clock applications that make you solve a hard
 problem, to prove that you are awake and present. Here we use a riddle to make a
@@ -531,53 +514,50 @@ You might be wondering about the kind of "riddles" we are going to use. As we
 are dealing with computers here, it must be a hard riddle. We also have to make
 sure that the riddle is hard to solve, but easy to verify. We could use
 cryptographic hash functions to create some pretty hard riddles. Assuming that
-we have a cryptographic hash function \(f\), A famous riddle is
-to find a value \(a\) such that \(f(a|b)\) begins with \(k\) binary zeroes. (By
-| we mean concatenation of strings). We could call this riddle riddle\(_b\). 
+we have a cryptographic hash function $f$, A famous riddle is
+to find a value $a$ such that $f(a|b)$ begins with $k$ binary zeroes. (By
+| we mean concatenation of strings). We could call this riddle riddle$_b$. 
 
-As \(f\) is some general cryptographic hash function, we expect that the best
-strategy to solve this would be to randomize many values \(a\) until we get
-that \(f(a|b)\) begins with \(k\) binary zeroes.  We should generate about
-\(2^k\) random values \(a\) until we get a good result for \(f(a|b)\). For a
-large enough \(k\), this would be a hard question for a computer.
+As $f$ is some general cryptographic hash function, we expect that the best
+strategy to solve this would be to randomize many values $a$ until we get
+that $f(a|b)$ begins with $k$ binary zeroes.  We should generate about
+$2^k$ random values $a$ until we get a good result for $f(a|b)$. For a
+large enough $k$, this would be a hard question for a computer.
 
-Note that it is pretty easy to verify that a solution \(s\) is a correct
-solution to a given riddle\(_b\). We just make sure that \(f(s|b)\) begins with
-\(k\) binary zeroes.
+Note that it is pretty easy to verify that a solution $s$ is a correct
+solution to a given riddle$_b$. We just make sure that $f(s|b)$ begins with
+$k$ binary zeroes.
 
 Now let's go back to the Adversary point of view. We want to check if we managed
 to bound the amount of corrupt nodes an adversary can insert into the network.
 Assume that some adversary wants to insert many corrupt nodes into the network.
 Each of those corrupt nodes has to maintain a few links, to be considered as
-part of the network. If the adversary wants to insert \(m\) corrupt nodes, and
-maintaining links of some node inside the network costs \(t\) basic calculation
-units per second, then the adversary will need about \(mt\) basic calculation
-units per second to maintain \(m\) corrupt nodes inside the network.
+part of the network. If the adversary wants to insert $m$ corrupt nodes, and
+maintaining links of some node inside the network costs $t$ basic calculation
+units per second, then the adversary will need about $mt$ basic calculation
+units per second to maintain $m$ corrupt nodes inside the network.
 
-Assuming that the Adversary is capable of \(Q\) calculation units per second, we
+Assuming that the Adversary is capable of $Q$ calculation units per second, we
 get that the maximum amount of corrupt nodes that could stay inside the network
-is about \(\frac{Q}{t}\). Note that if the cost of maintaining a node inside the
-network, \(t\), is increased, the adversary can insert less corrupt nodes into
+is about $\frac{Q}{t}$. Note that if the cost of maintaining a node inside the
+network, $t$, is increased, the adversary can insert less corrupt nodes into
 the network, however at the same time it becomes less comfortable for a correct
 node to stay linked in the network. There is some trade-off here.
 
 One question that I leave you to think about - How could we avoid the following
-situation (Riddle redirection): Assume that a corrupt node \(z\) is connected
-to two correct nodes \(x\) and \(y\). \(x\) sends a riddle \(R\) to \(z\), but
-\(z\) (As a corrupt node) doesn't want to invest the time in solving the riddle
-\(R\). Therefore \(z\) forwards the riddle \(R\) to \(y\), asking him to solve
-that riddle. \(y\) is an innocent correct node, and he solves the riddle \(R\),
-sending back the solution \(S\) to \(z\). \(z\) then returns the solution \(S\)
-back to \(x\), and \(x\) accepts the solution. This way \(z\) doesn't have to
-solve any riddles that \(x\) sends.  
+situation (Riddle redirection): Assume that a corrupt node $z$ is connected
+to two correct nodes $x$ and $y$. $x$ sends a riddle $R$ to $z$, but
+$z$ (As a corrupt node) doesn't want to invest the time in solving the riddle
+$R$. Therefore $z$ forwards the riddle $R$ to $y$, asking him to solve
+that riddle. $y$ is an innocent correct node, and he solves the riddle $R$,
+sending back the solution $S$ to $z$. $z$ then returns the solution $S$
+back to $x$, and $x$ accepts the solution. This way $z$ doesn't have to
+solve any riddles that $x$ sends.  
 
-<img class="wimage"
-src="${self.utils.rel_file_link("articles/dht_basic_security/riddle_redirection.svg")}"/>
-<div class="pict_desc">
+![Riddle Redirection]({filename}images/riddle_redirection.svg)
+
 In the picture: The riddle redirection attack illustrated. How can you solve
-it?</div>
-<br/><br/>
-
+it?
 
 As a final note about this example - We managed to find a way to bound the
 amount of corrupt nodes in the network, assuming that our adversary is
@@ -594,4 +574,3 @@ somehow. Finally we showed a simple method of bounding the amount of corrupt
 nodes in our network, relying on the scarcity of computing power. Generally
 speaking, we have seen that DHT are pretty hard to secure in the wild.
 
-</%block>
