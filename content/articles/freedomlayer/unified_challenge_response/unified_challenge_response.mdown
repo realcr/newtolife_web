@@ -1,7 +1,6 @@
 Title: The Unified Challenge-Response: Secure Time inside the Mesh
 Date: 2014-12-31 18:49
 Author: real
-status: draft
 
 <!--
 abs function.

@@ -1,7 +1,6 @@
 Title: Landmarks Navigation by Random Walking
 Date: 2014-12-23 19:19
 Author: real
-status: draft
 
 <!--
 abs function.

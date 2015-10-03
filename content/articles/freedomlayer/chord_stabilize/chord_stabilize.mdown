@@ -1,7 +1,6 @@
 Title: Stabilizing Chord
 Date: 2014-11-13 19:41
 Author: real
-status: draft
 
 
 <!--

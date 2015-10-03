@@ -1,7 +1,6 @@
 Title: Experimenting with Virtual DHT Routing
 Date: 2014-12-14 15:51
 Author: real
-status: draft
 
 <h4>Abstract</h4>
 

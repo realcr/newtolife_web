@@ -1,7 +1,6 @@
 Title: Intro to Distributed Hash Tables (DHTs)
 Date: 2014-11-11 13:07
 Author: real
-status: draft
 
 <!--
 ceil and floor latex macros:

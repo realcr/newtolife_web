@@ -1,7 +1,6 @@
 Title: Sqrt(n) mesh routing
 Date: 2014-12-01 20:22
 Author: real
-status: draft
 
 <!--
 ceil and floor latex macros:

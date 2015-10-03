@@ -1,7 +1,6 @@
 Title: The Mesh Question
 Date: 2014-11-09 18:31
 Author: real
-status: draft
 
 
 <h3>Abstract</h3>

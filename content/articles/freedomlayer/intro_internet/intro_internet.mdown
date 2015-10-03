@@ -1,7 +1,6 @@
 Title: Intro to the Internet and current issues
 Date: 2014-11-09 10:34
 Author: real
-status: draft
 
 
 ### Abstract

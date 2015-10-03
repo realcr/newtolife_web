@@ -1,7 +1,6 @@
 Title: Basic DHT security concepts
 Date: 2014-11-27 10:03
 Author: real
-status: draft
 
 <!--
 ceil and floor latex macros:

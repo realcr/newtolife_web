@@ -1,7 +1,6 @@
 Title: The Distributed Post Office: Instant Hierarcy for mesh networks
 Date: 2014-12-17 13:47
 Author: real
-status: draft
 
 
 <h4>Abstract</h4>
