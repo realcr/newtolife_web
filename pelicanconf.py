@@ -6,6 +6,10 @@ STATIC_PATHS = ['articles']
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
 
+# Files that we will not copy to output dir:
+# Ignore vim swap files:
+IGNORE_FILES = ['*.swp','*.swo']
+
 # Directories and categories settings.
 # Every article will be in a single directory, which will
 # also contain the images and other related files.
