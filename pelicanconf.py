@@ -23,6 +23,10 @@ DEFAULT_CATEGORY = 'Articles'
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
 
+# Delete the output directory before generating new output files:
+DELETE_OUTPUT_DIRECTORY = True
+
+
 THEME = 'newtolife_theme'
 
 AUTHOR = u'real'
@@ -41,6 +45,7 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
 
 # Blogroll
 #   LINKS = (('Pelican', 'http://getpelican.com/'),
