@@ -100,4 +100,8 @@ def s3_publish():
     Publish to amazon s3 bucket
     """
     local('s3cmd sync {deploy_path}/ s3://{amazon_s3_bucket} --acl-public'
-    ' --delete-remo'.format(**env))
+    ' --delete-remo --no-mime-magic'.format(**env))
+    # See:
+    # https://github.com/s3tools/s3cmd/issues/198 
+    # for more info about --no-mime-magic and the content type problem it
+    # solves.
