@@ -14,7 +14,7 @@ We describe the basic form of the Distributed Post Office, and mention two
 improvements to its structure.
 
 Next, we run some [experiments
-[github](https://github.com/realcr/freedomlayer_code/tree/master/dist_post_office).
+[github]](https://github.com/realcr/freedomlayer_code/tree/master/dist_post_office).
 Our results show that the Distributed Post Office in its current form does not
 scale well as a solution for routing messages in large networks.
 
