@@ -677,7 +677,7 @@ you might have an idea.
 <h6>Measuring network load</h6>
 
 In the [Distributed Post
-Office]({filename}/articles/freedomlayer/dist_post_offie/dist_post_office.mdown) we
+Office]({filename}/articles/freedomlayer/dist_post_office/dist_post_office.mdown) we
 managed to route messages very efficiently, however all the messages were
 routed through a few specific nodes. This is unacceptable for large distributed
 mesh networks.
