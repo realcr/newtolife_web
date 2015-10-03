@@ -1,0 +1,16 @@
+Title: Some title
+Date: 2015-10-02 12:23
+Author: real
+status: draft
+
+
+# Test page
+
+Hello, this is a test page.
+\(x^2 - 2x + 1\)
+
+A fraction: 
+
+\(\frac{1}{x^5}\)
+
+$\frac{1}{x^5}$
