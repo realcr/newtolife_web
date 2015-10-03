@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+# PLUGIN_PATHS = ['/home/real/projects/websites/pelican_generic/plugins']
+PLUGIN_PATHS = ['../pelican_generic/plugins']
+PLUGINS = ['render_math']
+
 STATIC_PATHS = ['articles']
 ARTICLE_PATHS = ['articles']
 PAGE_PATHS = ['pages']
