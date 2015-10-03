@@ -98,10 +98,8 @@ the dorms at ConnectionRio.
 
 I searched the web for active BJJ academies around Rio. Some academies that were
 mentioned by many are Academia Gracie, Terere Academy, Gracie Tijuca, Academia
-Gordo and Equipe Fabricio Jiu Jitsu. You can see them here, on the map:
-
-<iframe src="https://www.google.com/maps/d/embed?mid=zSWPS0CFAI0M.kseH1z5zmEME" 
-width="640" height="480"></iframe>
+Gordo and Equipe Fabricio Jiu Jitsu. You can see them on the [map
+here](https://www.google.com/maps/d/edit?mid=zSWPS0CFAI0M.kseH1z5zmEME&usp=sharing).
 
 I assumed that any of those academies would be good enough for a beginner like
 myself, so it was just about finding a place to stay in a good location which is
