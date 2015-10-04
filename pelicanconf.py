@@ -7,7 +7,7 @@ PLUGIN_PATHS = ['../pelican_generic/plugins/pelican-plugins']
 PLUGINS = ['render_math','tipue_search']
 
 DIRECT_TEMPLATES = \
-    (('index','tags','categories','authors','archives','search'))
+    (('index','tags','categories','authors','archives','search','404'))
 
 
 
