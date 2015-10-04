@@ -29,8 +29,13 @@ USE_FOLDER_AS_CATEGORY = False
 DEFAULT_CATEGORY = 'Articles'
 
 # We display pages and categories on the website menu:
-DISPLAY_PAGES_ON_MENU = True
-DISPLAY_CATEGORIES_ON_MENU = True
+DISPLAY_PAGES_ON_MENU = False
+DISPLAY_CATEGORIES_ON_MENU = False
+MENUITEMS = (\
+        ('Freedomlayer','/pages/freedomlayer.html'),\
+        ('Martial Arts','/pages/martial-arts.html'),\
+        ('About','/pages/about.html'),\
+        )
 
 # Delete the output directory before generating new output files:
 DELETE_OUTPUT_DIRECTORY = True
