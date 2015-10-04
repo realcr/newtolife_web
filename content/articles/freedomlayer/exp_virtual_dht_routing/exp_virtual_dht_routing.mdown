@@ -551,8 +551,6 @@ Most of the things you will want to change are probably inside the go()
 function. This is where you put the parameters for the simulation. This is how
 it should look like:
 
-<%text>
-
     :::python
     def go():
         i = 11
@@ -580,8 +578,6 @@ it should look like:
 
         print("Initiating convergence...\n")
         vd.converge(max_iters=0x80)
-
-</%text>
 
 **i** is a parameter that represents the size of a network. For a given value
 i, we say that the size of the network is $n=2^i$.
