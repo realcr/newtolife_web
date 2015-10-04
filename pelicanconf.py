@@ -48,6 +48,11 @@ TIMEZONE = 'UTC'
 
 DEFAULT_LANG = u'en'
 
+# Domain for feed generation:
+FEED_DOMAIN = SITEURL 
+FEED_RSS = 'rss'
+
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
