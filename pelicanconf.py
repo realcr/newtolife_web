@@ -50,7 +50,7 @@ DEFAULT_LANG = u'en'
 
 # Domain for feed generation:
 FEED_DOMAIN = SITEURL 
-FEED_RSS = 'rss'
+FEED_RSS = 'rss.xml'
 
 
 # Feed generation is usually not desired when developing
