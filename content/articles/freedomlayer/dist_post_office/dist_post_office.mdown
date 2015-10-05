@@ -281,6 +281,7 @@ from $x$ to $y$ that goes through $t_y^j = t_x^j$. This path could be
 used to send messages.
 
 ![Message through mediator]({filename}images/msg_through_mediator.svg)
+
 In the picture: The node $t_x^4 = t_y^4$ is a mediator between $x$ and
 $y$. $x$ and $y$ can route messages through $t_x^4 = t_y^4$.
 
@@ -380,6 +381,7 @@ Consider two nodes $x$ and $y$ in the network. We observe the sets $R_i(x)
 \cap R_j(y)$ and $R_i(x) \cup R_j(y)$.
 
 ![Two balls intersect]({images}two_balls_intersect.svg)
+
 A schematic picture of the sets $R_i(x)$ and $R_j(y)$ intersecting.
 $R_i(x)$ contains all the nodes of distance at most $i$ from $x$.
 $R_j(y)$ contains all the nodes of distance at most $j$ from $y$.
