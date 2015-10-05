@@ -1,0 +1,93 @@
+Title: About the convergence of Virtual DHT routing
+Date: 2015-10-05 20:49
+Author: real
+status: draft
+
+
+## Intro
+
+In [Experimenting with Virtual DHT Routing](
+{filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
+we have discussed an idea of routing using a Virtual DHT. 
+follows: Every node in a mesh graph is given a random number from a "closed
+ring", and the nodes somehow try to find each other, iteratively. 
+
+We think about the following simplified routing problem: We are given a
+connected graph of $n = 2^l$ vertices. Each verticle is given a number between
+$0$ and $2^l - 1$ (Every two vertices are given different numbers). This
+assignment of names is arbitrary, and we have no control over it.. The vertices
+of this graph represent the nodes in a mesh network. 
+
+We want a distributed algorithm that allows node $x$ to find a path to some key
+nodes: $x-2^i , x+2^i$ for $0 \leq i < l$. We know that this should be possible,
+because the graph is connected, and those paths exist.
+
+Given that every node of number $x$ knows paths to nodes of numbers $x-2^i,
+x+2^i$, every node $y$ should be able to send a message to any other node $z$ in
+the network using the [greedy routing algorithm of the Chord
+DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown): In every
+iteration send the message to the closest known node to the destination.
+
+
+
+## The Basic Algorithm
+The algorithm presented in [Experimenting with Virtual DHT Routing](
+{filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown),
+in its simplest form, works as follows:
+
+Every node $x$ remembers at all times paths to two nodes: A node $y$ that
+minimizes $d(y,x)$, and a node $z$ that minimizes $d(x,z)$. Recall that $d(a,b)$
+is the clockwise distance between $a$ and $b$. Hence, In other words, $x$ tries
+to find nodes that are closest to him clockwise and counter-clockwise. We denote
+$S_x := \{y,z\}$ to be $x$'s memory.
+
+(TODO: Add a picture of $x$ trying to find nodes $y$ and $z$).
+
+In every iteration, node $x$ sends $S_x$ to all the nodes he knows: All the
+nodes inside $S_x$ (Through the maintained path), and all the nodes he has a
+direct connection to.
+
+In every iteration every node $x$ receives information from his neighbouring
+nodes, and updates his set $S_x$ accordingly, if better nodes are found. For
+example, if $x$ finds out about a path to a node $y'$ such that $d(y',x) <
+d(y,x)$, then $x$ will choose to remember $y'$ as a closest counter-clockwise
+node, and $x$ will forget the path to $y$.
+
+Experiments (Described in previous articles) have shown that the basic algorithm
+does not always converge to a solution. That means: Sometimes a node $x$ will
+not find $x-1$ and $x+1$, even after the algorithm converges. It is interesting
+to understand what is the state of the graph at this point.
+
+## Analyzing the failure of the Baic Algorithm
+
+Consider some run of the Basic Algorithm that has converged. By that we mean, we
+continue running iterations of the algorithm but for every node $x$, the set
+$S_x$ remains unchanged.
+
+For every node $x$ we denote by $x^l$ ($l$ stands for left) the node closest to
+$x$ counter-clockwise that $x$ knows of. We denote by $x^r$ the node closest to
+$x$ clockwise that $x$ knows of. In other words, $S^x = \{x^l,x^r\}$. (As a
+sanity check for understanding the notation, $x^l$ minimizes $d(x^l,x)$ between
+all nodes that were ever known to $x$)
+
+(TODO: A picture of $x^l$ and $x^r$ with respect to $x$).
+
+Consider some node $x$ at the state after the algorithm has converged. Consider
+$x^r$. It must be true that $x^{rl} = x$. ($x^{rl} is a short notation for
+$(x^r)^l$)  If not, then either $x$ should update his value of $x^r$, or $x^r$
+should update his value of $x^{rl}$. In the same way, we can conclude that
+$x^{lr} = x$.
+
+**Lemma:** For some $k$, The nodes $x^r, x^{rr}, \dots ,x^{r\dots r}$ (A total
+of $k$ elements) form a cycle that does exactly one round around the circle.
+
+**Proof:** We begin from $x$ and check the value of $x^r, x^{rr}, x^{rrr}
+,\dots$. We continue as long as we did not complete a round around $x$. Let $y =
+x^{r\dots r}$ the last node before completing a round around $x$. If $y^r = x$,
+we get a cycle that does exactly one round around the circle, and we are done.
+
+If $y^r \neq x$, then $y$ should update 
+
+
+
+
