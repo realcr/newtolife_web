@@ -122,15 +122,15 @@ To convince you that the possibility of disjoin cycles in our solution is real,
 we will look at a counter example: An input graph that results in a set of
 disjoint cycles after running our basic algorithm:
 
-(TODO: Show the counter example).
+
+    7 - 5 - 3     8 -10 -12
+    |       |     |       |
+    9 -11 - 1 --- 6 - 4 - 2
 
 
-
-
-
-
-
-
+If we run the Basic Algorithm it will converge after one iteration, and two
+cycles will be formed: (7,5,3,1,11,9) and (8,10,12,2,4,6). As an example, $2$
+will not be able to route messages to $3$, because it lives in another cycle.
 
 For now we will forget about the disjoint cycles problem, and we will instead
 try to understand how a cycle looks like.
