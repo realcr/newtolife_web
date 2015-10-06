@@ -29,8 +29,8 @@ DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown): In every
 iteration send the message to the closest known node to the destination.
 
 
-
 ## Running the Basic Algorithm
+
 The algorithm presented in [Experimenting with Virtual DHT Routing](
 {filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown),
 in its simplest form, works as follows:
@@ -238,15 +238,21 @@ circle: $x + 2^{l-1}$. (Note that here $x+2^{l-1}$ is calculated modulo $2^l$).
 
 
 We call this new algorithm $Iter_{\{0,2^{l-1}\}}$. In the same way, we call the
-old basic algorithm (Where $x$ keeps just $x_l$ and $x_r$) $Iter_{\{0\}}$. 
+old Basic Algorithm (Where $x$ keeps just $x_l$ and $x_r$) $Iter_{\{0\}}$. 
 
 
 **Lemma:** Assume a convergent state of the $Iter_{\{0,2^{l-1}\}}$ algorithm.
 For every cycle of nodes $C$: $R(C) = 1$.
 
-**Proof:** Let $C$ be a cycle of nodes. Suppose (for the sake of contradiction)
-that $R(C) > 1$. $C$ has at least two local maximums. Consider two such maximums
-$a$ and $b$.
+**Proof:** Using previous Lemmas we know that at a convergent state all the
+nodes are divided into cycles. We can deduce this fact using only the convergent
+properties of all $x_l,x_r$ for every node $x$, without referring to the
+convergent properties of $x_L,x_R$, exactly like we did in our previous proofs.
+
+Now let $C$ be a cycle of nodes. Suppose (for the sake of contradiction)
+that $R(C) > 1$. $C$ has at least two local maximums. We begin from some local
+maximum $a$, and continue by applying the function $h$ repeatedly:
+$a,h(a),h^2(a),\dots$ until we reach another local maximum $b$.
 
 
 
