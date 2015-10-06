@@ -30,7 +30,7 @@ iteration send the message to the closest known node to the destination.
 
 
 
-## The Basic Algorithm
+## Running the Basic Algorithm
 The algorithm presented in [Experimenting with Virtual DHT Routing](
 {filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown),
 in its simplest form, works as follows:
@@ -58,7 +58,7 @@ does not always converge to a solution. That means: Sometimes a node $x$ will
 not find $x-1$ and $x+1$, even after the algorithm converges. It is interesting
 to understand what is the state of the graph at this point.
 
-## Analyzing the failure of the Baic Algorithm
+## Analyzing the operation of the Basic Algorithm
 
 Consider some run of the Basic Algorithm that has converged. By that we mean, we
 continue running iterations of the algorithm but for every node $x$, the set
@@ -72,22 +72,149 @@ all nodes that were ever known to $x$)
 
 (TODO: A picture of $x^l$ and $x^r$ with respect to $x$).
 
-Consider some node $x$ at the state after the algorithm has converged. Consider
-$x^r$. It must be true that $x^{rl} = x$. ($x^{rl} is a short notation for
-$(x^r)^l$)  If not, then either $x$ should update his value of $x^r$, or $x^r$
-should update his value of $x^{rl}$. In the same way, we can conclude that
-$x^{lr} = x$.
+**Lemma:** During the convergent state of the algorithm, for every node $x$ it
+is true that $x^{rl} = x$ and $x^{lr} = x$.
 
-**Lemma:** For some $k$, The nodes $x^r, x^{rr}, \dots ,x^{r\dots r}$ (A total
-of $k$ elements) form a cycle that does exactly one round around the circle.
+**Proof:** Consider some node $x$ at the state after the algorithm has
+converged. Consider $x^r$. It must be true that $x^{rl} = x$. ($x^{rl}$ is a
+short notation for $(x^r)^l$). If not, then either $x$ should update his value
+of $x^r$, or $x^r$ should update his value of $x^{rl}$, which is a contradiction
+to the assumption of being in a convergent state. In the same way, we can
+conclude that $x^{lr} = x$. QED.
 
-**Proof:** We begin from $x$ and check the value of $x^r, x^{rr}, x^{rrr}
-,\dots$. We continue as long as we did not complete a round around $x$. Let $y =
-x^{r\dots r}$ the last node before completing a round around $x$. If $y^r = x$,
-we get a cycle that does exactly one round around the circle, and we are done.
+**Lemma:** During the convergent state of the algorithm, The function $h(x) :=
+x^r$ (Or dually, $t(x) := x^l$) is [injective (one to
+one)](https://en.wikipedia.org/wiki/Injective_function)
 
-If $y^r \neq x$, then $y$ should update 
+**Proof:** Let $x,y$ nodes such that $h(x) = h(y) = z$, for some node $z$.
+By the previous lemma we conclude that $z^l = x^{rl} = x$ and $z^l = x^{rl} =
+y$, therefore $x=y$. QED.
+
+## Division to cycles
+
+We now begin from the node $x$, and apply the function $h$ over $x$ multiple
+times. We get the nodes $x, h(x), h(h(x)), \dots$. There is a finite amount of
+nodes, so we expect that eventually some element $h^k(x)$ ($h$ applied $k$ times
+over $x$) will be equal to some other element $h^q(x), q < k$ that was already
+on the series. Let's assume that $k$ is the smallest such integer.
+
+But since $h$ is injective, $h^q(x) = h^k(x)$  means that $x = h^{k-q}(x)$. As
+$k$ is the index of the first element that equals to a previously seen element,
+we conclude that $q=0$ and so $h^k(x) = x$, the first element of the series.
+Therefore the series $x, h(x), \dots, h^k(x)=x$ form a cycle. 
+
+Note This is a generic property of injective functions that operate inside finite
+worlds.
+
+(TODO: A picture of cycles formed when applying $h$ multiple times).
+
+If we now pick some node $z$ that has not appeared in the cycle of the node $x$,
+and start applying $h$ many times, we will get another cycle. We can continue in
+this fashion to divide all the nodes to different cycles.
+
+## The possibility of multiple cycles
+
+From the perspective of routing in the mesh, we don't want to have different
+cycles for different nodes, as nodes from different cycles can not reach each
+other. We hope that all the nodes end up on the same cycle.
+
+To convince you that the possibility of disjoin cycles in our solution is real,
+we will look at a counter example: An input graph that results in a set of
+disjoint cycles after running our basic algorithm:
+
+(TODO: Show the counter example).
 
 
 
+
+
+
+
+
+
+For now we will forget about the disjoint cycles problem, and we will instead
+try to understand how a cycle looks like.
+
+
+## Multiple Rounds
+
+Assume that somehow the algorithm has converged and only one cycle was formed.
+(In other words: All the nodes ended up on the same cycle). Does that mean that
+$x^r = x+1$ for every node $x$?
+
+The answer is no. Let's build a counter example: An input graph for the
+algorithm. The input graph is a cycle size $2^{3}$:
+
+    0 - 2 - 4 - 6
+    |           |
+    7 - 5 - 3 - 1
+
+The basic algorithm will converge on the first iteration. Each node will have
+his right and left nodes to be exactly the right and left nodes on the graph.
+
+The wanted result from the algorithm is that $x$ will have paths to $x-1$,$x+1$.
+This obviously doesn't happen here, even though we did get one cycle that
+contains all the nodes. 
+
+The extra intuitive requirement that we miss here is that the cycle will
+complete only "one round". We will now give a more rigorous definition for the
+notion of round.
+
+**Definition:** The amount of rounds of a cycle $C = (x, h(x), \dots ,
+h^k(x)=x)$ is $R(C)$: the amount of local maximums (minimums) in the cycle. In
+other words, it is the amount of $0 \leq i < k$ such that $h^i(x) < h^{i+1}(x) >
+h^{i+2}(x)$. (Note that in a cycle, the amount of minimums is always the same as
+the amount of maximums)
+
+For example, in the cycle drawn above, $7$ and $6$ are local maximums. Dually,
+$0$ and $1$ are local minimums.
+
+
+
+**Lemma:** During a convergent state of the Basic Algorithm, If a cycle $C$
+contains all the nodes from $0$ to $n-1$ and $R(C)=1$ then for every node $x$ in
+the cycle, $h(x) = x+1$ (Modulo $n$)
+
+**Proof:** $R(C)=1$ means that the cycle has only one local minimum and one
+local maximum. Those must be the nodes $0$ and $n-1$. (Because they are also
+global minimum and global maximum).
+
+If $0$ is next to $n-1$ in the cycle ($h(n-1) = 0$ without loss of generality),
+then the series $b_k := h^k(0)$, $0 \leq k < n$  is monotonically increasing.
+$b_0 = 0$ and $b_{n-1} = n-1$, and also $(b_{i+1} - b_{i}) \geq 1$ for all $0
+\leq i < n$.  Therefore it must be true that $(b_{i+1} - b_{i}) = 1$ for all $0
+\leq i < n$.  This means that $h(x) = x+1$ (Modulo $n$) for every node $x$ in
+the cycle.
+
+Now assume that node $0$ is not next to $n-1$ in the cycle. We will soon see
+that this is not possible under our assumptions.
+
+Beginning from $0$, if we repeatedly apply the function $h$ we get the series
+$0, h(0), h^2(0), \dots$. If we ever get $h^j(x) > h^{j+1}(x)$ for some $j$, it
+means that $h^j(x) = n-1$, the only local maximum in this cycle. Hence from this
+point in the cycle applying the function $h$ gives decreasing values, until it
+returns back to $0$.
+
+To summarize, we have seen that the cycle begins from $0$, increases until it
+reaches $n-1$ and then decreases to $0$.
+
+We observe the part of the cycle around the node $0$: $\dots,a,0,b,\dots$.
+$a_l > a$, therefore $a_l$ is a better choice for left node for $0$. Hence in
+the next iteration the node $a$ will tell the node $0$ about a path to $a_l$,
+and $0_l$ will be $a_l$. This means that this state is not a convergent state of
+the algorithm, which leads to a contradiction. (Note that we could not have
+obtained this contradiction if $a=n-1$)
+
+QED
+
+We can conclude that we want an algorithm that will leave us with just one cycle
+$C$ with $R(C) = 1$ that contains all nodes.
+
+ 
+## Restricting the amount of rounds
+
+We might be able to make some modification to our Basic Algorithm, to make sure
+that each cycle $C$ of nodes we eventually get has just one round ($R(C)=1$).
+This will not be enough to converge to a real solution (Because we might have
+more than one cycle),
 
