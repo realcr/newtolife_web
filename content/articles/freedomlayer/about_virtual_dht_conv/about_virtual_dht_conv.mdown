@@ -215,6 +215,39 @@ $C$ with $R(C) = 1$ that contains all nodes.
 
 We might be able to make some modification to our Basic Algorithm, to make sure
 that each cycle $C$ of nodes we eventually get has just one round ($R(C)=1$).
-This will not be enough to converge to a real solution (Because we might have
-more than one cycle),
+This will not be enough to converge to a real solution, because we might have
+more than one cycle, but it's a start.
+
+Intuitively, thinking about some node $x$ inside a cycle $C$ of more than one
+round, the existence of multiple rounds could not be detected because $x$ does
+not see far enough. He can only see his immediate connections to the left and
+right, but he can not see what is going on on the other side of the cycle.
+
+To fix this, we add more nodes to the set $S_x$. In addition to $x_l$ and $x_r$,
+$x$ will now maintain two more nodes:
+
+- $x_L$ is the node that is closest (clockwise) to $x + 2^{l-1}$. In other
+  words, it is the node $t$ that minimizes $d(t,x+2^{l-1})$, of all the nodes that
+  $x$ has ever encountered.
+
+- $x_R$ is the node that is closest (counter-clockwise) to $x+2^{l-1}$, of all
+  the nodes that $x$ has ever encountered.
+
+$x_L$ and $x_R$ are $x$'s current approximation to the opposite side of the
+circle: $x + 2^{l-1}$. (Note that here $x+2^{l-1}$ is calculated modulo $2^l$).
+
+
+We call this new algorithm $Iter_{\{0,2^{l-1}\}}$. In the same way, we call the
+old basic algorithm (Where $x$ keeps just $x_l$ and $x_r$) $Iter_{\{0\}}$. 
+
+
+**Lemma:** Assume a convergent state of the $Iter_{\{0,2^{l-1}\}}$ algorithm.
+For every cycle of nodes $C$: $R(C) = 1$.
+
+**Proof:** Let $C$ be a cycle of nodes. Suppose (for the sake of contradiction)
+that $R(C) > 1$. $C$ has at least two local maximums. Consider two such maximums
+$a$ and $b$.
+
+
+
 
