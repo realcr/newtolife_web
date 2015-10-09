@@ -253,7 +253,40 @@ Then the following are true:
 
 2. $x^{RLR} = x^R$ ($x^{LRL} = x^L$)
 
-**Proof:** TODO
+**Proof:** 
+Denote $\tilde{y} := y + 2^{l-1}$ for any node $y$. (The opposite side of $y$
+with respect to the circle).
+
+*Part 1:*  Suppose that $h(x^L) = z \neq x^R$.  
+
+If $z \in \overrightarrow{(x^L,\tilde{x})}$ (The arc between $x^L$ and
+$\tilde{x}$, clockwise) then $x^L$ will tell $x$ about $z$ in the next iteration
+of the algorithm, and $x$ will set $x^L$ to be $z$, which is a contradiction to
+the convergence of the algorithm.
+
+If $z \in \overrightarrow{(\tilde{x},x^R)}$ then $x^L$ will tell $x$ about $z$
+in the next iteration of the algorithm, and $x$ will set $x^R$ to be $z$, which
+is a contradiction to the convergence of the algorithm.
+
+If $z$ is in the rest of the circle, in $\overrightarrow{(x^R,x^L)}$, then in
+the next iteration of the algorithm $x$ will tell $x^L$ about $x^R$, and $x^L$
+will update the value of $h(x^L)$ to be $x^R$, in contradiction to the
+convergence of the algorithm.
+
+Therefore we conclude that $h(x^L) = x^R$.
+
+*Part 2:* We first show that $x^{RL} \in \overrightarrow{[x,\tilde{x^R}]}$. If
+$x^{RL} \not\in \overrightarrow{[x,\tidle{x^R}]}$ then in the next iteration $x$
+will contact $x^R$, and $x^R$ will update the value of $x^{RL}$ to be $x$. This
+contradicts the convergent state of the algorithm. 
+
+Suppose that $x^{RLR} = z \neq x^R$. Then 
+
+
+
+
+
+
 
 **Lemma (Cycles are closed):** Assume a convergent state of the
 $Iter_{\{0,2^{l-1}\}}$ algorithm. Let $C$ be a cycle of nodes, and $x \in C$.
