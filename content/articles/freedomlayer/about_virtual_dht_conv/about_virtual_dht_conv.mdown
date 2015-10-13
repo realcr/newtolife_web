@@ -55,14 +55,13 @@ node, and $x$ will forget the path to $y$.
 
 Experiments (Described in previous articles) have shown that the basic algorithm
 does not always converge to a solution. That means: Sometimes a node $x$ will
-not find $x-1$ and $x+1$, even after the algorithm converges. It is interesting
-to understand what is the state of the graph at this point.
+not find $x-1$ and $x+1$, even after running the algorithm for many iterations.
+It is also noticeable that after a while the state of network graph is
+stuck: further iterations of the Basic Algorithm do not change the state. We
+call such state a stationary state. It is interesting to understand what is the
+state of the network graph at this point.
 
 ## Analyzing the operation of the Basic Algorithm
-
-Consider some run of the Basic Algorithm that has converged. By that we mean, we
-continue running iterations of the algorithm but for every node $x$, the set
-$S_x$ remains unchanged.
 
 For every node $x$ we denote by $x^l$ ($l$ stands for left) the node closest to
 $x$ counter-clockwise that $x$ knows of. We denote by $x^r$ the node closest to
@@ -72,15 +71,33 @@ all nodes that were ever known to $x$)
 
 (TODO: A picture of $x^l$ and $x^r$ with respect to $x$).
 
-**Lemma:** During the convergent state of the algorithm, for every node $x$ it
-is true that $x^{rl} = x$ and $x^{lr} = x$.
+We first show that every run of the Basic Algorithm indeed eventually converges
+to a stationary state. 
+
+**Lemma:** After a finite amount of iterations of the Basic Algorithm, the
+algorithm converges to a stationary state.
+
+**Proof:** For a state $S$ of the algorithm we define:
+$$ e(S) := {\sum}_x {(x^r - x) + (x - x^l)}$$
+
+Where the subtractions $x^r - x$ and $x - x^l$ are modulo $n = 2^l$.
+
+$e$ is an energy function of the current state of the algorithm. It decreases in
+every iteration of the algorithm (When some node $y$ updates his $y^l$ or $y^r$
+to a better node). As the only possible values for $e$ are the natural numbers,
+after a finite amount of iterations of the Basic Algorithm $e$ will not be able
+to decrease anymore, and we will reach a stationary state of the algorithm.
+
+
+**Lemma:** During a stationary state of the algorithm, for every node $x$ it
+is true that $x^{rl} = x$ and $x^{lr} = x$.($x^{rl}$ is a short notation for
+$(x^r)^l$)
 
 **Proof:** Consider some node $x$ at the state after the algorithm has
-converged. Consider $x^r$. It must be true that $x^{rl} = x$. ($x^{rl}$ is a
-short notation for $(x^r)^l$). If not, then either $x$ should update his value
-of $x^r$, or $x^r$ should update his value of $x^{rl}$, which is a contradiction
-to the assumption of being in a convergent state. In the same way, we can
-conclude that $x^{lr} = x$. QED.
+converged. Consider $x^r$. It must be true that $x^{rl} = x$. If not, then
+either $x$ should update his value of $x^r$, or $x^r$ should update his value of
+$x^{rl}$, which is a contradiction to the assumption of being in a convergent
+state. In the same way, we can conclude that $x^{lr} = x$. QED.
 
 **Lemma:** During the convergent state of the algorithm, The function $h(x) :=
 x^r$ (Or dually, $t(x) := x^l$) is [injective (one to
@@ -218,13 +235,15 @@ that each cycle $C$ of nodes we eventually get has just one round ($R(C)=1$).
 This will not be enough to converge to a real solution, because we might have
 more than one cycle, but it's a start.
 
+### Adding two distant fingers
+
 Intuitively, thinking about some node $x$ inside a cycle $C$ of more than one
 round, the existence of multiple rounds could not be detected because $x$ does
 not see far enough. He can only see his immediate connections to the left and
 right, but he can not see what is going on on the other side of the cycle.
 
-To fix this, we add more nodes to the set $S_x$. In addition to $x^l$ and $x^r$,
-$x$ will now maintain two more nodes:
+We could try to add two more "fingers": In addition to remembering $x^r$ and
+$x^l$, $x$ will also remember paths to the following nodes:
 
 - $x^L$ is the node that is closest (clockwise) to $x + 2^{l-1}$. In other
   words, it is the node $t$ that minimizes $d(t,x+2^{l-1})$, of all the nodes that
@@ -233,18 +252,101 @@ $x$ will now maintain two more nodes:
 - $x^R$ is the node that is closest (counter-clockwise) to $x+2^{l-1}$, of all
   the nodes that $x$ has ever encountered.
 
-$x^L$ and $x^R$ are $x$'s current approximation to the opposite side of the
-circle: $x + 2^{l-1}$. (Note that here $x+2^{l-1}$ is calculated modulo $2^l$).
-
-
 We call this new algorithm $Iter_{\{0,2^{l-1}\}}$. In the same way, we call the
 old Basic Algorithm (Where $x$ keeps just $x_l$ and $x_r$) $Iter_{\{0\}}$. 
 
 
-**Note: ** Using previous Lemmas we know that at a convergent state all the
+I believe that using this method will still result in cycles with multiple
+rounds. Some work is still required here. I didn't manage to come up with a
+simple example of a stationary state that contains a cycle of multiple rounds in
+this setting. In addition, I never managed to prove that this method results in
+a cycles that have only one round.
+
+
+### Adding all powers of $2$ fingers
+
+On the journey of finding a strong enough setting to eliminate cycles with
+multiple rounds, we add more fingers. A nice bet would be to add all the fingers
+of sizes which are powers of $2$, just like in the original
+[Chord DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown).
+
+To be more specific: We say that a node $x$ maintains a finger $k$ if $x$
+remembers a path to: 
+
+- A node $\overleftarrow{x_k}$, which is the node closest to $x+k$ from the left
+(clockwise) that $x$ knows of. Note that this node can not be $x+k$ himself. In
+other words, this node minimizes $d(z,x+k)$ between all nodes that $x$ has ever
+known.
+
+- A node $\overrightarrow{x_k}$, which is the node closest to $x+k$ from the
+right (clockwise) that $x$ knows of. Note that this node can not be $x+k$
+himself. In other words, this node minimizes $d(x+k,z)$ between all nodes that
+$x$ has ever known.
+
+We create a version of the algorithm where each node $x$ maintains the following
+fingers: $0$ and $\pm 2^i$ for $0 \leq i < l$. (Note that $\pm 2^{l-1}$ is just
+$2^{l-1}$ modulo $n = 2^l$, the distant finger).
+
+The following part assumes a stationary state of the algorithm.
+Using previous Lemmas we know that at a convergent state all the
 nodes are divided into cycles (with respect to $x^l$ and $x^r$ choices). We can
 deduce this fact using only the convergent properties of all $x^l,x^r$ for every
-node $x$ (Ignoring the existence of $x^L,x^R$ for all nodes $x$).
+node $x$ (Ignoring the existence of all the other fingers).
+
+**Definition:**  A **Path** between nodes $a$ and $b$ (clockwise) is a sequence
+$a = z_1, z_2, \dots ,z_r = b$, where $h(z_j) = z_{j+1}$ for $1 \leq j < r$.
+
+**Definition:** A **Direct path** between nodes $a$ and $b$ is a path $a = z_1,
+z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} {z_{j+1} - z_j} = (b - a)$,
+where the subtraction are performed modulo $n = 2^l$. (But the additions are
+aren't)
+
+
+**Lemma (Locality):** Let $a$ be a node, and assume $0 \leq t < l$. Then there
+exist direct paths between $a$ to each of the following nodes:
+$\overleftarrow{a_{2^t}}, \overrightarrow{a_{2^t}}$, and there exist direct
+paths from each of the nodes $\overleftarrow{a_{-2^t}},
+\overrightarrow{a_{-2^t}}$ to the node $a$.
+
+**Proof: ** By induction. TODO here.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############################################################################
 
 **Lemma:** Assume a convergent state of the $Iter_{\{0,2^{l-1}\}}$ algorithm.
 Then the following are true:
@@ -274,42 +376,6 @@ will update the value of $h(x^L)$ to be $x^R$, in contradiction to the
 convergence of the algorithm.
 
 Therefore we conclude that $h(x^L) = x^R$.
-
-*Part 2:* We first show that $x^{RL} \in \overrightarrow{[x,\tilde{x^R}]}$. If
-$x^{RL} \not\in \overrightarrow{[x,\tidle{x^R}]}$ then in the next iteration $x$
-will contact $x^R$, and $x^R$ will update the value of $x^{RL}$ to be $x$. This
-contradicts the convergent state of the algorithm. 
-
-Suppose that $x^{RLR} = z \neq x^R$. Then 
-
-
-
-
-
-
-
-**Lemma (Cycles are closed):** Assume a convergent state of the
-$Iter_{\{0,2^{l-1}\}}$ algorithm. Let $C$ be a cycle of nodes, and $x \in C$.
-Then $x^R,x^L \in C$
-
-**Proof:** TODO
-
-
-
-**Lemma (Opposite Continuity):** Assume a convergent state of the
-$Iter_{\{0,2^{l-1}\}}$ algorithm. Consider $x$ and $y$, two adjacent nodes on
-a cycle $C$ ($h(x) = y$). TODO: Finish this?
-
-
-**Theorem:** Assume a convergent state of the $Iter_{\{0,2^{l-1}\}}$ algorithm.
-For every cycle of nodes $C$: $R(C) = 1$.
-
-**Proof:** 
-
-Now let $C$ be a cycle of nodes. Suppose (for the sake of contradiction)
-that $R(C) > 1$. $C$ has at least two local maximums. We begin from some local
-maximum $a$, and continue by applying the function $h$ repeatedly:
-$a,h(a),h^2(a),\dots$ until we reach another local maximum $b$.
 
 
 
