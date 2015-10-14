@@ -3,6 +3,20 @@ Date: 2015-10-05 20:49
 Author: real
 status: draft
 
+## Abstract
+
+We are given a connected network (graph) of named nodes. We discuss an iterative
+distributed algorithm that allows each node in the graph to find a path to
+several other key nodes. Those paths later allow efficient routing of messages
+between any two nodes in the network.
+
+We discuss one specific iterative distributed algorithm (IterF). We show that it
+converges for every given connected graph after a finite amount of steps, and we
+discuss some properties of its output.
+
+It turns out that the IterF algorithm returns one or a few disjoint sets of
+nodes. Each of those sets has a structure that allows efficient routing between
+the nodes inside that set. (But not to any node outside that set).
 
 ## Intro
 
@@ -477,4 +491,21 @@ Locality Lemma is still true?
 2. In which cases a run of IterF algorithm will leave us with just one
 cycle? Could we improve IterF somehow, so that it will always end up with only
 one cycle?
+
+
+## References
+
+The following articles discuss similar/relevant ideas:
+
+- [Virtual Ring Routing: Network Routing Inspired by
+DHTs](http://research.microsoft.com/pubs/75325/virtualring.pdf), by Matthew
+Caesar, Miguel Castro, Edmund B. Nightingale, Greg O’Shea and Antony Rowstron.
+
+
+- [Pushing Chord into the Underlay: Scalable Routing for Hybrid
+MANETs](https://gnunet.org/sites/default/files/fuhrmann06pushing.pdf) by Thomas
+Fuhrmann, Pengfei Di, Kendy Kutzner, and Curt Cramer
+
+- [Scalable Source Routing
+[Wikipedia]](https://en.wikipedia.org/wiki/Scalable_Source_Routing)
 
