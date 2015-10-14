@@ -433,8 +433,8 @@ cycles of nodes, where each cycle is of exactly one round.
 
 ## Code
 
-I wrote some code (Python3) that implements some of the things discussed above.
-You can find it [here
+I wrote a short piece of code (Python3) that implements some of the things
+discussed above. You can find it [here
 [github]](https://github.com/realcr/freedomlayer_code/blob/master/vdht_cycles_rounds/alg_state.py).
 
 Basically the code generates a random $G(n,p)$ graph with $p=3\cdot\log(n)/n$
@@ -447,13 +447,26 @@ At this point the following properties are checked:
 - Is every cycle on the resulting state of exactly one round?
 
 
-To run the code 
+To run the code you will need python3 and the
+[networkx](https://networkx.github.io/) package. After you have those two just
+run:
 
+  python3 alg_slate.py
 
+This is an example of how the output looks like:
 
+  next_node bijection: True , One round cycles:  True
+  next_node bijection: True , One round cycles:  True
+  next_node bijection: True , One round cycles:  True
+  ...
 
-TODO
+Every line in the output represents one run of the IterF algorithm over a
+randomly generated graph. Each line tells about the properties of the stationary
+state: Is the function $h$ a bijection, and if every cycle in the graph is of
+one round.
 
+The code is not optimized, and thus somewhat slow. On my PC for $n=2^9$ it can
+check one graph in about $20$ seconds.
 
 
 ## Further Questions
