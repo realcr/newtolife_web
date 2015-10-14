@@ -15,7 +15,7 @@ ring", and the nodes somehow try to find each other, iteratively.
 We think about the following simplified routing problem: We are given a
 connected graph of $n = 2^l$ vertices. Each verticle is given a number between
 $0$ and $2^l - 1$ (Every two vertices are given different numbers). This
-assignment of names is arbitrary, and we have no control over it.. The vertices
+assignment of names is arbitrary, and we have no control over it. The vertices
 of this graph represent the nodes in a mesh network. 
 
 We want a distributed algorithm that allows node $x$ to find a path to some key
@@ -86,7 +86,7 @@ $e$ is an energy function of the current state of the algorithm. It decreases in
 every iteration of the algorithm (When some node $y$ updates his $y^l$ or $y^r$
 to a better node). As the only possible values for $e$ are the natural numbers,
 after a finite amount of iterations of the Basic Algorithm $e$ will not be able
-to decrease anymore, and we will reach a stationary state of the algorithm.
+to decrease anymore, and we will reach a stationary state of the algorithm. QED.
 
 
 **Lemma:** During a stationary state of the algorithm, for every node $x$ it
@@ -393,70 +393,51 @@ Note that the inductive proof above makes use of all the powers of $2$ fingers.
 It won't work for the $Iter_{\{0,2^{l-1}\}}$ algorithm.
 
 
-**Theorem: ** Assume a stationary state of the IterF algorithm. All the nodes
-are divided to disjoint cycles, where each cycle has only one round.
+**Theorem: ** Assume a stationary state of the IterF algorithm. Let $C$ be a
+cycle of nodes. Then $R(C) = 1$.  ($C$ has only one round).
 
-**Proof: **
+**Proof: ** Let $C$ be a cycle of nodes during a stationary state of the IterF
+algorithm. Let $x$ be a node inside $C$. By the Locality Lemma there is direct
+path $P$ between $x$ and $\overrightarrow{x_{2^{l-1}}}$. Also, there is a direct
+path $Q$ between $\overleftarrow{x_{-2^{l-1}}}$ and $x$.
 
+(TODO: Add a picture)
 
+Also one of the following must be true:
 
+- $h(\overleftarrow{x_{-2^{l-1}}}) = \overrightarrow{x_{2^{l-1}}}$.
 
+- $h(\overleftarrow{x_{-2^{l-1}}}) = x - 2^{l-1}$ and $h(x-2^{l-1}) =
+\overrightarrow{x_{2^{l-1}}}$.
 
+We can combine the above paths to a total path $T := (P ,
+\overleftarrow{x_{-2^{l-1}}}, [x-2^{l-1}], \overrightarrow{x_{2^{l-1}}}, Q)$.
+($x-2^{l-1}$ is optional. We add it if the second case above is true).
 
+This is a path from $a$ to $a$ of length $2^l$, which means that $a$ is part of
+a cycle of only one round.
 
+QED.
 
+## Summary
 
+- If a cycle of nodes has exactly one round, then for each node $x$ in the
+cycle, $h(x)$ is the node that is closest to $x$, clockwise, between all the
+nodes in the cycle. (In other words, a cycle that has only one round behaves
+correctly with respect to our routing needs.)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############################################################################
-
-**Lemma:** Assume a convergent state of the $Iter_{\{0,2^{l-1}\}}$ algorithm.
-Then the following are true:
-
-1. If $x^L \neq x^R$ then $h(x^L) = x^R$.
-
-2. $x^{RLR} = x^R$ ($x^{LRL} = x^L$)
-
-**Proof:** 
-Denote $\tilde{y} := y + 2^{l-1}$ for any node $y$. (The opposite side of $y$
-with respect to the circle).
-
-*Part 1:*  Suppose that $h(x^L) = z \neq x^R$.  
-
-If $z \in \overrightarrow{(x^L,\tilde{x})}$ (The arc between $x^L$ and
-$\tilde{x}$, clockwise) then $x^L$ will tell $x$ about $z$ in the next iteration
-of the algorithm, and $x$ will set $x^L$ to be $z$, which is a contradiction to
-the convergence of the algorithm.
-
-If $z \in \overrightarrow{(\tilde{x},x^R)}$ then $x^L$ will tell $x$ about $z$
-in the next iteration of the algorithm, and $x$ will set $x^R$ to be $z$, which
-is a contradiction to the convergence of the algorithm.
-
-If $z$ is in the rest of the circle, in $\overrightarrow{(x^R,x^L)}$, then in
-the next iteration of the algorithm $x$ will tell $x^L$ about $x^R$, and $x^L$
-will update the value of $h(x^L)$ to be $x^R$, in contradiction to the
-convergence of the algorithm.
-
-Therefore we conclude that $h(x^L) = x^R$.
+- The IterF algorithm (Every node $x$ maintains a set of fingers which are all
+the powers of $2$ with respect to $x$) always arrives at a stationary state
+after a finite amount of iterations. A stationary sate always has a few disjoint
+cycles of nodes, where each cycle is of exactly one round.
 
 
+## Further Questions
 
+1. Are there other configurations of "fingers" for each node so that the
+Locality Lemma is still true?
+
+2. In which cases a run of IterF algorithm will leave us with just one
+cycle? Could we improve IterF somehow, so that it will always end up with only
+one cycle?
 
