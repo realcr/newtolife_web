@@ -285,7 +285,7 @@ $x$ has ever known.
 
 We create a version of the algorithm where each node $x$ maintains the following
 fingers: $0$ and $\pm 2^i$ for $0 \leq i < l$. (Note that $\pm 2^{l-1}$ is just
-$2^{l-1}$ modulo $n = 2^l$, the distant finger).
+$2^{l-1}$ modulo $n = 2^l$, the distant finger). We call this version IterF.
 
 The following part assumes a stationary state of the algorithm.
 Using previous Lemmas we know that at a convergent state all the
@@ -301,22 +301,102 @@ z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} {z_{j+1} - z_j} = (b - a)$,
 where the subtraction are performed modulo $n = 2^l$. (But the additions are
 aren't)
 
+Intuitively, a direct path is a path that doesn't go more than one round around
+the circle.
 
-**Lemma (Locality):** Let $a$ be a node, and assume $0 \leq t < l$. Then there
-exist direct paths between $a$ to each of the following nodes:
+
+**Lemma (Locality):** Let $a$ be a node, and assume $0 \leq t < l$. Then
+*DPATH[t]*: there exist direct paths between $a$ to each of the following nodes:
 $\overleftarrow{a_{2^t}}, \overrightarrow{a_{2^t}}$, and there exist direct
 paths from each of the nodes $\overleftarrow{a_{-2^t}},
 \overrightarrow{a_{-2^t}}$ to the node $a$.
 
-**Proof: ** By induction. TODO here.
+**Proof: ** By induction of $t$. We begin with the **base case**, for $t=0$. Let
+$a$ be some node, and consider the node $\overrightarrow{a_1}$. If $d(a,h(a)) =
+1$ then $\overrightarrow{a_1} = h(h(a))$, hence there is a direct path:
+$a,h(a),h(h(a))$ between $a$ and $\overrightarrow{a_1}$.
+
+If $d(a,h(a)) > 1$ then $\overrightarrow{a_1} = h(a)$. Hence $a,h(a)$ is a
+direct path between $a$ and $\overrightarrow{a_1}$.
+
+Next, consider the node $\overleftarrow{a_1} = a$. This is a length 1 direct
+path between $a$ and $\overleftarrow{a_1}$.
+
+We prove the base case for $\overleftarrow{a_{-1}}, \overrightarrow{a_{-1}}$ in
+a similar manner.
 
 
+**The inductive step**: Assume that for some $0 \leq t < l-1$ that
+DPATH[t]. Then DPATH[t+1].
+
+Let $a$ be a node. First, we want to show that there is a direct path between
+$a$ and $\overleftarrow{a_{2^{t+1}}}$. Consider the node
+$\overleftarrow{a_{2^{t}}}$. We distinct between two cases:
+
+Case 1: $d(\overleftarrow{a_{2^t}},a+2^t) <
+d(\overleftarrow{a^{2^{t+1}}},a+2^{t+1})$. Denote $z :=
+\overleftarrow{(\overleftarrow{a_{2^t}})_{2^t}}$ We will show that in this case
+$z = \overleftarrow{a_{2^{t+1}}}$.
+
+(TODO: Add a picture here.)
+
+By definition $z \in (\overleftarrow{a_{2^t}},\overleftarrow{a_{2^t}} + 2^t)$.
+
+If $z \in (\overleftarrow{a_{2^t}},\overleftarrow{a_{2^{t+1}}})$ then
+$\overleftarrow{a_{2^{t+1}}}$ is a better option for $z$, which is a
+contradiction to the stationary state of the algorithm.
+
+If $z \in (\overleftarrow{a_{2^{t+1}}},\overleftarrow{a_{2^t}} + 2^t)$ then $z$
+is a better option for $\overleftarrow{a_{2^{t+1}}}$, which is a contradiction
+to the stationary state of the algorithm.
+
+Therefore we have shown that $z = \overleftarrow{a_{2^{t+1}}}$. By the inductive
+assumption we have a direct path between $a$ and $\overleftarrow{a_{2^t}}$, and
+a direct path between $\overleftarrow{a_{2^t}}$ to $z =
+\overleftarrow{a_{2^{t+1}}}$. Those paths (together) are bounded in a size of
+$2^{t+1}$, hence their concatenation gives a direct path between $a$ and
+$\overleftarrow{a_{2^{t+1}}}$.
 
 
+Case 2: $d(\overleftarrow{a_{2^t}},a+2^t) \geq
+d(\overleftarrow{a^{2^{t+1}}},a+2^{t+1})$. Denote $y :=
+\overleftarrow{(\overleftarrow{a_{2^{t+1}}})_{-2^t}}$. We will show that in
+this case $y = \overleftarrow{a_{2^t}}$
+
+(TODO: Add a picture here.)
+
+By definition $y \in [a,\overleftarrow{a_{2^{t+1}}} - 2^t)$ (If this range
+collapses then $y$ is just $a$).
+
+If $y \in [a,\overleftarrow{a_{2^t}})$ then $\overleftarrow{a_{2^t}}$ is a
+better option for $z$, which is a contradiction to the stationary state of the
+algorithm.
+
+If $y \in (\overleftarrow{a_{2^t}},\overleftarrow{a_{2^{t+1}}} - 2^t)$ then $y$
+is a better option for $\overleftarrow{a_{2^t}}$, which is a contradiction
+to the stationary state of the algorithm.
+
+Therefore we have shown that $y = \overleftarrow{a_{2^t}}$. By the inductive
+assumption we have a direct path between $a$ and $\overleftarrow{a_{2^t}}$, and
+a direct path between $\overleftarrow{a_{2^t}}$ and
+$\overleftarrow{a_{2^{t+1}}}$. 
+Those two paths (together) are bounded in a size of $2^{t+1}$, hence their
+concatenation gives a direct path between $a$ and $\overleftarrow{a_{2^{t+1}}}$.
 
 
+The rest of DPATH[t+1] (We have 3 more direct paths to show) can be proved in a
+similar way.
+
+QED
+
+Note that the inductive proof above makes use of all the powers of $2$ fingers.
+It won't work for the $Iter_{\{0,2^{l-1}\}}$ algorithm.
 
 
+**Theorem: ** Assume a stationary state of the IterF algorithm. All the nodes
+are divided to disjoint cycles, where each cycle has only one round.
+
+**Proof: **
 
 
 
