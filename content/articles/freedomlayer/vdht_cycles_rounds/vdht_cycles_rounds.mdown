@@ -431,6 +431,30 @@ the powers of $2$ with respect to $x$) always arrives at a stationary state
 after a finite amount of iterations. A stationary sate always has a few disjoint
 cycles of nodes, where each cycle is of exactly one round.
 
+## Code
+
+I wrote some code (Python3) that implements some of the things discussed above.
+You can find it [here
+[github]](https://github.com/realcr/freedomlayer_code/blob/master/vdht_cycles_rounds/alg_state.py).
+
+Basically the code generates a random $G(n,p)$ graph with $p=3\cdot\log(n)/n$
+(So that the graph is connected with high probability), and then runs IterF
+iterations on this graph until a stationary state is reached.
+At this point the following properties are checked:
+
+- Is $h$ on the resulting state a bijection?
+
+- Is every cycle on the resulting state of exactly one round?
+
+
+To run the code 
+
+
+
+
+TODO
+
+
 
 ## Further Questions
 
