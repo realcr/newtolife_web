@@ -1,4 +1,4 @@
-Title: About the convergence of Virtual DHT routing
+Title: About cycles in stationary states of VDHT routing algorithms
 Date: 2015-10-05 20:49
 Author: real
 status: draft
