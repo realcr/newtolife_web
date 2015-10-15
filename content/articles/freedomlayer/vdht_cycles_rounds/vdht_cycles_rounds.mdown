@@ -45,27 +45,47 @@ iteration send the message to the closest known node to the destination.
 
 ## Running the Basic Algorithm
 
-The algorithm presented in [Experimenting with Virtual DHT Routing](
-{filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown),
-in its simplest form, works as follows:
+We begin with a basic algorithm, where every node $x$ tries to find paths to the
+adjacent nodes on the circle: $x-1$ and $x+1$. It will not give us an efficient
+routing solution, but it will teach us something about the convergence of
+similar algorithms.
 
-Every node $x$ remembers at all times paths to two nodes: A node $y$ that
-minimizes $d(y,x)$, and a node $z$ that minimizes $d(x,z)$. Recall that $d(a,b)$
-is the clockwise distance between $a$ and $b$. Hence, In other words, $x$ tries
-to find nodes that are closest to him clockwise and counter-clockwise. We denote
-$S_x := \{y,z\}$ to be $x$'s memory.
+Every node $x$ remembers at all times paths to two nodes: A node $x^l$ (Read:
+$x$'s left) that minimizes $d(x^l,x)$, and a node $x^r$ that minimizes $d(x,x^r)$.
+Recall that $d(a,b)$ is the clockwise distance between $a$ and $b$. Hence, In
+other words, $x$ tries to find nodes that are closest to him clockwise and
+counter-clockwise.
 
-(TODO: Add a picture of $x$ trying to find nodes $y$ and $z$).
+We describe here the algorithm, as executed by one node $x$. The algorithm takes
+as arguments the direct connections of $x$ to other nodes in the network. The
+set of the direct connections of $x$ is called DirectCons.
 
-In every iteration, node $x$ sends $S_x$ to all the nodes he knows: All the
-nodes inside $S_x$ (Through the maintained path), and all the nodes he has a
-direct connection to.
 
-In every iteration every node $x$ receives information from his neighbouring
-nodes, and updates his set $S_x$ accordingly, if better nodes are found. For
-example, if $x$ finds out about a path to a node $y'$ such that $d(y',x) <
-d(y,x)$, then $x$ will choose to remember $y'$ as a closest counter-clockwise
-node, and $x$ will forget the path to $y$.
+Macro $Known$: $DirectCons \cup \{x^l,x^r\} \cup TempRecipients$
+
+Initialization($DirectCons$):
+
+  1.  Set $x^l, x^r$ to be the most suitable nodes from the set $DirectCons$.
+  2.  $TempRecipients \leftarrow \emptyset$
+
+On receival of Update message with set $S$ from node $y$
+
+  1. If $y \not\in Known$:
+    1.1 Add $y$ to $TempRecipients$.
+
+  2. Update $x^l$ and $x^r$ if better candidates were found inside $S \cup
+  \{y\}$.
+
+On time tick:
+
+  1. For every node $y \in Known$:
+    1.1 Send $y$ an Update message with set $Known$.
+
+  2. Set $TempRecipients \leftarrow \emptyset$
+
+
+
+(TODO: Add a picture of $x$ trying to find nodes $x^l$ and $x^r$).
 
 Experiments (Described in previous articles) have shown that the basic algorithm
 does not always converge to a solution. That means: Sometimes a node $x$ will
@@ -456,7 +476,7 @@ Basically the code generates a random $G(n,p)$ graph with $p=3\cdot\log(n)/n$
 iterations on this graph until a stationary state is reached.
 At this point the following properties are checked:
 
-- Is $h$ on the resulting state a bijection?
+- Is $h$ injective on the resulting state?
 
 - Is every cycle on the resulting state of exactly one round?
 
@@ -469,14 +489,14 @@ run:
 
 This is an example of how the output looks like:
 
-  next_node bijection: True , One round cycles:  True
-  next_node bijection: True , One round cycles:  True
-  next_node bijection: True , One round cycles:  True
+  next_node Injective: True , One round cycles:  True
+  next_node Injective: True , One round cycles:  True
+  next_node Injective: True , One round cycles:  True
   ...
 
 Every line in the output represents one run of the IterF algorithm over a
 randomly generated graph. Each line tells about the properties of the stationary
-state: Is the function $h$ a bijection, and if every cycle in the graph is of
+state: Is the function $h$ injective, and if every cycle in the graph is of
 one round.
 
 The code is not optimized, and thus somewhat slow. On my PC for $n=2^9$ it can
