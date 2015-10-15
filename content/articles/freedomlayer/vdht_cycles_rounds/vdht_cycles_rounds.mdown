@@ -497,6 +497,8 @@ At this point the following properties are checked:
 
 - Is every cycle on the resulting state of exactly one round?
 
+- Is there only one cycle of nodes in the resulting state?
+
 
 To run the code you will need python3 and the
 [networkx](https://networkx.github.io/) package. After you have those two just
@@ -506,18 +508,23 @@ run:
 
 This is an example of how the output looks like:
 
-  next_node Injective: True , One round cycles:  True
-  next_node Injective: True , One round cycles:  True
-  next_node Injective: True , One round cycles:  True
+  next_node Injective: True | One round cycles: True | Is only one cycle: True
+  next_node Injective: True | One round cycles: True | Is only one cycle: True
+  next_node Injective: True | One round cycles: True | Is only one cycle: True
   ...
 
 Every line in the output represents one run of the IterF algorithm over a
 randomly generated graph. Each line tells about the properties of the stationary
 state: Is the function $h$ injective, and if every cycle in the graph is of
-one round.
+one round, and is there only one cycle.
 
 The code is not optimized, and thus somewhat slow. On my PC for $n=2^9$ it can
-check one graph in about $20$ seconds.
+check one graph in about $45$ seconds.
+
+I didn't yet see a result with "Is only one cycle: False", but that is probably
+because of the choice of the randomized graphs. (Small $G(n,p)$ graphs). I think
+it is possible to build an example for a graph that results in more than one
+cycle of nodes after running the algorithm.
 
 
 ## Further Questions
