@@ -1,7 +1,6 @@
 Title: About cycles in stationary states of VDHT routing algorithms
-Date: 2015-10-05 20:49
+Date: 2015-10-15 17:23
 Author: real
-status: draft
 
 ## Abstract
 
