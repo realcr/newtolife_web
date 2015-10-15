@@ -56,6 +56,8 @@ Recall that $d(a,b)$ is the clockwise distance between $a$ and $b$. Hence, In
 other words, $x$ tries to find nodes that are closest to him clockwise and
 counter-clockwise.
 
+![x^l and x^r]({filename}images/x_left_x_right.svg)
+
 We describe here the algorithm, as executed by one node $x$. The algorithm takes
 as arguments the direct connections of $x$ to other nodes in the network. The
 set of the direct connections of $x$ is called DirectCons.
@@ -88,8 +90,6 @@ Macro $Known$: $DirectCons \cup \{x^l,x^r\} \cup TempRecipients$
 
 
 
-(TODO: Add a picture of $x$ trying to find nodes $x^l$ and $x^r$).
-
 Experiments (Described in previous articles) have shown that the basic algorithm
 does not always converge to a solution. That means: Sometimes a node $x$ will
 not find $x-1$ and $x+1$, even after running the algorithm for many iterations.
@@ -105,8 +105,6 @@ $x$ counter-clockwise that $x$ knows of (That is not $x$). We denote by $x^r$
 the node closest to $x$ clockwise that $x$ knows of (That is not $x$). 
 (As a sanity check for understanding the notation, $x^l$ minimizes $d(x^l,x)$
 between all nodes that were ever known to $x$)
-
-(TODO: A picture of $x^l$ and $x^r$ with respect to $x$).
 
 We define the state of the algorithm to be $S = \{(x,x^l,x^r) | 0 \leq x < n\}$
 It is the set of all choices of left and right node for all the nodes. We say
@@ -139,13 +137,15 @@ is not connected. Of a similar reason, $x^r \neq x^{rl}$.
 
 Suppose that $x \neq x^{rl}$. Then we distinct between two cases:
 
-Case 1: $x^{rl} \in (x,x^r)$. (This means: $x^{rl}$ is on the arc between $x$ and
+![Two cases for the location of x^{rl}]({filename}images/x_left_right_lemma.svg)
+
+*Case 1*: $x^{rl} \in (x,x^r)$. (This means: $x^{rl}$ is on the arc between $x$ and
 $x^r$, clockwise). In the next iteration $x$ will send $x^r$ an Update message.
 In the following iteration, $x^r$ will send $x$ an Update message. This message
 will contain a path to $x^{rl}$. $x$ will then update $x^r$ to be $x^{rl}$. This
 is a contradiction to the given stationary state.
 
-Case 2: $x^{rl} \in (x^r,x)$. In the next iteration $x$ will send $x^r$ an
+*Case 2*: $x^{rl} \in (x^r,x)$. In the next iteration $x$ will send $x^r$ an
 Update message, and $x^r$ will update $x^{rl}$ to be $x$. This is a
 contradiction to the given stationary state.
 
@@ -174,10 +174,10 @@ $k$ is the index of the first element that equals to a previously seen element,
 we conclude that $q=0$ and so $h^k(x) = x$, the first element of the series.
 Therefore the series $x, h(x), \dots, h^k(x)=x$ form a cycle. 
 
-Note This is a generic property of injective functions that operate inside finite
-worlds.
+![Cycles formed from the h function]({filename}images/h_iterated_cycles.svg)
 
-(TODO: A picture of cycles formed when applying $h$ multiple times).
+Note that this is a generic property of injective functions that operate inside
+finite worlds.
 
 If we now pick some node $z$ that has not appeared in the cycle of the node $x$,
 and start applying $h$ many times, we will get another cycle. We can continue in
@@ -383,14 +383,15 @@ DPATH[t]. Then DPATH[t+1].
 
 Let $a$ be a node. First, we want to show that there is a direct path between
 $a$ and $\overleftarrow{a_{2^{t+1}}}$. Consider the node
-$\overleftarrow{a_{2^{t}}}$. We distinct between two cases:
+$\overleftarrow{a_{2^t}}$. We distinct between two cases:
 
-Case 1: $d(\overleftarrow{a_{2^t}},a+2^t) <
+![\overleftarrow{a_{2^{t+1}}} and
+\overleftarrow{a_{2^t}}]({filename}images/locality_lemma.svg)
+
+*Case 1*: $d(\overleftarrow{a_{2^t}},a+2^t) <
 d(\overleftarrow{a^{2^{t+1}}},a+2^{t+1})$. Denote $z :=
 \overleftarrow{(\overleftarrow{a_{2^t}})_{2^t}}$ We will show that in this case
 $z = \overleftarrow{a_{2^{t+1}}}$.
-
-(TODO: Add a picture here.)
 
 By definition $z \in (\overleftarrow{a_{2^t}},\overleftarrow{a_{2^t}} + 2^t)$.
 
@@ -410,12 +411,10 @@ $2^{t+1}$, hence their concatenation gives a direct path between $a$ and
 $\overleftarrow{a_{2^{t+1}}}$.
 
 
-Case 2: $d(\overleftarrow{a_{2^t}},a+2^t) \geq
+*Case 2*: $d(\overleftarrow{a_{2^t}},a+2^t) \geq
 d(\overleftarrow{a_{2^{t+1}}},a+2^{t+1})$. Denote $y :=
 \overleftarrow{(\overleftarrow{a_{2^{t+1}}})_{-2^t}}$. We will show that in
 this case $y = \overleftarrow{a_{2^t}}$
-
-(TODO: Add a picture here.)
 
 By definition $y \in [a,\overleftarrow{a_{2^{t+1}}} - 2^t)$ (If this range
 collapses then $y$ is just $a$).
@@ -454,7 +453,7 @@ algorithm. Let $x$ be a node inside $C$. By the Locality Lemma there is direct
 path $P$ between $x$ and $\overrightarrow{x_{2^{l-1}}}$. Also, there is a direct
 path $Q$ between $\overleftarrow{x_{-2^{l-1}}}$ and $x$.
 
-(TODO: Add a picture)
+![The bath built from P and Q]({filename}images/one_round_theorem.svg)
 
 We can combine the above paths to a total path $T := (P , Q)$
 
