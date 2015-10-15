@@ -152,7 +152,7 @@ Hence it must be true that $x = x^{rl}$. In the same way, we can conclude that
 $x^{lr} = x$. QED.
 
 
-**Lemma:** During the convergent state of the algorithm, The function $h(x) :=
+**Lemma:** During a stationary state of the algorithm, The function $h(x) :=
 x^r$ (Or dually, $t(x) := x^l$) is [injective (one to
 one)](https://en.wikipedia.org/wiki/Injective_function)
 
@@ -305,9 +305,6 @@ $x^l$, $x$ will also remember paths to the following nodes:
 - $x^R$ is the node that is closest (counter-clockwise) to $x+2^{l-1}$, of all
   the nodes that $x$ has ever encountered.
 
-We call this new algorithm $Iter_{\{0,2^{l-1}\}}$. In the same way, we call the
-old Basic Algorithm (Where $x$ keeps just $x_l$ and $x_r$) $Iter_{\{0\}}$. 
-
 
 I believe that using this method will still result in cycles with multiple
 rounds. Some work is still required here. I didn't manage to come up with a
@@ -318,33 +315,36 @@ a cycles that have only one round.
 
 ### Adding all powers of $2$ fingers
 
-On the journey of finding a strong enough setting to eliminate cycles with
+On the quest of finding a strong enough setting to eliminate cycles with
 multiple rounds, we add more fingers. A nice bet would be to add all the fingers
 of sizes which are powers of $2$, just like in the original
-[Chord DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown).
+[Chord DHT structure]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown).
 
 To be more specific: We say that a node $x$ maintains a finger $k$ if $x$
 remembers a path to: 
 
-- A node $\overleftarrow{x_k}$, which is the node closest to $x+k$ from the left
-(clockwise) that $x$ knows of. Note that this node can not be $x+k$ himself. In
-other words, this node minimizes $d(z,x+k)$ between all nodes that $x$ has ever
-known.
+- Left side: A node $\overleftarrow{x_k}$, which is the node closest to $x+k$
+from the left (clockwise) that $x$ knows of. Note that this node could be $x+k$
+himself. In other words, this node minimizes $d(z,x+k)$ between all nodes that
+$x$ has ever known.
 
-- A node $\overrightarrow{x_k}$, which is the node closest to $x+k$ from the
-right (clockwise) that $x$ knows of. Note that this node can not be $x+k$
+- Right side: A node $\overrightarrow{x_k}$, which is the node closest to $x+k$
+from the right (clockwise) that $x$ knows of. Note that this node could be $x+k$
 himself. In other words, this node minimizes $d(x+k,z)$ between all nodes that
 $x$ has ever known.
 
 We create a version of the algorithm where each node $x$ maintains the following
-fingers: $0$ and $\pm 2^i$ for $0 \leq i < l$. (Note that $\pm 2^{l-1}$ is just
+fingers: $\pm 2^i$ for $0 \leq i < l$. (Note that $\pm 2^{l-1}$ is just
 $2^{l-1}$ modulo $n = 2^l$, the distant finger). We call this version IterF.
 
-The following part assumes a stationary state of the algorithm.
-Using previous Lemmas we know that at a convergent state all the
-nodes are divided into cycles (with respect to $x^l$ and $x^r$ choices). We can
-deduce this fact using only the convergent properties of all $x^l,x^r$ for every
-node $x$ (Ignoring the existence of all the other fingers).
+Note that $x^l$ is the left side of finger $-1$, and $x^r$ is the right side of
+finger $+1$.
+
+The following part assumes a stationary state of the algorithm. Using previous
+Lemmas we know that at a convergent state all the nodes are divided into cycles
+(with respect to $x^l$ and $x^r$ choices). We can deduce this fact using only
+the convergent properties of all $x^l,x^r$ for every node $x$ (Ignoring the
+existence of all the other fingers).
 
 **Definition:**  A **Path** between nodes $a$ and $b$ (clockwise) is a sequence
 $a = z_1, z_2, \dots ,z_r = b$, where $h(z_j) = z_{j+1}$ for $1 \leq j < r$.
@@ -443,11 +443,12 @@ similar way.
 QED
 
 Note that the inductive proof above makes use of all the powers of $2$ fingers.
-It won't work for the $Iter_{\{0,2^{l-1}\}}$ algorithm.
+It won't work for the algorithm with just two near fingers and two distant
+fingers mentioned above.
 
 
-**Theorem: ** Assume a stationary state of the IterF algorithm. Let $C$ be a
-cycle of nodes. Then $R(C) = 1$.  ($C$ has only one round).
+**Theorem (OneRound): ** Assume a stationary state of the IterF algorithm. Let
+$C$ be a cycle of nodes. Then $R(C) = 1$.  ($C$ has only one round).
 
 **Proof: ** Let $C$ be a cycle of nodes during a stationary state of the IterF
 algorithm. Let $x$ be a node inside $C$. By the Locality Lemma there is direct
@@ -456,16 +457,13 @@ path $Q$ between $\overleftarrow{x_{-2^{l-1}}}$ and $x$.
 
 (TODO: Add a picture)
 
-Also one of the following must be true:
+We can combine the above paths to a total path $T := (P , Q)$
 
-- $h(\overleftarrow{x_{-2^{l-1}}}) = \overrightarrow{x_{2^{l-1}}}$.
-
-- $h(\overleftarrow{x_{-2^{l-1}}}) = x - 2^{l-1}$ and $h(x-2^{l-1}) =
+It is possible that $\overleftarrow{x_{-2^{l-1}}} =
+\overrightarrow{x_{2^{l-1}}}$. In this case we omit one of them in the path
+concatenation. If $\overleftarrow{x_{-2^{l-1}}} \neq
+\overrightarrow{x_{2^{l-1}}}$ then $h(\overleftarrow{x_{-2^{l-1}}}) =
 \overrightarrow{x_{2^{l-1}}}$.
-
-We can combine the above paths to a total path $T := (P ,
-\overleftarrow{x_{-2^{l-1}}}, [x-2^{l-1}], \overrightarrow{x_{2^{l-1}}}, Q)$.
-($x-2^{l-1}$ is optional. We add it if the second case above is true).
 
 This is a path from $a$ to $a$ of length $2^l$, which means that $a$ is part of
 a cycle of only one round.
