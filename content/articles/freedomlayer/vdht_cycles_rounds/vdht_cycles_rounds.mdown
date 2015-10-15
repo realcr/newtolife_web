@@ -132,11 +132,25 @@ to decrease anymore, and we will reach a stationary state of the algorithm. QED.
 is true that $x^{rl} = x$ and $x^{lr} = x$.($x^{rl}$ is a short notation for
 $(x^r)^l$)
 
-**Proof:** Let $x$ be some node. Consider $x^r$. It must be true that $x^{rl} =
-x$. If not, then either $x$ will update his value of $x^r$ to be $x^{rl}$, or
-$x^r$ will update his value of $x^{rl}$ to be $x$ in the next iterations of the
-algorithm, which is a contradiction to the assumption of being in a convergent
-state. In the same way, we can conclude that $x^{lr} = x$. QED.
+**Proof:** Let $x$ be some node. Consider $x^r$ and $x^{rl}$. First note that $x
+\neq x^r$, because that would mean $x$ has no direct connections, and the graph
+is not connected. Of a similar reason, $x^r \neq x^{rl}$.
+
+Suppose that $x \neq x^{rl}$. Then we distinct between two cases:
+
+Case 1: $x^{rl} \in (x,x^r)$. (This means: $x^{rl}$ is on the arc between $x$ and
+$x^r$, clockwise). In the next iteration $x$ will send $x^r$ an Update message.
+In the following iteration, $x^r$ will send $x$ an Update message. This message
+will contain a path to $x^{rl}$. $x$ will then update $x^r$ to be $x^{rl}$. This
+is a contradiction to the given stationary state.
+
+Case 2: $x^{rl} \in (x^r,x)$. In the next iteration $x$ will send $x^r$ an
+Update message, and $x^r$ will update $x^{rl}$ to be $x$. This is a
+contradiction to the given stationary state.
+
+Hence it must be true that $x = x^{rl}$. In the same way, we can conclude that
+$x^{lr} = x$. QED.
+
 
 **Lemma:** During the convergent state of the algorithm, The function $h(x) :=
 x^r$ (Or dually, $t(x) := x^l$) is [injective (one to
