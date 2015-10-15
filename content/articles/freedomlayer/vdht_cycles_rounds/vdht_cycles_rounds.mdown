@@ -71,6 +71,7 @@ Initialization($DirectCons$):
 On receival of Update message with set $S$ from node $y$
 
   1. If $y \not\in Known$:
+
     1.1 Add $y$ to $TempRecipients$.
 
   2. Update $x^l$ and $x^r$ if better candidates were found inside $S \cup
@@ -79,6 +80,7 @@ On receival of Update message with set $S$ from node $y$
 On time tick:
 
   1. For every node $y \in Known$:
+
     1.1 Send $y$ an Update message with set $Known$.
 
   2. Set $TempRecipients \leftarrow \emptyset$
@@ -117,9 +119,7 @@ to a stationary state.
 algorithm converges to a stationary state.
 
 **Proof:** For a state $S$ of the algorithm we define:
-$$ e(S) := {\sum}_x {(x^r - (x+1)) + ((x-1) - x^l)}$$
-
-Where the subtractions $x^r - x$ and $x - x^l$ are modulo $n = 2^l$.
+$$ e(S) := {\sum}_x {d(x+1,x^r) + d(x^l,x-1)}$$
 
 $e$ is an energy function of the current state of the algorithm. It decreases in
 every iteration of the algorithm (When some node $y$ updates his $y^l$ or $y^r$
@@ -129,7 +129,7 @@ to decrease anymore, and we will reach a stationary state of the algorithm. QED.
 
 
 **Lemma:** During a stationary state of the algorithm, for every node $x$ it
-is true that $x^{rl} = x$ and $x^{lr} = x$.($x^{rl}$ is a short notation for
+is true that $x^{rl} = x$ and $x^{lr} = x$. ($x^{rl}$ is a short notation for
 $(x^r)^l$)
 
 **Proof:** Let $x$ be some node. Consider $x^r$ and $x^{rl}$. First note that $x
@@ -334,7 +334,7 @@ himself. In other words, this node minimizes $d(x+k,z)$ between all nodes that
 $x$ has ever known.
 
 We create a version of the algorithm where each node $x$ maintains the following
-fingers: $\pm 2^i$ for $0 \leq i < l$. (Note that $\pm 2^{l-1}$ is just
+fingers: $\pm 2^i$ for $0 \leq i < l$. (Note that $-2^{l-1}$ is just
 $2^{l-1}$ modulo $n = 2^l$, the distant finger). We call this version IterF.
 
 Note that $x^l$ is the left side of finger $-1$, and $x^r$ is the right side of
@@ -350,9 +350,7 @@ existence of all the other fingers).
 $a = z_1, z_2, \dots ,z_r = b$, where $h(z_j) = z_{j+1}$ for $1 \leq j < r$.
 
 **Definition:** A **Direct path** between nodes $a$ and $b$ is a path $a = z_1,
-z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} {z_{j+1} - z_j} = (b - a)$,
-where the subtraction are performed modulo $n = 2^l$. (But the additions are
-aren't)
+z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} d(z_j,z_{j+1}) = (b - a)$.
 
 Intuitively, a direct path is a path that doesn't go more than one round around
 the circle.
@@ -412,7 +410,7 @@ $\overleftarrow{a_{2^{t+1}}}$.
 
 
 Case 2: $d(\overleftarrow{a_{2^t}},a+2^t) \geq
-d(\overleftarrow{a^{2^{t+1}}},a+2^{t+1})$. Denote $y :=
+d(\overleftarrow{a_{2^{t+1}}},a+2^{t+1})$. Denote $y :=
 \overleftarrow{(\overleftarrow{a_{2^{t+1}}})_{-2^t}}$. We will show that in
 this case $y = \overleftarrow{a_{2^t}}$
 
@@ -470,17 +468,6 @@ a cycle of only one round.
 
 QED.
 
-## Summary
-
-- If a cycle of nodes has exactly one round, then for each node $x$ in the
-cycle, $h(x)$ is the node that is closest to $x$, clockwise, between all the
-nodes in the cycle. (In other words, a cycle that has only one round behaves
-correctly with respect to our routing needs.)
-
-- The IterF algorithm (Every node $x$ maintains a set of fingers which are all
-the powers of $2$ with respect to $x$) always arrives at a stationary state
-after a finite amount of iterations. A stationary sate always has a few disjoint
-cycles of nodes, where each cycle is of exactly one round.
 
 ## Code
 
@@ -504,14 +491,14 @@ To run the code you will need python3 and the
 [networkx](https://networkx.github.io/) package. After you have those two just
 run:
 
-  python3 alg_slate.py
+    python3 alg_slate.py
 
 This is an example of how the output looks like:
 
-  next_node Injective: True | One round cycles: True | Is only one cycle: True
-  next_node Injective: True | One round cycles: True | Is only one cycle: True
-  next_node Injective: True | One round cycles: True | Is only one cycle: True
-  ...
+    next_node Injective: True | One round cycles: True | Is only one cycle: True
+    next_node Injective: True | One round cycles: True | Is only one cycle: True
+    next_node Injective: True | One round cycles: True | Is only one cycle: True
+    ...
 
 Every line in the output represents one run of the IterF algorithm over a
 randomly generated graph. Each line tells about the properties of the stationary
@@ -525,6 +512,19 @@ I didn't yet see a result with "Is only one cycle: False", but that is probably
 because of the choice of the randomized graphs. (Small $G(n,p)$ graphs). I think
 it is possible to build an example for a graph that results in more than one
 cycle of nodes after running the algorithm.
+
+
+## Summary
+
+- If a cycle of nodes has exactly one round, then for each node $x$ in the
+cycle, $h(x)$ is the node that is closest to $x$, clockwise, between all the
+nodes in the cycle. (In other words, a cycle that has only one round behaves
+correctly with respect to our routing needs.)
+
+- The IterF algorithm (Every node $x$ maintains a set of fingers which are all
+the powers of $2$ with respect to $x$) always arrives at a stationary state
+after a finite amount of iterations. A stationary sate always has a few disjoint
+cycles of nodes, where each cycle is of exactly one round.
 
 
 ## Further Questions
