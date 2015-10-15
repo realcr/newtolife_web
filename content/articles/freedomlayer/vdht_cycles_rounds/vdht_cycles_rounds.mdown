@@ -51,7 +51,7 @@ routing solution, but it will teach us something about the convergence of
 similar algorithms.
 
 Every node $x$ remembers at all times paths to two nodes: A node $x^l$ (Read:
-$x$'s left) that minimizes $d(x^l,x)$, and a node $x^r$ that minimizes $d(x,x^r)$.
+$x$'s left) that minimizes $d(x^l,x-1)$, and a node $x^r$ that minimizes $d(x+1,x^r)$.
 Recall that $d(a,b)$ is the clockwise distance between $a$ and $b$. Hence, In
 other words, $x$ tries to find nodes that are closest to him clockwise and
 counter-clockwise.
@@ -98,12 +98,17 @@ state of the network graph at this point.
 ## Analyzing the operation of the Basic Algorithm
 
 For every node $x$ we denote by $x^l$ ($l$ stands for left) the node closest to
-$x$ counter-clockwise that $x$ knows of. We denote by $x^r$ the node closest to
-$x$ clockwise that $x$ knows of. In other words, $S^x = \{x^l,x^r\}$. (As a
-sanity check for understanding the notation, $x^l$ minimizes $d(x^l,x)$ between
-all nodes that were ever known to $x$)
+$x$ counter-clockwise that $x$ knows of (That is not $x$). We denote by $x^r$
+the node closest to $x$ clockwise that $x$ knows of (That is not $x$). 
+(As a sanity check for understanding the notation, $x^l$ minimizes $d(x^l,x)$
+between all nodes that were ever known to $x$)
 
 (TODO: A picture of $x^l$ and $x^r$ with respect to $x$).
+
+We define the state of the algorithm to be $S = \{(x,x^l,x^r) | 0 \leq x < n\}$
+It is the set of all choices of left and right node for all the nodes. We say
+that a state $S$ is stationary if any amount of algorithm iterations will leave
+$S$ unchanged.
 
 We first show that every run of the Basic Algorithm indeed eventually converges
 to a stationary state. 
@@ -112,7 +117,7 @@ to a stationary state.
 algorithm converges to a stationary state.
 
 **Proof:** For a state $S$ of the algorithm we define:
-$$ e(S) := {\sum}_x {(x^r - x) + (x - x^l)}$$
+$$ e(S) := {\sum}_x {(x^r - (x+1)) + ((x-1) - x^l)}$$
 
 Where the subtractions $x^r - x$ and $x - x^l$ are modulo $n = 2^l$.
 
@@ -127,10 +132,10 @@ to decrease anymore, and we will reach a stationary state of the algorithm. QED.
 is true that $x^{rl} = x$ and $x^{lr} = x$.($x^{rl}$ is a short notation for
 $(x^r)^l$)
 
-**Proof:** Consider some node $x$ at the state after the algorithm has
-converged. Consider $x^r$. It must be true that $x^{rl} = x$. If not, then
-either $x$ should update his value of $x^r$, or $x^r$ should update his value of
-$x^{rl}$, which is a contradiction to the assumption of being in a convergent
+**Proof:** Let $x$ be some node. Consider $x^r$. It must be true that $x^{rl} =
+x$. If not, then either $x$ will update his value of $x^r$ to be $x^{rl}$, or
+$x^r$ will update his value of $x^{rl}$ to be $x$ in the next iterations of the
+algorithm, which is a contradiction to the assumption of being in a convergent
 state. In the same way, we can conclude that $x^{lr} = x$. QED.
 
 **Lemma:** During the convergent state of the algorithm, The function $h(x) :=
