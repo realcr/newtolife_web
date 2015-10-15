@@ -37,6 +37,9 @@ Check out the [research mailing list](http://lists.freedomlayer.org).
 -   [Experimenting with Virtual DHT Routing](
     {filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
 
+-   [About cycles in stationary states of VDHT routing algorithms](
+    {filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
+
 -   [The Distributed Post Office: Instant Hierarchy for Mesh Networks](
     {filename}/articles/freedomlayer/dist_post_office/dist_post_office.mdown)
 
