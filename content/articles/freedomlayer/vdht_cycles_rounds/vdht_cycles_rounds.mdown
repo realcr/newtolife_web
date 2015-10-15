@@ -63,27 +63,28 @@ set of the direct connections of $x$ is called DirectCons.
 
 Macro $Known$: $DirectCons \cup \{x^l,x^r\} \cup TempRecipients$
 
-Initialization($DirectCons$):
+- Initialization($DirectCons$):
 
-  1.  Set $x^l, x^r$ to be the most suitable nodes from the set $DirectCons$.
-  2.  $TempRecipients \leftarrow \emptyset$
+    1.  Set $x^l, x^r$ to be the most suitable nodes from the set $DirectCons \cup
+    \{x\}$.
+    2.  $TempRecipients \leftarrow \emptyset$
 
-On receival of Update message with set $S$ from node $y$
+- On receival of Update message with set $S$ from node $y$
 
-  1. If $y \not\in Known$:
+    1. If $y \not\in Known$:
 
-    1.1 Add $y$ to $TempRecipients$.
+        1.1 Add $y$ to $TempRecipients$.
 
-  2. Update $x^l$ and $x^r$ if better candidates were found inside $S \cup
-  \{y\}$.
+    2. Update $x^l$ and $x^r$ if better candidates were found inside $S \cup
+    \{y\}$.
 
-On time tick:
+- On time tick:
 
-  1. For every node $y \in Known$:
+    1. For every node $y \in Known$:
 
-    1.1 Send $y$ an Update message with set $Known$.
+        1.1 Send $y$ an Update message with set $Known$.
 
-  2. Set $TempRecipients \leftarrow \emptyset$
+    2. Set $TempRecipients \leftarrow \emptyset$
 
 
 
