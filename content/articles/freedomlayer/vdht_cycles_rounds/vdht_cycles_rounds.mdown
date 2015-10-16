@@ -350,7 +350,7 @@ existence of all the other fingers).
 $a = z_1, z_2, \dots ,z_r = b$, where $h(z_j) = z_{j+1}$ for $1 \leq j < r$.
 
 **Definition:** A **Direct path** between nodes $a$ and $b$ is a path $a = z_1,
-z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} d(z_j,z_{j+1}) = (b - a)$.
+z_2, \dots, z_r=b$ such that ${\sum}_{1 \leq j < r} d(z_j,z_{j+1}) = d(a,b)$.
 
 Intuitively, a direct path is a path that doesn't go more than one round around
 the circle.
