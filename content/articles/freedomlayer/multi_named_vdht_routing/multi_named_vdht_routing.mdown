@@ -44,6 +44,72 @@ that for every two nodes $a,b \in S$ it is possible to route messages
 efficiently between $a$ and $b$.
 
 
-## 
+## Nodes that must share a cycle
+
+Recall that the IterF algorithm eventually converges to a stationary state. Also
+recall that in a stationary state of the IterF algorithm the nodes are divided
+to disjoint cycles (of one round each). Our analysis didn't show which node will
+end up at which cycle.
+
+We will now discuss a few cases of pairs of nodes who we know for sure will end
+up on the same cycle at a stationary state of IterF.
+
+**Lemma (SameCycleA):** If $x$ is connected directly to a node $y$ of the form
+$y = \pm 2^k \pm 2^t$ where $0 \leq k,t < l$, then $x$ and $y$ must be on the
+same cycle on any stationary state of the IterF algorithm.
+
+(TODO: Add a picture that describes an example of SameCycleA)
+
+**Proof:** For the ease of reading we will only deal with the case of $y = x +
+2^k + 2^t$. The other cases can be proved in the same way, but with inverted
+plus and minus symbols.
+
+Assume a stationary state of the IterF algorithm.
+We first show that $\overleftarrow{(x + 2^k + 2^t)_{-2^k}} =
+\overleftarrow{x_{2^t}}$. Suppose that $\overleftarrow{(x + 2^k + 2^t)_{-2^k}}
+\neq \overleftarrow{x_{2^t}}$. 
+
+(TODO: Add a picture of all the relevant nodes here).
+
+Then we can distinct between two cases:
+
+*Case 1:* $\overleftarrow{(x + 2^k + 2^t)_{-2^k}} \in
+(\overleftarrow{x_{2^t}},x+2^t]$. In that case in the next iteration of the
+algorithm $x$ will update $\overleftarrow{x_{2^t}}$ to be $\overleftarrow{(x +
+2^k + 2^t)_{-2^k}}$, because it is closer to $x+2^t$ from the left (clockwise).
+This is a contradiction to the stationary state of IterF.
+
+*Case 2:* $\overleftarrow{(x + 2^k + 2^t)_{-2^k}} \in
+(x+2^t,\overleftarrow{x_{2^t}})$. In that case in the next iteration of the
+algorithm $y = x + 2^k + 2^t$ will update $\overleftarrow{y_{-2^k}}$ to be
+$\overleftarrow{x_{2^t}}$, because it is closer to $x+2^t$ from the left
+(clockwise). This is a contradiction to the stationary state of IterF.
+
+Thus it must be true that $\overleftarrow{y_{-2^k}} = \overleftarrow{x_{2^t}}$.
+
+By the Locality lemma (see ["About cycles in stationary states of VDHT routing
+algorithms"]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown))
+there is a direct path between $x$ and $\overleftarrow{x_{2^t}}$, and so $x$ and
+$\overleftarrow{x_{2^t}}$ must be on the same cycle. In the same way, there is a
+direct path between $\overleftarrow{y_{-2^k}}$ to $y$, therefore
+$\overleftarrow{y_{-2^k}}$ and $y$ must be on the same cycle.
+
+As $\overleftarrow{y_{-2^k}} = \overleftarrow{x_{2^t}}$, we conclude that $x$
+and $y$ must be on the same cycle. **QED**
+
+
+**Lemma (SameCycleB):** If $x$ is connected directly to a node $y$, which is
+connected directly to a node $z$ of the form $z = x \pm 2^k$, where $0 \leq k <
+l$, then $x$ and $z$ must be on the same cycle on any stationary state of the
+ITerF algorithm.
+
+(TODO: Add a picture that describes an example of SameCycleB)
+
+**Proof:**
+
+TODO
+
+
+
 
 
