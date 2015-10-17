@@ -38,7 +38,7 @@ We have managed to prove that after IterF converges, we end up with possibly a
 few disjoint sets of nodes (OneRound Theorem). In each such set $S$, for every
 two nodes $a,b \in S$ it is possible to route messages efficiently between $a$
 and $b$. However, we do not know how to efficiently route messages between nodes
-from different disjoin sets.
+from different disjoint sets.
 
 We present here a modification to the IterF algorithm, MIterF (Multi named
 IterF), which is proven to converge to just one set of nodes $S$, such that for
