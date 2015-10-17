@@ -1,0 +1,49 @@
+Title: Multi Named VDHT Routing
+Date: 2015-10-17 10:49
+Author: real
+status: draft
+
+## Abstract
+
+We are given a connected mesh network of $n$ nodes, where each node has a unique
+name from the range of $[0,2^l)$. We assume that $n \leq 2^l$. Every node is
+directly connected to a few other nodes.
+
+We present an iterative distributed algorithm that allows each node $x$ to
+maintain contact with a few key nodes. The connections with those key nodes
+allows efficient routing of messages between any two nodes using greedy methods.
+
+We prove that the presented iterative distributed algorithm always converges to
+a good solution, given that the mesh network is connected.
+
+
+## Previous attempts
+
+In ["Experimenting with Virtual DHT
+Routing"]({filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
+we have presented an iterative distributed algorithm that allows each node $x$
+to maintain contact with a few key nodes that are close to $x \pm 2^t$. We used
+experiments to show that this algorithm can work in some cases, but we didn't
+provide any rigorous proof for those claims.
+
+In ["About cycles in stationary states of VDHT routing
+algorithms"]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
+we presented a slightly different iterative distributed algorithm, IterF, that
+also allows each node $x$ to maintain contact to a few key nodes that are close
+to $x \pm 2^t$. 
+
+We have managed to prove that after IterF converges, we end up with possibly a
+few disjoint sets of nodes (OneRound Theorem). In each such set $S$, for every
+two nodes $a,b \in S$ it is possible to route messages efficiently between $a$
+and $b$. However, we do not know how to efficiently route messages between nodes
+from different disjoin sets.
+
+We present here a modification to the IterF algorithm, called MIterF (Multi
+named IterF), which is proven to converge to just one set of nodes $S$, such
+that for every two nodes $a,b \in S$ it is possible to route messages
+efficiently between $a$ and $b$.
+
+
+## 
+
+
