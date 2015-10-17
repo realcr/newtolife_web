@@ -122,3 +122,13 @@ $\overleftarrow{x_{2^k}} = z$. Therefore there is a direct path between $x$ and
 $z$, and so $x$ and $z$ must be on the same cycle. **QED**.
 
 
+The two lemmas we have proved above tell us something about which nodes should
+end up on the same cycle, but they are far from complete in describing the
+structure of the cycles of a stationary state of IterF. For Example, currently
+we don't know to say much about which nodes will not be on the same cycle.
+
+
+## Multi Naming
+
+
+TODO
