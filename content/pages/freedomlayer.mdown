@@ -34,11 +34,15 @@ Check out the [research mailing list](http://lists.freedomlayer.org).
 -   [Sqrt(n) Mesh routing](
     {filename}/articles/freedomlayer/sqrt_n_routing/sqrt_n_routing.mdown)
 
--   [Experimenting with Virtual DHT Routing](
-    {filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
+-   Virtual DHT Routing:
+    -   [Experimenting with Virtual DHT Routing](
+        {filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
 
--   [About cycles in stationary states of VDHT routing algorithms](
-    {filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
+    -   [About cycles in stationary states of VDHT routing algorithms](
+        {filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
+
+    -   [Multi Named VDHT Routing](
+        {filename}/articles/freedomlayer/multi_named_vdht_routing/multi_named_vdht_routing.mdown)
 
 -   [The Distributed Post Office: Instant Hierarchy for Mesh Networks](
     {filename}/articles/freedomlayer/dist_post_office/dist_post_office.mdown)
