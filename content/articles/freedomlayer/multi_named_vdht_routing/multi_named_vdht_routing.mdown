@@ -38,10 +38,10 @@ two nodes $a,b \in S$ it is possible to route messages efficiently between $a$
 and $b$. However, we do not know how to efficiently route messages between nodes
 from different disjoin sets.
 
-We present here a modification to the IterF algorithm, called MIterF (Multi
-named IterF), which is proven to converge to just one set of nodes $S$, such
-that for every two nodes $a,b \in S$ it is possible to route messages
-efficiently between $a$ and $b$.
+We present here a modification to the IterF algorithm, which is proven to
+converge to just one set of nodes $S$, such that for every two nodes $a,b \in S$
+it is possible to route messages efficiently between $a$ and $b$. This
+improvement comes at the cost of having every node maintain paths to more nodes.
 
 
 ## Nodes that must share a cycle
@@ -128,7 +128,108 @@ structure of the cycles of a stationary state of IterF. For Example, currently
 we don't know to say much about which nodes will not be on the same cycle.
 
 
+## On applicability SameCycleA and SameCycleB
+
+Given the two lemmas above (SameCycleA and SameCycleB), one might wonder how
+often it is possible to apply those lemmas and conclude that all nodes will end
+up on the same cycle.
+
+We will perform a very hand wavy calculation to get a feeling for this
+likelihood.
+
+For a specific node $x$ there are at most $(2l)^2$ possible combinations of $x
+\pm 2^k \pm 2^t$ for $0 \leq k,t < l$, and at most $2l$ possible combinations of
+$x \pm 2^k$.
+
+We assume that every node in the network is directly conected to at most
+$\log(n)$ other nodes.
+
+*For the nodes directly connected to $x$*: Assume that those $\log(n)$ nodes were
+chosen randomly. About $\log(n) \cdot \frac{(2l)^2}{n}$ out of these nodes will
+be of the form $x \pm 2^k \pm 2^t$. 
+
+$$\log(n) \cdot \frac{(2l)^2}{n} = \frac{\log(n)\cdot (2l)^2}{n} \leq \frac{l\cdot
+(2l)^2}{n} = \frac{4l^3}{n}$$. 
+
+Hence for $n > 4l^3$ we expect that with high probability some node $z$ will not
+have any direct connections on the network of the form $z \pm 2^k \pm 2^t$.
+
+*For nodes that are two hops from $x$*: There are about ${\log(n)}^2$ such
+nodes. Assume that they were chosen randomly. About ${\log(n)}^2 \cdot
+\frac{2l}{n}$ out of these nodes will be of the form $x \pm 2^k$.
+
+$${\log(n)}^2 \cdot \frac{2l}{n} = \frac{{2l}\cdot{\log(n)}^2}{n} \leq
+\frac{2l\cdot l^2}{n} = \frac{2l^3}{n}$$.
+
+Hence for $n > 2l^3$ we expect that with high probability some node $z$ will not
+have any node two hops from him of the form $z \pm 2^k$.
+
+As a final rough conclusion, we believe that for large enough values of $n$, for
+example $n >> 4l^3$, we expect that for some nodes non of the lemmas SameCycleA
+or SameCycleB will be applicable. 
+
+We might need something else to be able to prove the convergence of IterF to a
+single cycle.
+
+
 ## Multi Naming
 
+For every two nodes $x$ and $y$, we say that $x$ and $y$ are **FriendsA** if $y$
+is of the form $y = x \pm 2^k \pm 2^t$. (A special case would be $y = x \pm
+2^k$). Note that this property is symmetric (If $x$ and $y$ are FriendsA, then
+$y$ and $x$ are FriendsA). We will denote that $x$ and $y$ are FriendsA by $x
+\sim y$.
 
-TODO
+Consider some two directly connected nodes $x,y$ on a mesh network.  If $x \sim
+y$ then by the SameCycleA lemma we can show that $x$ and $y$ will end up on the
+same cycle. However, if $x \nsim y$, we don't have anything meaningful to say.
+Unfortunately, in most cases $y$ will not be of this form.
+
+Consider that case of $x \nsim y$. Imagine for a moment that there were some
+extra nodes between $x$ and $y$: $x = z_1,z_2,\dots,z_r = y$ such that $z_j \sim
+z_{j+1}$ for $1 \leq j < r$. In that case we conclude that $z_j, z_{j+1}$ are on
+the same cycle for $1 \leq j < r$, and therefore $x$ and $y$ must end up on the
+same cycle on every stationary state of the IterF algorithm.
+
+(TODO: Add a picture of imaginary extra nodes between $x$ and $y$)
+
+In the real network there are no such extra nodes, but nothing prevents $x$
+and $y$ to pretend the existence of those nodes. $x$ will play the role of
+$z_1,z_2,\dots,z_{\left\lceil r/2 \right\rceil}$ in the network, and $y$ will
+play the role of $z_{\left\lfloor r/2 \right\rfloor},\dots,z_r$ in the network.
+
+We want to know how large can $r$ be. We know that $0 \leq x,y < 2^l$, hence
+both $x$ and $y$ could be written using at most $l$ bits. We want to get from
+$x$ to $y$ using small changes of the form $\pm 2^k \pm 2^t$. Every small change
+introduces another imaginary extra node.
+
+We start from $z_1 = x$. We can reach $y$ by changing at most two bits at a
+time. $x$ and $y$ will usually differ at about $l/2$ bits. We assume that worst
+case, where $x$ and $y$ differ at $l$ bits. Hence we will need at most
+$\left\lceil l/2 \right\rceil$ imaginary nodes. (At most two bits in every small
+change. We add the ceiling operator for the case of odd $l$). We conclude that
+$r \leq \left\lceil l/2 \right\rceil$.
+
+Hence each of $x,y$ will play the role of at most $\left\lceil l/4 \right\rceil$
+extra imaginary nodes.
+
+We can add imaginary extra nodes between every two nodes $a,b$ in the network
+such that $a \nsim b$. A node $z$ that is directly connected to $q$ nodes will
+have to play the role of at most $q\cdot \left\lceil l/4 \right\rceil$ nodes.
+
+(TODO: Add a picture of adding imaginary extra nodes between all pairs $a,b$ in
+a network).
+
+Adding the extra imaginary nodes should not make routing less efficient, because
+routing messages between imaginary nodes does not cost significant time. It does
+require, however, that nodes will maintain more "fingers": More paths to remote
+nodes. The more direct connections a node has, the more remote connections he
+will have to maintain.
+
+
+## Practicality issues
+
+### Name collisions
+
+### Performance
+
