@@ -278,7 +278,13 @@ obtained this contradiction if $a=n-1$)
 **QED**
 
 We can conclude that we want an algorithm that will leave us with just one cycle
-$C$ with $R(C) = 1$ that contains all nodes.
+$C$ with $R(C) = 1$ that contains all nodes. 
+
+Having all the nodes in one cycle of only one round allows efficient routing
+using the following greedy method: On receipt of a message $m$ that is
+designated to node $y$, choose a node $z$ with a name closest to $y$ out of all the
+known nodes, and send the message to $z$ (through the maintained path). We
+expect the message to arrive to its destination after at most $l$ such hops.
 
  
 ## Restricting the amount of rounds
