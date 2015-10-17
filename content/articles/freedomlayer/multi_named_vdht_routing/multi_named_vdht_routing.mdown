@@ -60,7 +60,7 @@ same cycle on any stationary state of the IterF algorithm.
 
 (TODO: Add a picture that describes an example of SameCycleA)
 
-**Proof:** For the ease of reading we will only deal with the case of $y = x +
+**Proof:** For readability reasons we will only deal with the case of $y = x +
 2^k + 2^t$. The other cases can be proved in the same way, but with inverted
 plus and minus symbols.
 
@@ -106,10 +106,20 @@ ITerF algorithm.
 (TODO: Add a picture that describes an example of SameCycleB)
 
 **Proof:**
+For readability reasons we will only deal with the case of $z = x + 2^k$. The
+other case could be proved in a similar way.
 
-TODO
+Assume a stationary state of the IterF algorithm. We first show that
+$\overleftarrow{x_{2^k}} =
+x + 2^k$. Suppose that $\overleftarrow{x_{2^k}} \neq x + 2^k$. Then in the next
+iteration $y$ will tell $x$ about $z = x + 2^k$, and $x$ will update
+$\overleftarrow{x_{2^k}}$ to be $x+2^k$, because it is closer to $x+2^k$ from
+the left (It has distance 0!). This is a contradiction to the stationary state
+of IterF. Therefore we conclude that $\overleftarrow{x_{2^k}} = x + 2^k = z$.
 
-
+By the Locality lemma there is a direct path between $x$ and
+$\overleftarrow{x_{2^k}} = z$. Therefore there is a direct path between $x$ and
+$z$, and so $x$ and $z$ must be on the same cycle. **QED**.
 
 
 
