@@ -101,7 +101,7 @@ and $y$ must be on the same cycle. **QED**
 **Lemma (SameCycleB):** If $x$ is connected directly to a node $y$, which is
 connected directly to a node $z$ of the form $z = x \pm 2^k$, where $0 \leq k <
 l$, then $x$ and $z$ must be on the same cycle on any stationary state of the
-ITerF algorithm.
+IterF algorithm.
 
 (TODO: Add a picture that describes an example of SameCycleB)
 
@@ -120,6 +120,5 @@ of IterF. Therefore we conclude that $\overleftarrow{x_{2^k}} = x + 2^k = z$.
 By the Locality lemma there is a direct path between $x$ and
 $\overleftarrow{x_{2^k}} = z$. Therefore there is a direct path between $x$ and
 $z$, and so $x$ and $z$ must be on the same cycle. **QED**.
-
 
 
