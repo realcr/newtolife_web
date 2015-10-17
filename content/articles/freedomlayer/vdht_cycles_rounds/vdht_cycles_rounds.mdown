@@ -123,7 +123,7 @@ $e$ is an energy function of the current state of the algorithm. It decreases in
 every iteration of the algorithm (When some node $y$ updates his $y^l$ or $y^r$
 to a better node). As the only possible values for $e$ are the natural numbers,
 after a finite amount of iterations of the Basic Algorithm $e$ will not be able
-to decrease anymore, and we will reach a stationary state of the algorithm. QED.
+to decrease anymore, and we will reach a stationary state of the algorithm. **QED**
 
 
 **Lemma:** During a stationary state of the algorithm, for every node $x$ it
@@ -149,7 +149,7 @@ Update message, and $x^r$ will update $x^{rl}$ to be $x$. This is a
 contradiction to the given stationary state.
 
 Hence it must be true that $x = x^{rl}$. In the same way, we can conclude that
-$x^{lr} = x$. QED.
+$x^{lr} = x$. **QED**
 
 
 **Lemma:** During a stationary state of the algorithm, The function $h(x) :=
@@ -158,7 +158,7 @@ one)](https://en.wikipedia.org/wiki/Injective_function)
 
 **Proof:** Let $x,y$ nodes such that $h(x) = h(y) = z$, for some node $z$.
 By the previous lemma we conclude that $z^l = x^{rl} = x$ and $z^l = x^{rl} =
-y$, therefore $x=y$. QED.
+y$, therefore $x=y$. **QED**
 
 ## Division to cycles
 
@@ -275,7 +275,7 @@ and $0_l$ will be $a_l$. This means that this state is not a convergent state of
 the algorithm, which leads to a contradiction. (Note that we could not have
 obtained this contradiction if $a=n-1$)
 
-QED
+**QED**
 
 We can conclude that we want an algorithm that will leave us with just one cycle
 $C$ with $R(C) = 1$ that contains all nodes.
@@ -437,7 +437,7 @@ concatenation gives a direct path between $a$ and $\overleftarrow{a_{2^{t+1}}}$.
 The rest of DPATH[t+1] (We have 3 more direct paths to show) can be proved in a
 similar way.
 
-QED
+**QED**
 
 Note that the inductive proof above makes use of all the powers of $2$ fingers.
 It won't work for the algorithm with just two near fingers and two distant
@@ -465,7 +465,7 @@ concatenation. If $\overleftarrow{x_{-2^{l-1}}} \neq
 This is a path from $a$ to $a$ of length $2^l$, which means that $a$ is part of
 a cycle of only one round.
 
-QED.
+**QED**
 
 
 ## Code
