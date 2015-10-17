@@ -22,15 +22,15 @@ efficient greedy routing.
 
 ## Previous attempts
 
-In ["Experimenting with Virtual DHT
-Routing"]({filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
+In [Experimenting with Virtual DHT
+Routing]({filename}/articles/freedomlayer/exp_virtual_dht_routing/exp_virtual_dht_routing.mdown)
 we have presented an iterative distributed algorithm that allows each node $x$
 to maintain contact with a few key nodes that are close to $x \pm 2^t$. We used
 experiments to show that this algorithm can work in some cases, but we didn't
 provide any rigorous proof for those claims.
 
-In ["About cycles in stationary states of VDHT routing
-algorithms"]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
+In [About cycles in stationary states of VDHT routing
+algorithms]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown)
 we presented a slightly different iterative distributed algorithm, IterF, that
 also allows each node $x$ to maintain contact to a few key nodes that are close
 to $x \pm 2^t$. 
@@ -97,8 +97,8 @@ $\overleftarrow{x_{2^t}}$, because it is closer to $x+2^t$ from the left
 
 Thus it must be true that $\overleftarrow{y_{-2^k}} = \overleftarrow{x_{2^t}}$.
 
-By the Locality lemma (see ["About cycles in stationary states of VDHT routing
-algorithms"]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown))
+By the Locality lemma (see [About cycles in stationary states of VDHT routing
+algorithms]({filename}/articles/freedomlayer/vdht_cycles_rounds/vdht_cycles_rounds.mdown))
 there is a direct path between $x$ and $\overleftarrow{x_{2^t}}$, and so $x$ and
 $\overleftarrow{x_{2^t}}$ must be on the same cycle. In the same way, there is a
 direct path between $\overleftarrow{y_{-2^k}}$ to $y$, therefore
@@ -144,7 +144,7 @@ structure of the cycles of a stationary state of IterF. For Example, currently
 we don't know to say much about which nodes will not be on the same cycle.
 
 
-## On applicability SameCycleA and SameCycleB
+## On the applicability of SameCycleA and SameCycleB
 
 Given the two lemmas above (SameCycleA and SameCycleB), one might wonder how
 often it is possible to apply those lemmas and conclude that all nodes will end
@@ -165,7 +165,7 @@ chosen randomly. About $\log(n) \cdot \frac{(2l)^2}{n}$ out of these nodes will
 be of the form $x \pm 2^k \pm 2^t$. 
 
 $$\log(n) \cdot \frac{(2l)^2}{n} = \frac{\log(n)\cdot (2l)^2}{n} \leq \frac{l\cdot
-(2l)^2}{n} = \frac{4l^3}{n}$$. 
+(2l)^2}{n} = \frac{4l^3}{n}$$
 
 Hence for $n > 4l^3$ we expect that with high probability some node $z$ will not
 have any direct connections on the network of the form $z \pm 2^k \pm 2^t$.
@@ -175,13 +175,13 @@ nodes. Assume that they were chosen randomly. About ${\log(n)}^2 \cdot
 \frac{2l}{n}$ out of these nodes will be of the form $x \pm 2^k$.
 
 $${\log(n)}^2 \cdot \frac{2l}{n} = \frac{{2l}\cdot{\log(n)}^2}{n} \leq
-\frac{2l\cdot l^2}{n} = \frac{2l^3}{n}$$.
+\frac{2l\cdot l^2}{n} = \frac{2l^3}{n}$$
 
 Hence for $n > 2l^3$ we expect that with high probability some node $z$ will not
 have any node two hops from him of the form $z \pm 2^k$.
 
 As a final rough conclusion, we believe that for large enough values of $n$, for
-example $n >> 4l^3$, we expect that for some nodes non of the lemmas SameCycleA
+example $n \gg 4l^3$, we expect that for some nodes non of the lemmas SameCycleA
 or SameCycleB will be applicable. 
 
 We might need something else to be able to prove the convergence of IterF to a
@@ -199,7 +199,7 @@ $y$ and $x$ are FriendsA). We will denote that $x$ and $y$ are FriendsA by $x
 Consider some two directly connected nodes $x,y$ on a mesh network.  If $x \sim
 y$ then by the SameCycleA lemma we can show that $x$ and $y$ will end up on the
 same cycle. However, if $x \nsim y$, we don't have anything meaningful to say.
-Unfortunately, in most cases $y$ will not be of this form.
+Unfortunately, in most cases we will have $x \nsim y$.
 
 Consider that case of $x \nsim y$. Imagine for a moment that there were some
 extra nodes between $x$ and $y$: $x = z_1,z_2,\dots,z_r = y$ such that $z_j \sim
@@ -242,24 +242,25 @@ $q\cdot(l/4)\cdot(2l) = (1/2)ql^2$ nodes.
 Note that originally, every node had to maintain remote paths to about $2l$
 nodes, which is much less. 
 
-![Before and after adding imaginary extra nodes between all pairs of connected
-nodes]({filename}images/imaginary_extra_nodes_all_pairs.svg)
-
-In the picture: Before and after adding imaginary extra nodes between all pairs
-of connected nodes. The imaginary nodes are shown with lighter color, that
-matches the color of the real node who plays their role in the algorithm.
-
 Adding the extra imaginary nodes should not make message routing less efficient,
 because routing messages between imaginary nodes does not cost significant time.
 The modification does require, however, that nodes will maintain more "fingers":
 More paths to remote nodes. The more direct connections a node has, the more
 remote connections he will have to maintain.
 
+![Before and after adding imaginary extra nodes between all pairs of connected
+nodes]({filename}images/imaginary_extra_nodes_all_pairs.svg)
+
+In the picture: Before and after adding imaginary extra nodes between all pairs
+of connected nodes. The imaginary nodes are shown with lighter color that
+matches the color of the real node who plays their role in the algorithm.
+
+
 ## Practicality issues
 
 *Regarding Network performance:* We require every node to maintain remote
 paths to about $(1/2)ql^2$ nodes. Assuming that a node $x$ has $5$ direct
-connections, and we pick $l=128$, this results in $40960$ ($\approx 2^15$) which
+connections, and we pick $l=128$, this results in $40960$ ($\approx 2^{15}$) which
 is a lot of connections. I think that this number is on the edge of what is
 practical these days with communication. I believe that there is a way to
 slightly improve the MIterF algorithm to acheive more realistic numbers.
@@ -271,9 +272,9 @@ who gets to pick how the path of imaginary FriendsA nodes between two nodes
 $x,y$ will be constructed? Where will the names come from?
 
 We solve the problem of name collisions by using a large namespace. We pick a
-large $l$, like $l=128$. If names are chosen randomly, the probability of a name
-collision should be very small (Even between the paths of imaginary FriendsA
-nodes).
+large $l$, for example $l=128$. If names are chosen randomly, the probability of
+a name collision should be very small (Even between the paths of imaginary
+FriendsA nodes).
 
 *Security: Will this system survive a strong adversary?* Not in its current
 form. We need to add some mechanisms to avoid the following possible attacks:
@@ -296,7 +297,7 @@ nodes are in the same cycle (And the cycle has only one round). We still haven't
 answered the following questions:
 
 -   How long does it take for MIterF to converge? I think that the answer is
-something like $O(c*diam(G))$, where $c$ is some constant and $diam(G)$ is the
+something like $O(c\cdot diam(G))$, where $c$ is some constant and $diam(G)$ is the
 diameter of the network (The longest distance between two nodes), but I don't
 know of a proof for this.
 
