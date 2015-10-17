@@ -9,12 +9,15 @@ We are given a connected mesh network of $n$ nodes, where each node has a unique
 name from the range of $[0,2^l)$. We assume that $n \leq 2^l$. Every node is
 directly connected to a few other nodes.
 
-We present an iterative distributed algorithm that allows each node $x$ to
-maintain contact with a few key nodes. The connections with those key nodes
-allows efficient routing of messages between any two nodes using greedy methods.
+We present an iterative distributed algorithm: MIterF, that allows each node $x$
+to maintain remote contact with a few key nodes. The remote contact with those
+key nodes allows efficient greedy routing of messages between any two nodes: At
+each step the message is sent to a remote contact with a name that is closest to
+the destination.
 
-We prove that the presented iterative distributed algorithm always converges to
-a good solution, given that the mesh network is connected.
+Given that the mesh network is connected, We prove that the presented iterative
+distributed algorithm MIterF always converges to a solution that allows
+efficient greedy routing.
 
 
 ## Previous attempts
@@ -38,10 +41,11 @@ two nodes $a,b \in S$ it is possible to route messages efficiently between $a$
 and $b$. However, we do not know how to efficiently route messages between nodes
 from different disjoin sets.
 
-We present here a modification to the IterF algorithm, which is proven to
-converge to just one set of nodes $S$, such that for every two nodes $a,b \in S$
-it is possible to route messages efficiently between $a$ and $b$. This
-improvement comes at the cost of having every node maintain paths to more nodes.
+We present here a modification to the IterF algorithm, MIterF (Multi named
+IterF), which is proven to converge to just one set of nodes $S$, such that for
+every two nodes $a,b \in S$ it is possible to route messages efficiently between
+$a$ and $b$. This improvement comes at the cost of having every node maintain
+paths to more nodes.
 
 
 ## Nodes that must share a cycle
@@ -216,20 +220,82 @@ extra imaginary nodes.
 We can add imaginary extra nodes between every two nodes $a,b$ in the network
 such that $a \nsim b$. A node $z$ that is directly connected to $q$ nodes will
 have to play the role of at most $q\cdot \left\lceil l/4 \right\rceil$ nodes.
+This means that every node will maintain remote paths to about
+$q\cdot(l/4)\cdot(2l) = (1/2)ql^2$ nodes.
+
+Note that originally, every node had to maintain remote paths to about $2l$
+nodes, which is much less. 
 
 (TODO: Add a picture of adding imaginary extra nodes between all pairs $a,b$ in
 a network).
 
-Adding the extra imaginary nodes should not make routing less efficient, because
-routing messages between imaginary nodes does not cost significant time. It does
-require, however, that nodes will maintain more "fingers": More paths to remote
-nodes. The more direct connections a node has, the more remote connections he
-will have to maintain.
-
+Adding the extra imaginary nodes should not make message routing less efficient,
+because routing messages between imaginary nodes does not cost significant time.
+The modification does require, however, that nodes will maintain more "fingers":
+More paths to remote nodes. The more direct connections a node has, the more
+remote connections he will have to maintain.
 
 ## Practicality issues
 
-### Name collisions
+*Regarding Network performance:* We require every node to maintain remote
+paths to about $(1/2)ql^2$ nodes. Assuming that a node $x$ has $5$ direct
+connections, and we pick $l=128$, this results in $40960$ ($\approx 2^15$) which
+is a lot of connections. I think that this number is on the edge of what is
+practical these days with communication. I believe that there is a way to
+slightly improve the MIterF algorithm to acheive more realistic numbers.
 
-### Performance
+
+*Who gets to pick the names for the nodes?* This is a major question, as name
+collisions (two nodes with the same name) could disrupt correct routing. Also,
+who gets to pick how the path of imaginary FriendsA nodes between two nodes
+$x,y$ will be constructed? Where will the names come from?
+
+We solve the problem of name collisions by using a large namespace. We pick a
+large $l$, like $l=128$. If names are chosen randomly, the probability of a name
+collision should be very small (Even between the paths of imaginary FriendsA
+nodes).
+
+*Security: Will this system survive a strong adversary?* Not in its current
+form. We need to add some mechanisms to avoid the following possible attacks:
+
+-   Eclipse attack: An attacker might be able to obtain many names that are
+close to a node $x$ in the namespace, and thus absorb all the messages that
+should arrive at $x$. Therefore $x$ will not be able to receive any messages.
+The question of who gets to pick the names is tightly related to preventing
+these kinds of attacks.
+
+-   [Denial of Service](https://en.wikipedia.org/wiki/Denial-of-service_attack):
+A node might be able to send many messages and flood the network. A node might
+also decide to stop routing certain messages, and thus disrupt routing of
+messages in the network.
+
+## Further questions
+
+We know that the MIterF always converges to a stationary state where all the
+nodes are in the same cycle (And the cycle has only one round). We still haven't
+answered the following questions:
+
+-   How long does it take for MIterF to converge? I think that the answer is
+something like $O(c*diam(G))$, where $c$ is some constant and $diam(G)$ is the
+diameter of the network (The longest distance between two nodes), but I don't
+know of a proof for this.
+
+-   How long are the paths that we get from each node $x$ to his "fingers"? For
+example, how long would be the path from $x$ to $\overleftarrow{x_{2^t}}$, as
+calculated by MIterF? How does it compare to the length of the shortest path in
+the network between $x$ and $\overleftarrow{x_{2^t}}$? Currently I have no idea
+about how to estimate the length of paths calculated by MIterF. Note that this
+question might be related to the shape of the network.
+
+
+## Summary
+
+We presented MIterF, an iterative distributed algorithm that builds a setting
+for efficient routing of messages between nodes. Assuming that the network is
+connected, we proved that MIterF always converges to stationary state that
+allows efficient routing between all pairs of nodes in the network.
+
+During the execution of the algorithm every node $x$ that has direct connections
+to $q$ nodes must maintain remote paths to at most $(1/2)ql^2$ nodes.
+
 
