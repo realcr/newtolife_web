@@ -236,7 +236,7 @@ We can add imaginary extra nodes between every two nodes $a,b$ in the network
 such that $a \nsim b$. A node $z$ that is directly connected to $q$ nodes will
 have to play the role of at most $q\cdot \left\lceil l/4 \right\rceil$ nodes.
 This means that every node will maintain remote paths to about
-$q\cdot(l/4)\cdot(2l) = (1/2)ql^2$ nodes.
+$q\cdot(l/4)\cdot(4l) \approx ql^2$ nodes.
 
 Note that originally, every node had to maintain remote paths to about $2l$
 nodes, which is much less. 
@@ -258,8 +258,8 @@ matches the color of the real node who plays their role in the algorithm.
 ## Practicality issues
 
 *Regarding Network performance:* We require every node to maintain remote
-paths to about $(1/2)ql^2$ nodes. Assuming that a node $x$ has $5$ direct
-connections, and we pick $l=128$, this results in $40960$ ($\approx 2^{15}$) which
+paths to about $ql^2$ nodes. Assuming that a node $x$ has $5$ direct
+connections, and we pick $l=128$, this results in $81920$ ($\approx 2^{15}$) which
 is a lot of connections. I think that this number is on the edge of what is
 practical these days with communication. I believe that there is a way to
 slightly improve the MIterF algorithm to acheive more realistic numbers.
@@ -316,6 +316,6 @@ connected, we proved that MIterF always converges to stationary state that
 allows efficient routing between all pairs of nodes in the network.
 
 During the execution of the algorithm every node $x$ that has direct connections
-to $q$ nodes must maintain remote paths to at most $(1/2)ql^2$ nodes.
+to $q$ nodes must maintain remote paths to at most $ql^2$ nodes.
 
 
