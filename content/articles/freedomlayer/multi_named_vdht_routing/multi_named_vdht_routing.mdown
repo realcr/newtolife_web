@@ -236,7 +236,7 @@ We can add imaginary extra nodes between every two nodes $a,b$ in the network
 such that $a \nsim b$. A node $z$ that is directly connected to $q$ nodes will
 have to play the role of at most $q\cdot \left\lceil l/4 \right\rceil$ nodes.
 This means that every node will maintain remote paths to about
-$q\cdot(l/4)\cdot(4l) \approx ql^2$ nodes.
+$q\cdot(l/4)\cdot(4l) = ql^2$ nodes.
 
 Note that originally, every node had to maintain remote paths to about $2l$
 nodes, which is much less. 
