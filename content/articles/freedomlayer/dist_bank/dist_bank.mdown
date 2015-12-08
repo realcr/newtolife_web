@@ -38,7 +38,7 @@ bank: A distributed bank over the mesh network. In this document we discuss an
 idea for creating such a bank.
 
 
-## Main Requirements
+## Requirements for Distributed Banking
 
 Let's be more specific about what we want to acheive with our bank. For every
 user $x$, a balance value $v_x$ is stored. $v_x$ is the amount of money that
@@ -52,14 +52,85 @@ Our bank should be able to perform the following operations **efficiently**:
 
 2. Inquiry: A user $x$ can get his current balance $v_x$.
 
-Assume that there are $N$ nodes on the mesh network. By "efficiently", we mean
-that every operation will disturb at most $polylog(N)$ nodes of the network.
+Assume that there are $N$ nodes on the mesh network. Also assume that the
+longest path between two nodes in the network is diam(G). (The
+[diameter](https://en.wikipedia.org/wiki/Distance_%28graph_theory%29) of the
+network G). Whenever we write "efficiently" in this document, we mean that every
+operation will disturb at most $diam(G)\cdot polylog(N)$ nodes of the network.
 
 We also want our bank to be somewhat decentralized. We don't have a formal
 definition for that, but generally it means that we don't want it to be managed
 by a selected few nodes. We want it to be resilient to large amounts of
 misbehaving nodes.
 
+## Routing and Distributed Banking
+
+In mesh networks there is a special relation between the problem of message
+Routing and Distributed Banking.
+
+Recall that at this document we seek a solution for Distributed Banking in
+order to make our message routing algorithm fair. If user $x$ makes a heavier
+use of the network than user $y$, then $x$ should pay more than user $y$.
+
+It is interesting to observe the opposite direction of this relation: **If all
+that we have is a solution for Distributed Banking, we can use it to implement
+efficient routing.**
+
+We roughly describe here this idea:
+Assume that we have a mesh network with Distributed Banking, and let $x$ and
+$y$ be two nodes. Also assume that $v_x \geq 2$. We want to efficiently route a
+message from $x$ to $y$. For the sake of simplicity, assume that we want to
+route a single bit $b \in \{0,1\}$ from $x$ to $y$.
+
+First, $y$ performs Inquiry operation, to obtain his current balance. Next, $x$
+will transfer to $y$'s $b+1$ money. $y$ will perform another Inquiry. If his
+balance has increased by $1$, it means that $x$ has sent the bit $0$. If his
+balance has increased by $2$, it means that $x$ has sent the bit $1$.
+
+We assumed that all the operations in the distributed bank are efficient.
+Therefore the bit was sent from $x$ to $y$ efficiently.
+
+
+## First attempts
+
+We mention here some first attempts to implement a bank over the mesh.
+
+**1. Centralized bank.** 
+Let one node $z$ keep the balances of all the nodes in
+the network. Every node in the mesh maintains a shortest path to the node $z$.
+Inquiry and Transfer operations are performed by sending a request to $z$.
+
+All the bank operations are done efficiently: A request sent from a node $x$ to
+the node $z$ passes through at most $diam(G)$.
+
+The problem with this idea for a bank is that the proposed bank is centralized:
+
+- The node $z$ has full control over the balances of all the nodes in the
+  network. If $z$ ever gets too greedy (And most likely he will), the bank and
+  the network will be compromised.
+
+- The node $z$ has to deal with requests from all the nodes in the network,
+  which is probably too much for one node.
+
+
+**2. Implementing a blockchain network.**
+Make sure to 
+The [bitcoin](https://en.wikipedia.org/wiki/Bitcoin) network is a distributed
+bank system. It operates by maintaining a consensus over an ordered list
+([Blockchain](https://en.wikipedia.org/wiki/Block_chain_%28database%29)) of all
+the transactions that ever took place between the participants.
+
+A blockchain network is decentralized: All the participants keep the full
+history of all the transactions, and hence all the participants know the
+current balance of all the other participants.
+
+However, a blockchain network does not allow to perform the Transfer operation
+efficiently. If a node $x$ wants to transfer money to node $y$, he has to send
+a message that passes through all the nodes in the network.
+
+Recall that our main reason for designing a distributed bank system is to allow
+efficient and fair routing of messages. If our bank does not allow money
+transfer efficiently, we can not rely on it to route message efficiently.
 
 
 
