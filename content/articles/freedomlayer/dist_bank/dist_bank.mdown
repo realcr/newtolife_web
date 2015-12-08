@@ -14,7 +14,7 @@ sending a lot of messages. He sends so many messages, that other computers have
 problem sending and receiving messages. $x$'s use of the network makes it hard
 for other users to use the network correctly.
 
-$x$ is Bob's computer. Bob is a cool guy, byt is also a pretty heavy network
+$x$ is Bob's computer. Bob is a cool guy, but is also a pretty heavy network
 user. He transfers large video files, and he also has a digital business that
 relies on the networking services of the network.
 
@@ -90,6 +90,7 @@ balance has increased by $2$, it means that $x$ has sent the bit $1$.
 We assumed that all the operations in the distributed bank are efficient.
 Therefore the bit was sent from $x$ to $y$ efficiently.
 
+(TODO: Maybe remove first attempts, or just talk about bitcoin shortly later)
 
 ## First attempts
 
@@ -131,6 +132,54 @@ a message that passes through all the nodes in the network.
 Recall that our main reason for designing a distributed bank system is to allow
 efficient and fair routing of messages. If our bank does not allow money
 transfer efficiently, we can not rely on it to route message efficiently.
+
+
+## Thoughts about distributed banking
+
+Consider a world of $N$ people. How could we create an economy in this world,
+where every person can pay another person, and payments have some meaningful
+value?
+
+A common method to acheive such an economy would be to use cash: Bills and
+coins. Those are artifacts that are hard to produce. A limited amount of bills
+are printed, and people can exchange those bills as payment.
+
+In the digital world of computers, we don't have an exact equivalent for cash.
+This happens because digital objects can be duplicated easily. This problem is
+sometimes referred to as [Double
+Spending](https://en.wikipedia.org/wiki/Double-spending):
+Assume that a user $x$ owns a digital bill. He could duplicate the digital bill
+and pay the same bill simultaneously both to $y$ and $z$.
+
+
+Instead of using Cash, we could use some concept of a bank instead. A balance
+will be kept for every person. People can pay each other by updating their
+balances accordingly (Increasing the destination balance, and decreasing the
+source balance).
+
+Now we have the problem of where and how to keep the balances.
+
+A naive solution would be to let every person $x$ keep his own balance value,
+$v_x$. This solution is also distributed: Every person has to remember just one
+value. A transaction between people $x$ and $y$ only involves $x$ and $y$. If
+$x$ wants to transfer $k$ money to $y$, $x$ decreases his own balance by $k$,
+and $y$ increases his own balance by $k$.
+
+The problem with this model is obvious: What if $x$ becomes greedy, and decides
+to increase his own balance? Our economic system will be compromised.
+
+At this point we understand that we can not trust all people to be honest.
+Another solution would be to let just one special person $z$, to keep the
+balances for all the nodes in the network.
+
+Whenever $x$ wants to send $k$ money to $y$, $x$ will file a request
+to $z$, saying that he wants to send $k$ money to node $y$.
+
+$z$ will inspect $x$'s balance and make sure that $x$ has at least $k$ money.
+If this is the case, $z$ will subtract $k$ from $x$'s balance, and add $k$ to
+$y$'s balance.
+
+
 
 
 
