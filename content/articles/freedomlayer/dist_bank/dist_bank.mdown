@@ -1,0 +1,66 @@
+Title: The Trusted Supernode and Distributed Banking
+Date: 2015-12-08 12:43
+Author: real
+
+
+## Motivation
+
+Assume a [mesh network](https://en.wikipedia.org/wiki/Mesh_networking) of
+computers (nodes), working together to somehow navigate messages efficiently
+across the network.
+
+Life is all good, until at some point one computer (Let's call him $x$) starts
+sending a lot of messages. He sends so many messages, that other computers have
+problem sending and receiving messages. $x$'s use of the network makes it hard
+for other users to use the network correctly.
+
+$x$ is Bob's computer. Bob is a cool guy, byt is also a pretty heavy network
+user. He transfers large video files, and he also has a digital business that
+relies on the networking services of the network.
+
+If this was the normal Internet, at this point Bob will get a call from his
+[ISP](https://en.wikipedia.org/wiki/Internet_service_provider) representative,
+telling him either to stop what he is doing with the internet, or maybe upgrade
+his internet package to a business class client.
+
+But Bob's computer, $x$, is part of a mesh network. Mesh networks are not
+managed by any central authority, hence there is no ISP to supervise Bob's
+network usage.
+
+It would be nice if the network itself could somehow supervise the network
+usage of all the computers. If any computer uses too much bandwidth, he will
+have to **pay something of value** to the other computers in the network. This
+way, every user of the network could use the network as much as he wants, and
+pay according to his use.
+
+If we want to use payments in our network, we need to maintain some kind of a
+bank: A distributed bank over the mesh network. In this document we discuss an
+idea for creating such a bank.
+
+
+## Main Requirements
+
+Let's be more specific about what we want to acheive with our bank. For every
+user $x$, a balance value $v_x$ is stored. $v_x$ is the amount of money that
+$x$ owns.
+
+Our bank should be able to perform the following operations **efficiently**:
+
+1. Money Transfer: A user $x$ can send user $y$ amount money $u$ if $u \leq
+   v_x$. After the money transfer, $x$'s balance value will be decreased by
+   $u$, and $y$'s balance value will increase by $u$.
+
+2. Inquiry: A user $x$ can get his current balance $v_x$.
+
+Assume that there are $N$ nodes on the mesh network. By "efficiently", we mean
+that every operation will disturb at most $polylog(N)$ nodes of the network.
+
+We also want our bank to be somewhat decentralized. We don't have a formal
+definition for that, but generally it means that we don't want it to be managed
+by a selected few nodes. We want it to be resilient to large amounts of
+misbehaving nodes.
+
+
+
+
+
