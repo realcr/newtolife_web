@@ -493,7 +493,19 @@ even, a separate instance of a virtual trusted computer.
 
 It could be nice if every supernode $sup$ will have to remember just a short
 proof for his realness, instead of remembering a full chain of sets of
-signatures, all the way to the first supernode ever created.
+signatures all the way to the first supernode ever created.
+
+I searched for a magic cryptographic technology that will enable to compress a
+chain of signature sets into a small structure, but I never found one. (I did
+find something called [Transitive
+Signatures](https://eprint.iacr.org/2004/215.pdf), but never managed to use it
+to solve this problem)
+
+Instead, we will use some communication. (It's a general truth of life that
+lack of cryptographic technology might force one to use more communication).
+
+
+
 
 
 
