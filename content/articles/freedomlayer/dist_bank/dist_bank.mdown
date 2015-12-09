@@ -312,10 +312,11 @@ call the dynamic set of nodes that keep $x$'s balance $sup_x$, or: $x$'s
 **Supernode**. This new name denotes the fact that $x$'s balance is kept by a
 dynamic entity, not by a static set.
 
-If some node dies, it should be somehow replaced by a new node. In addition,
-members of $sup_x$ should be removed randomly from time to time, to keep the
-random structure of $sup_x$. (We don't want bad nodes to stay forever in
-$sup_x$ while good nodes leave).
+If some node dies, it should be somehow replaced by a new randomly selected
+node. In addition, members of $sup_x$ should be removed randomly from time to
+time, to keep the random structure of $sup_x$. (We don't want bad nodes to stay
+forever in $sup_x$ while good nodes leave). The supernode has the
+responsibility of keeping itself alive.
 
 However, The dynamic nature of Supernodes poses some new trust questions.
 Consider this example: Let $x$ and $y$ be two nodes, and assume that $x$ wants
@@ -345,30 +346,105 @@ supernode has changed its structure from $G_1$ to $G_2$.
 
 The supernode keeps changing over time. $G_2$ changes to $G_3$ and so on.
 Whenever it changes, a new set of signatures is added, as an evidence for the
-structure change. The memebers of the supernode keep the list of sets of
+structure change. The memebers of the supernode keep the chain of sets of
 signatures at all times.
 
 After a while, $z$ encounters a some set $G' = G_u$ of nodes. $G'$ can then
 prove that it is the same supernode as the original $G_1$ by showing $z$ the
-list of all signatures, leading from the original structure $G_1$, all the way
+chain of all signatures, leading from the original structure $G_1$, all the way
 to $G'$.
 
-Assuming that signatures are hard to fake, and good nodes will only sign over
-real structure changes, stop here to think for a while why this kind of proof
-can not be faked easily: Why it is hard for a bad node to come up with a fake
-set $F$, and build a fake proof showing that $F$ has originated from $G_1$
-through a list of changes.
+$z$ knows that the original set, $G_1$, was a supernode, therefore its members
+were somehow sampled randomly from $S$. Hence in the set of signatures proving
+the change from $G_1$ to $G_2$, there must be a signature of a good node. $z$
+doesn't know which one of those signatures was signed by a good node, but he
+knows that at least $2/3$ of those signatures were signed by good nodes.
+
+A good node will not sign over fake structure changes. Therefore $z$ can be
+sure that indeed the new set $G_2$ is also a supernode. If, for example, the
+change was adding a new node, $z$ can be sure that this new node was sampled
+randomly from $S$.
+
+In the same way, $z$ can be sure that the change from $G_2$ to $G_3$ is valid,
+and so on. Finally, given a valid chain of signature sets, $z$ can be sure that
+$G'$ is the same supernode as the original one, $G_1$.
 
 
 ## The birth of a Supernode
 
 The section about "lifetime of a supernode" explains how supernodes change over
-time. However, it does not explain how they are generated.
+time. However, it does not explain how they are initially created.
 
-Assume that $x$ has some money in his account, and his balance is maintained by
-a supernode $sup_x$.
+Assume that $x$ has some supernode $sup_x$. $y$ can ask $x$ to create a new
+supernode for him. In that case, $x$ will send a request to $sup_x$ to create a
+new supernode $sup_y$ for $y$.
+
+The supernode $sup_x$ will then randomly select a subset of $S$, and call it
+$sup_y$. It will also initialize some balance value for $y$. All the members of
+$sup_x$ will sign over the structure of the newly created supernode, $sup_y$,
+and hand those signatures to the members of $sup_y$, together with all the
+signatures of the history of changes $sup_x$.
+
+Let $z$ be some node. Assume that $z$ knew in the the past that some set $G$ is
+the set of members of the supernode $sup_x$. If $z$ ever encounters a set of
+nodes $P$ that claim to be the supernode $sup_y$, $z$ will be able to verify
+this statement by verifying the chain of signature sets all the way from the
+supernode structure $G$ to the creation of $sup_y$. 
+
+$z$ will have to verify all the changes that happened to $sup_x$ since the
+member set $G$, the creation of the supernode $sup_y$, and then all the changes
+that happened to the supernode $sup_y$ until its current structure, $P$.
+
+It is hard to create a new fake supernode, because the sigantures of members of
+a real supernode are required, and a real supernode contains a majority of good
+nodes, which will not be willing to sign.
+
+We described here a way to create a new supernode, given that we have a
+supernode already. We are going to assume that our network have some initial
+supernode, and all the supernodes in the network will be his children, in some
+sense.
+
+Every supernode $sup$ will keep in memory a chain of set of signatures,
+describing everything that happened until its creation. This chain is used as a
+proof that $sup$ is a valid supernode.
 
 
+You must be worried right now about the size of the chains that every supernode
+has to remember, and you are correct: The chains keep growing as time goes by
+and the supernodes change. Generally, every supernode should remember a chain
+which is of size about $O(t)$, where $t$ is the time that has passed since the
+beginning of the network. We will talk about a solution for this problem later.
+
+
+## The death of a Supernode
+
+Given that $x$ has created a some supernode $sup_x$, should this supernode stay
+alive forever? 
+
+Managing a Supernode is not a full time job for its members, but it does take
+some resources. The supernode members have to respond to various requests to
+the supernode, find new members or remove old members from time to time.
+
+To make sure that supernodes are not created carelessly, it is possible to
+deduct some money from the supernode owner on a timely basis.
+The supernode $sup_x$ will decrease $x$'s balance by a small amount every few
+minutes, for example. This is easy to implement, because the supernode $sup_x$
+is the supernode who maintains the $x$'s money balance.
+
+Using this method, the supernode will only keep living if $x$ has enough money
+to "support" it. When $x$'s balance becomes $0$, the supernode will diassemble
+and die.
+
+Using this method we can also allow one node $x$ creating more than one
+supernode. $x$ can use each supernode that he creates as a separate wallet, or
+even, a separate instance of a virtual trusted computer.
+
+
+## Shortening the proof chains
+
+It could be nice if every supernode $sup$ will have to remember just a short
+proof for his realness, instead of remembering a full chain of sets of
+signatures, all the way to the first supernode ever created.
 
 
 
