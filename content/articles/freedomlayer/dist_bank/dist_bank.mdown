@@ -489,7 +489,7 @@ supernode. $x$ can use each supernode that he creates as a separate wallet, or
 even, a separate instance of a virtual trusted computer.
 
 
-## Shortening the proof chains
+## Introducing Chain Shortening
 
 It could be nice if every supernode $sup$ will have to remember just a short
 proof for his realness, instead of remembering a full chain of sets of
@@ -502,11 +502,74 @@ Signatures](https://eprint.iacr.org/2004/215.pdf), but never managed to use it
 to solve this problem)
 
 Instead, we will use some communication. (It's a general truth of life that
-lack of cryptographic technology might force one to use more communication).
+lack of cryptographic technology forces one to use more communication).
+
+We begin by uniquely naming supernodes. Whenever a supernode creates a new
+supernode, it gives the new supernode a new random name.
+
+Let $W$ be a special supernode. It does not belong to any node in the network,
+and it lives forever. Every node in the network was created by $W$ or one of
+his descendent supernodes. The network is bootstrapped by creating $W$, and
+then letting $W$ create an initial $sup_x$ supernode for some node $x$.
 
 
+Being a special supernode, $W$ is the only supernode with the privilege of
+broadcasting messages to the whole network. Every time a change happens to the
+structure of $W$, it broadcasts the new structure, including a proof: A set of
+signatures over the new structure.
+
+For every node $y$ on the network, on receipt of a message from $W$,
+broadcasts the message to all of his immediate neighbours. Every node in the
+network should know the current structure of $W$, and also remember the
+structure of $W$ in the last $C$ changes. 
+
+$C$ could be some large number, for example $C = 50000$. This should not cost
+too much memory for every node in the network, but at the same time allow every
+node to remember all the history of changes of $W$ in the last half year.
 
 
+Consider some supernode $sup$ in the network. $sup$ members maintain a chain of
+signature sets that describe and prove the history of changes of $sup$ since
+the beginning of the network. $sup$ can use the existence of the ever living
+supernode $W$ to shorten this chain.
+
+$sup$ will send $W$ his current chain. The supernode $W$ will then inspect the
+chain. If $W$ manages to recognize the beginning of the chain (The beginning of
+the chain should be some ancient structure of $W$), and all the signatures are
+correct, then the members of $W$ will produce a new set of signatures over the
+supernode $sup$. 
+
+From now on, instead of using the old chain of signatures, $sup$ can use $W$'s
+signature over his current structure as a proof for his validity.
+
+We call the above process **chain shortening.**
+
+(TODO: Add a picture that describes chain shortening.)
+
+
+$sup$ should perform the chain shortening process regularly to keep his proof
+chain short, and to stay alive. If $sup$ stops shortening his chain for a long
+enough time, no node will be able to recognize him. This amount of time depends
+on the choice of constant $C$.
+
+The problem with the described mechanism is the large amount of work $W$ needs
+to do. $W$ has to deal with chain shortening requests from all the supernodes
+in the network. This would be too much for one supernode to deal with.
+
+
+## Efficient Chain Shortening
+
+
+TODO
+
+Assuming that we have some kind of efficient communication infrastructure, we
+are arrange the supernodes into a DHT. We are going to use the [Chord
+DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown) here.
+Recall that a DHT is a structure that allows every participant to reach another
+participant using logarithmic amount of hops.
+
+To make a DHT, we need to name our supernodes: Whenever a new supernode is
+created, the supernode who created it gives it a new random name.
 
 
 
