@@ -589,5 +589,33 @@ used as his DHT Identity. $W$ will also be on this DHT. Every supernode in the
 DHT will perform chain shortening for all his connections in the DHT (If
 possible), every constant amount of time.
 
+This means that every supernode $sup$ on the DHT receives proposals for proof
+chains every constant amount of time. $sup$ will always maintain the shortest
+valid proof chain he was offered.
+
+Hence, Every supernode in the DHT will have a proof chain which represents his
+shortest path to $W$ on the DHT. In the chord DHT the longest distance is
+logarithmic. Therefore the shortest proof chain should be of size at most
+$O(\log(N))$, where $N$ is the amount of supernodes in the network.
+
+
+## Network Stickiness
+
+Assume that some node $x$ connects to the network for the first time. $x$
+learns about the current structure of $W$, and is given a copy of the history
+of structure of $W$ (Of size $C$ steps backwards).
+
+If $x$ ever connects again to the network after some not too long amount of
+time, $x$ can show his last known structure of the supernode $W$ and
+receive a proof chain from that old structure all the way to the current
+structure of $W$. This is possible because all the nodes in the network
+remember a long enough history of changes to the structure of the supernode
+$W$.
+
+Using this method, $x$ can also verify that he has arrived to the same network
+like the one he saw in his first visit. $x$ can not be put into a different
+network, and be fooled to believe that it is the original one.
+
+We call this property **Network Stickiness.**
 
 
