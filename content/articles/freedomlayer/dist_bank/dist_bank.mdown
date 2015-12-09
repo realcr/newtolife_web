@@ -552,6 +552,12 @@ chain short, and to stay alive. If $sup$ stops shortening his chain for a long
 enough time, no node will be able to recognize him. This amount of time depends
 on the choice of constant $C$.
 
+How can a node $z$ verify such a proof chain of a supernode $sup$?
+Every node $z$ knows the current and previous structure (Up to $C$ steps
+backwards) of the supernode $W$. $z$ will verify that the proof chain begins
+with some known structure of the supernode $W$, and that all the signatures up
+to the current structure of $sup$ are valid.
+
 The problem with the described mechanism is the large amount of work $W$ needs
 to do. $W$ has to deal with chain shortening requests from all the supernodes
 in the network. This would be too much for one supernode to deal with.
@@ -559,17 +565,29 @@ in the network. This would be too much for one supernode to deal with.
 
 ## Efficient Chain Shortening
 
+We need to take off some of work of chain shortening from the supernode $W$. We
+could, for example, let $W$ do the chain shortening for just a few supernodes.
+Then each of those supernodes will do the chain shortening for a few other
+supernodes.
 
-TODO
+This kind of hierarchy can leave every supernode with a proof chain of length
+at most $O(log(N))$, where $N$ is the amount of supernodes in the network. At
+the same time, every supernode has to perform the work of chain shortening only
+for a few other supernodes, which is not very expensive (With respect to
+computation or communication).
 
 Assuming that we have some kind of efficient communication infrastructure, we
-are arrange the supernodes into a DHT. We are going to use the [Chord
+can arrange the supernodes into a DHT in order to acheive this kind of
+hierarchy. We are going to use the [Chord
 DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown) here.
-Recall that a DHT is a structure that allows every participant to reach another
-participant using logarithmic amount of hops.
+Recall that a DHT is a structure where every participant is directly connected
+to a logarithmic amount of other participants. In addition, every participant
+can reach another participant using logarithmic amount of hops.
 
-To make a DHT, we need to name our supernodes: Whenever a new supernode is
-created, the supernode who created it gives it a new random name.
+Every supernode is given a unique name on its creation time. This name will be
+used as his DHT Identity. $W$ will also be on this DHT. Every supernode in the
+DHT will perform chain shortening for all his connections in the DHT (If
+possible), every constant amount of time.
 
 
 
