@@ -167,6 +167,9 @@ $z$ to process transactions.
 
 ## Introducing the trusted subset
 
+> So the Lord scattered them abroad from there over the face of all the earth,
+> and they ceased building the city. (Genesis 11:8)
+
 Let $S$ be set of $n$ people. We have noticed that if we want to create an
 economy between those people, we have to take into account the fact that some
 people might try to cheat, given the opportunity.
@@ -193,6 +196,8 @@ making all the people in $S$ remember $x$'s balance at all times is very
 resilient, but too inefficient. As a middle ground, we will choose a small
 subset of people and let them remember $x$'s balance.
 
+To make sure the members of the small subset do not collude to do something
+bad, we pick the small set randomly.
 
 Let $T \subseteq S$ a random subset of $S$. As there are more good people than
 bad people in $S$, we expect that $T$ will also contain more good people than
