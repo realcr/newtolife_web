@@ -98,14 +98,15 @@ Therefore the bit was sent from $x$ to $y$ efficiently.
 What about using the [Bitcoin](https://en.wikipedia.org/wiki/Bitcoin) network
 as a distributed bank for our mesh network?
 
-In the Bitcoin network, or in similar networks, every money transfer between
-two nodes must be broadcasted to all the nodes in the network. In other words,
-the Bitcoin network does not allow to perform efficient money transfer.
+In the Bitcoin network every money transfer between two nodes must be
+broadcasted to all the nodes in the network. In other words, the Bitcoin
+network does not allow to perform efficient money transfer.
 
 Recall that our original motivation to implement a distributed bank is to be
 able to route messages in a fair and efficient manner along the network. If our
 distributed bank does not allow efficient money transfer, we can not rely on it
 to implement efficient routing.
+
 
 ## Initial Attempts
 
@@ -290,7 +291,71 @@ participans, where all the participants are good. This setting allows some new
 possiblities that we will talk about in the future.
 
 
+## The lifetime of a Supernode
 
+To make our discussion more exact, let's go back to talk about computers.
+We are given a set of $S$ nodes that can somehow communicate efficiently, and
+we want to implement a distributed bank. Every node $x$ is matched with a
+random subset $T_x \subseteq S$ that keeps his balance.
+
+We begin by addressing an important issue with respect to computers: They are
+not always online.
+
+Let $x$ be some node. Assume that some of the nodes in $T_x$ get offline, or
+end their lifetime (It happens to computers too!). Over time it is possible
+that no nodes from $T_x$ will be online. How can we make sure that $x$'s
+balance will not be erased?
+
+To solve this issue, $x$'s subset $T_x$ must be dynamic. It must be able to
+change its members over time, with respect to changes in the network. We will
+call the dynamic set of nodes that keep $x$'s balance $sup_x$, or: $x$'s
+**Supernode**. This new name denotes the fact that $x$'s balance is kept by a
+dynamic entity, not by a static set.
+
+If some node dies, it should be somehow replaced by a new node. In addition,
+members of $sup_x$ should be removed randomly from time to time, to keep the
+random structure of $sup_x$. (We don't want bad nodes to stay forever in
+$sup_x$ while good nodes leave).
+
+However, The dynamic nature of Supernodes poses some new trust questions.
+Consider this example: Let $x$ and $y$ be two nodes, and assume that $x$ wants
+to transfer $k$ money to $y$. $x$ contacts $sup_x$, which subtracts $k$ from
+$x$'s balance, and then sends a request to $sup_y$ to add $k$ to $y$'s balance.
+
+How can $sup_y$ know that it can trust $sup_x$? Maybe $sup_x$ is some
+artificial set that was invented by $y$, because $y$ wants to increase his
+balance? 
+
+We break this question to smaller parts. 
+Assume that a node $z$ once knew that a set $G$ of nodes is a supernode. After
+a while while he encounters a differet set $G'$, which claims to be the same
+supernode as the original set, $G$. How can $z$ verify that $G'$ is the same
+supernode as the original $G$?
+
+To "transfer the trust" from $G$ to $G'$, we can use digital signatures.
+Let $G_1$ be the set of nodes of some supernode. Assume that some node $z$
+knows that the set of nodes $G_1$ is a supernode. 
+
+Now assume that some node has joined $G$, or some node has left $G$. We mark
+the new structure of the supernode to be $G_2$. Every node from $G_1$ signs the
+new structure of the $G_2$. The set of all those signatures is a proof that the
+supernode has changed its structure from $G_1$ to $G_2$.
+
+The supernode keeps changing over time. $G_2$ changes to $G_3$ and so on.
+Whenever it changes, a new set of signatures is added, as an evidence for the
+structure change. The memebers of the supernode keep the list of sets of
+signatures at all times.
+
+After a while, $z$ encounters a some set $G' = G_u$ of nodes. $G'$ can then
+prove that it is the same supernode as the original $G_1$ by showing $z$ the
+list of all signatures, leading from the original structure $G_1$, all the way
+to $G'$.
+
+
+TODO: Why is it a real proof?
+
+
+## The birth of a supernode
 
 
 
