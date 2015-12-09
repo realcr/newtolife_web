@@ -332,10 +332,12 @@ a while while he encounters a differet set $G'$, which claims to be the same
 supernode as the original set, $G$. How can $z$ verify that $G'$ is the same
 supernode as the original $G$?
 
-To "transfer the trust" from $G$ to $G'$, we can use digital signatures.
-Let $G_1$ be the set of nodes of some supernode. Assume that some node $z$
-knows that the set of nodes $G_1$ is a supernode. 
+To "transfer the trust" from $G$ to $G'$, we can use [digital
+signatures](https://en.wikipedia.org/wiki/Digital_signature). Assume that each
+node can cryptographically sign a block of data. 
 
+Let $G_1$ be the set of nodes of some supernode.
+Assume that some node $z$ knows that the set of nodes $G_1$ is a supernode. 
 Now assume that some node has joined $G$, or some node has left $G$. We mark
 the new structure of the supernode to be $G_2$. Every node from $G_1$ signs the
 new structure of the $G_2$. The set of all those signatures is a proof that the
@@ -351,11 +353,22 @@ prove that it is the same supernode as the original $G_1$ by showing $z$ the
 list of all signatures, leading from the original structure $G_1$, all the way
 to $G'$.
 
+Assuming that signatures are hard to fake, and good nodes will only sign over
+real structure changes, stop here to think for a while why this kind of proof
+can not be faked easily: Why it is hard for a bad node to come up with a fake
+set $F$, and build a fake proof showing that $F$ has originated from $G_1$
+through a list of changes.
 
-TODO: Why is it a real proof?
+
+## The birth of a Supernode
+
+The section about "lifetime of a supernode" explains how supernodes change over
+time. However, it does not explain how they are generated.
+
+Assume that $x$ has some money in his account, and his balance is maintained by
+a supernode $sup_x$.
 
 
-## The birth of a supernode
 
 
 
