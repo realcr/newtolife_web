@@ -3,6 +3,10 @@ Date: 2015-12-08 12:43
 Author: real
 
 
+## Abstract
+
+
+
 ## Motivation
 
 Assume a [mesh network](https://en.wikipedia.org/wiki/Mesh_networking) of
