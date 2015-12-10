@@ -237,14 +237,33 @@ If one out of 9 people is bad ($\alpha = 1/9$), the probability of having a
 random subset $T$ of size $r=256$ with more than $\beta=1/3$ bad people is
 (Calculation done with python):
 
-    In : math.log2(prob_bad.calc_bad_prob(256,1/9,1/3))
+    In : math.log2(calc_bad_prob(256,1/9,1/3))
     Out: -53.176815513188735
 
 We got a probability of at most $2^{-53}$. This is a very unlikely event. So
 with huge probability such a random set $T$ has less than $1/3$ fraction of bad
 people.
 
-(TODO: Write about the python code of prob_bad)
+This is the code used to obtain this result (Python3):
+
+    :::python
+    import math
+
+    def calc_bad_prob(r,alpha,beta):
+        """
+        r - Size of a subset.
+        alpha - Probability of a node to be bad.
+        beta - Amount of bad nodes in a subset to turn it into a bad subset.
+
+        Calculate upper bound for Pr[X > beta*r] using the Chernoff bound.
+        This calculation assumes infinite sampling population.
+        """
+        delta = (beta - alpha) / alpha
+        miu = alpha * r # miu = E[x]
+
+        bound = (math.exp(delta) / ((1 + delta)**(1 + delta))) ** miu
+
+        return bound
 
 
 The above choice of the number $1/3$ was not arbitrary. There is a family of
