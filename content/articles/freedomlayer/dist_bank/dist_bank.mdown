@@ -770,10 +770,14 @@ system. We list some of them here:
    choose supernodes so that their members are not so far away, and still
    maintain secure banking?
 
-3. Connecting the Trusted Supernode bank system to the Mesh network: How to pay
+4. Connecting the Trusted Supernode bank system to the Mesh network: How to pay
    for sending messages using the proposed banking system? How to avoid giving
    money to nodes in the mesh that don't route correctly? How can supernodes
    communicate efficiently in a mesh network? How to deal with a network split?
+
+5. Creating an efficient Asynchronous Byzantine Agreement algorithm. Some
+   efficient ABA algorithms are already known, but it takes some work to apply
+   those algorithms for our supernode use case.
 
 
 ## Further reading
@@ -789,7 +793,6 @@ Christian Scheideler
 - [Studies in Secure Multiparty Computation and
 Applications](http://www.cs.tau.ac.il/~canetti/materials/thesis.ps) By Ran
 Canetti
-
 
 - [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement
 using Cryptography](https://www.zurich.ibm.com/~cca/papers/abba.pdf) By
