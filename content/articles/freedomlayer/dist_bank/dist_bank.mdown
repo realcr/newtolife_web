@@ -55,7 +55,7 @@ explain how to create a distributed bank on top of it.
 
 ## Requirements for Distributed Banking
 
-Let's be more specific about what we want to acheive with our bank. For every
+Let's be more specific about what we want to achieve with our bank. For every
 user $x$, a balance value $v_x$ is stored. $v_x$ is the amount of money that
 $x$ owns.
 
@@ -105,8 +105,6 @@ balance has increased by $2$, it means that $x$ has sent the bit $1$.
 We assumed that all the operations in the distributed bank are efficient.
 Therefore the bit was sent from $x$ to $y$ efficiently.
 
-(TODO: Maybe remove first attempts, or just talk about bitcoin shortly later)
-
 
 ## About using the Bitcoin network
 
@@ -129,7 +127,7 @@ Consider a world of $n$ people. How could we create an economy in this world,
 where every person can pay another person, and payments have some meaningful
 value?
 
-A common method to acheive such an economy would be to use cash: Bills and
+A common method to achieve such an economy would be to use cash: Bills and
 coins. Those are artifacts that are hard to produce. A limited amount of bills
 are printed, and people can exchange those bills as payment.
 
@@ -280,7 +278,7 @@ this document). An ABA algorithm can turn a set of $M$ of people with less than
 $1/3$ bad people into one "virtual good person".
 
 How does it work? An ABA algorithm is some kind of a smart vote between the
-memebers of the set. It allows the set of people to make correct decisions with
+members of the set. It allows the set of people to make correct decisions with
 very high probability, despite the existence of a minority of bad people in the
 set. (We will give the details of ABA in this document, but you can learn
 about it from Ran Canetti's Thesis: Studies in Secure Multiparty Computation and
@@ -324,8 +322,8 @@ Note that we implicitly rely here on some method for supernodes to be able to
 find each other. We will discuss it later.
 
 The introduction of trusted subsets of $S$ creates a world of virtual
-participans, where all the participants are good. This setting allows some new
-possiblities that we will talk about in the future.
+participants, where all the participants are good. This setting allows some new
+possibilities that we will talk about in the future.
 
 
 ## The lifetime of a Supernode
@@ -366,7 +364,7 @@ balance?
 
 We break this question to smaller parts. 
 Assume that a node $z$ once knew that a set $G$ of nodes is a supernode. After
-a while while he encounters a differet set $G'$, which claims to be the same
+a while while he encounters a different set $G'$, which claims to be the same
 supernode as the original set, $G$. How can $z$ verify that $G'$ is the same
 supernode as the original $G$?
 
@@ -383,7 +381,7 @@ supernode has changed its structure from $G_1$ to $G_2$.
 
 The supernode keeps changing over time. $G_2$ changes to $G_3$ and so on.
 Whenever it changes, a new set of signatures is added, as an evidence for the
-structure change. The memebers of the supernode keep the chain of sets of
+structure change. The members of the supernode keep the chain of sets of
 signatures at all times.
 
 After a while, $z$ encounters a some set $G' = G_u$ of nodes. $G'$ can then
@@ -446,7 +444,7 @@ the new structure:
     $sign_E((A,C,D,E,F))$
     $sign_F((A,C,D,E,F))$
 
-Note that $B$ has not signed the new strucutre, because he went offline. The
+Note that $B$ has not signed the new structure, because he went offline. The
 signatures of the other nodes $\{A,C,D,E,F\}$ should be enough, as many of them
 are good nodes.
 
@@ -471,7 +469,7 @@ $sup_x$ will sign over the structure of the newly created supernode, $sup_y$,
 and hand those signatures to the members of $sup_y$, together with all the
 signatures of the history of changes $sup_x$.
 
-Let $z$ be some node. Assume that $z$ knew in the the past that some set $G$ is
+Let $z$ be some node. Assume that $z$ knew in the past that some set $G$ is
 the set of members of the supernode $sup_x$. If $z$ ever encounters a set of
 nodes $P$ that claim to be the supernode $sup_y$, $z$ will be able to verify
 this statement by verifying the chain of signature sets all the way from the
@@ -481,7 +479,7 @@ $z$ will have to verify all the changes that happened to $sup_x$ since the
 member set $G$, the creation of the supernode $sup_y$, and then all the changes
 that happened to the supernode $sup_y$ until its current structure, $P$.
 
-It is hard to create a new fake supernode, because the sigantures of members of
+It is hard to create a new fake supernode, because the signatures of members of
 a real supernode are required, and a real supernode contains a majority of good
 nodes, which will not be willing to sign.
 
@@ -518,7 +516,7 @@ minutes, for example. This is easy to implement, because the supernode $sup_x$
 is the supernode who maintains the $x$'s money balance.
 
 Using this method, the supernode will only keep living if $x$ has enough money
-to "support" it. When $x$'s balance becomes $0$, the supernode will diassemble
+to "support" it. When $x$'s balance becomes $0$, the supernode will disassemble
 and die.
 
 Using this method we can also allow one node $x$ creating more than one
@@ -614,7 +612,7 @@ for a few other supernodes, which is not very expensive (With respect to
 computation or communication).
 
 Assuming that we have some kind of efficient communication infrastructure, we
-can arrange the supernodes into a DHT in order to acheive this kind of
+can arrange the supernodes into a DHT in order to achieve this kind of
 hierarchy. We are going to use the [Chord
 DHT]({filename}/articles/freedomlayer/dht_intro/dht_intro.mdown) here.
 Recall that a DHT is a structure where every participant is directly connected
@@ -679,7 +677,7 @@ A simple idea would be to use [Proof of
 Work](https://en.wikipedia.org/wiki/Proof-of-work_system). Every node that
 wants to be part of a supernode must perform difficult calculations regularly.
 Assuming that no adversary holds majority of computation power, we can assume
-that it should be computationaly difficult for any adversary to have majority
+that it should be computationally difficult for any adversary to have majority
 of bad nodes inside the network.
 
 The main disadvantage of using this raw form of "Proof of Work" is that we
@@ -718,7 +716,7 @@ Letting the members of $sup_x$ perform computational or storage services might
 not be a good idea, because $sup_x$ has only so many members, and they might be
 limited in their computational or storage abilities.
 
-Another possiblity would be to let $sup_x$ manage workers for $x$. The workers
+Another possibility would be to let $sup_x$ manage workers for $x$. The workers
 will supply storage or computational services. The supernode $sup_x$ will
 handle the communication. 
 
@@ -726,7 +724,7 @@ Assume that $x$ wants to store some files. $x$ will first send a request to
 $sup_x$ to allocate storage space. Next, $sup_x$ will hire some random nodes
 from the network (That requested to be hired for storage purposes). $x$ will
 then send blocks of the files he wants to store to $sup_x$, and $sup_x$ will
-store those blocks redundently on the workers it has just hired.
+store those blocks redundantly on the workers it has just hired.
 
 The storage workers will be paid from $x$'s balance, and they will be payed on
 regularly (For example: Every few minutes/seconds) for their storage work.
