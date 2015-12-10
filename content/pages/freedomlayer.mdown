@@ -52,3 +52,10 @@ Check out the [research mailing list](http://lists.freedomlayer.org).
 
 -   [The Unified Challenge-Response: Secure Time inside the Mesh](
     {filename}/articles/freedomlayer/unified_challenge_response/unified_challenge_response.mdown)
+
+
+### Distributed Banking
+
+-   [The Trusted Supernode and Distributed Banking](
+    {filename}/articles/freedomlayer/dist_bank/dist_bank.mdown)
+
