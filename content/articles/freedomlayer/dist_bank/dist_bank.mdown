@@ -1,7 +1,6 @@
 Title: The Trusted Supernode and Distributed Banking
 Date: 2015-12-08 12:43
 Author: real
-status: Draft
 
 
 ## Abstract
