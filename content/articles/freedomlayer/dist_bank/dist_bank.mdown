@@ -312,6 +312,9 @@ $y$ by $k$. The members of $T_y$ *should be able* to trust $T_x$, because $T_x$
 is a randomly chosen subset of $S$, and it acts like a virtual good person.
 Finally the members of $T_y$ will add $k$ to the balance of $y$.
 
+Note that we implicitly rely here on some method for supernodes to be able to
+find each other. We will discuss it later.
+
 The introduction of trusted subsets of $S$ creates a world of virtual
 participans, where all the participants are good. This setting allows some new
 possiblities that we will talk about in the future.
@@ -627,6 +630,10 @@ $O(\log(N))$, where $N$ is the amount of supernodes in the network.
 Note that the resulting DHT will be connected, because of the ability of $W$ to
 broadcast.
 
+We can use this same DHT as a tool for **discovery of supernodes**. A supernode
+$sup_x$ can find another supernode $sup_y$ by searching for $sup_y$'s unique
+name in the DHT.
+
 ## Network Stickiness
 
 Assume that some node $x$ connects to the network for the first time. $x$
@@ -725,6 +732,12 @@ hire a few random nodes from the network (That requested to be hired for
 computation purposes). Then it can run the same computation on all of those
 nodes, and take the majority answer. Computation workers could be paid by the
 instruction (Some kind of basic computational unit).
+
+$x$ can also use his supernode $sup_x$, as some kind of a server. He can load
+it with some code and data, and allow it to run and serve other nodes of the
+network. $sup_x$ might be programmed to charge money for its services to other
+nodes of the network. This way, $sup_x$ can stay alive as long as it keeps
+giving value to users of the network, even long time after $x$ has died.
 
 
 ## Future Research
