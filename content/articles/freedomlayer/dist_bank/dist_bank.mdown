@@ -5,7 +5,15 @@ Author: real
 
 ## Abstract
 
+The Trusted Supernode is an abstract idea for a distributed secure and
+efficient banking system. This system allows payment operations that disturb
+only small amount of participants. It overcomes adversarial attacks by applying
+a useful proof of work, combined with node mixing.
 
+The Trusted Supernode bank system relies at its core on a special form of
+trusted entity called the supernode. In addition to its ability to manage
+payments, the supernode should allow to securely exchange computation and
+storage services for money.
 
 ## Motivation
 
