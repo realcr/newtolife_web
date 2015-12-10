@@ -623,4 +623,134 @@ network, and be fooled to believe that it is the original one.
 
 We call this property **Network Stickiness.**
 
+## Limiting the amount of bad nodes
+
+Earlier we have chosen the following model: We have a world $S$ of $n$ nodes:
+Most of them are good, and the rest are bad.
+
+How can we enforce this kind of ratio between the nodes in the network? What
+stops an adversary from inserting many bad nodes in the network? ( This kind of
+attack is also known as [Sybil
+Attack](https://en.wikipedia.org/wiki/Sybil_attack).)
+
+The solution would be to require nodes joining the network to sacrifice some
+rare resource. In some philosophical sense, this allows us to link real value
+from the outside world into the network.
+
+A simple idea would be to use [Proof of
+Work](https://en.wikipedia.org/wiki/Proof-of-work_system). Every node that
+wants to be part of a supernode must perform difficult calculations regularly.
+Assuming that no adversary holds majority of computation power, we can assume
+that it should be computationaly difficult for any adversary to have majority
+of bad nodes inside the network.
+
+The main disadvantage of using this raw form of "Proof of Work" is that we
+waste resources. 
+
+Another option would be to require an indirect proof of work: **Instead of
+requiring nodes to perform difficult calculations, we can ask nodes to pay.**
+As money in our bank stands for real value, we can use it as a rare resource
+that nodes sacrifice.
+
+In this method, every node $x$ that wants to join a supernode must lost money
+regularly. For example: $x$ has to lose $k$ money every few minutes. Where
+does the money $x$ pays go? It is just gone. This is equivalent of spreading it
+equally between all the nodes of the network, but easier to do.
+
+
+## The Supernode as a trusted general purpose computer
+
+Recall that the supernode is a set of nodes, with a majority of good nodes,
+that work together like one virtual good node. So far we have talked about the
+supernode as means for storing balance for one node, but the supernode can do
+much more. We mention here some very abstract ideas of what can be done.
+
+Let $x$ be some node, and $sup_x$ be a supernode owned by $x$. The supernode
+$sup_x$ can be used as a trusted remote computer owned by $sup_x$, supplying
+various services in exchange for $x$'s money. Using the Asynchronous Byzantine
+Agreement algorithm $sup_x$ acts a virtual one good node, so $x$ can trust
+$sup_x$. In addition, $sup_x$ has direct access to $x$'s money balance. These
+two facts make a perfect setting for $x$ and $sup_x$ to do some business.
+
+Also note that $sup_x$ keeps living as long as $x$ still has money in its
+balance. Therefore $sup_x$ can keep working even when $x$ is offline.
+
+
+Letting the members of $sup_x$ perform computational or storage services might
+not be a good idea, because $sup_x$ has only so many members, and they might be
+limited in their computational or storage abilities.
+
+Another possiblity would be to let $sup_x$ manage workers for $x$. The workers
+will supply storage or computational services. The supernode $sup_x$ will
+handle the communication. 
+
+Assume that $x$ wants to store some files. $x$ will first send a request to
+$sup_x$ to allocate storage space. Next, $sup_x$ will hire some random nodes
+from the network (That requested to be hired for storage purposes). $x$ will
+then send blocks of the files he wants to store to $sup_x$, and $sup_x$ will
+store those blocks redundently on the workers it has just hired.
+
+The storage workers will be paid from $x$'s balance, and they will be payed on
+regularly (For example: Every few minutes/seconds) for their storage work.
+
+At a later time, $x$ could request the blocks he stored earlier from $sup_x$.
+The supernode will then contact the workers and retrieve the stored blocks.
+Finally, the stored blocks will be sent back to $x$.
+
+A similar idea could work for computation workers: The supernode $sup_x$ can
+hire a few random nodes from the network (That requested to be hired for
+computation purposes). Then it can run the same computation on all of those
+nodes, and take the majority answer. Computation workers could be paid by the
+instruction (Some kind of basic computational unit).
+
+
+## Future Research
+
+The Trusted Supernode model of distributed bank was presented here as pretty
+abstract idea. Many pieces are still missing to make this idea a working
+system. We list some of them here:
+
+1. How to balance the economic system? Recall that a node has to lose money
+   when working inside a supernode. Where does new money come from into the
+   network?
+
+2. Incentives for nodes to work in a supernode: If working as part of a
+   supernode costs money for a node, why would a node want to do that?
+   Translating to the language of Bitcoin: If miners don't make money from
+   mining, will they mine anyways?
+
+3. Efficiency: The supernode works as one trusted general purpose computer, but
+   it is pretty slow, because it is spread across the whole network (His
+   members are chosen randomly from the network). How practical would it be to
+   run a supernode of ~$256$ members over the Internet? Are there other ways to
+   choose supernodes so that their members are not so far away, and still
+   maintain secure banking?
+
+3. Connecting the Trusted Supernode bank system to the Mesh network: How to pay
+   for sending messages using the proposed banking system? How to avoid giving
+   money to nodes in the mesh that don't route correctly? How can supernodes
+   communicate efficiently in a mesh network? How to deal with a network split?
+
+
+## Further reading
+
+- [Making Chord Robust to Byzantine
+Attacks](https://www.cs.unm.edu/~saia/papers/swarm.pdf) By Amos Fiat, Jared
+Saia and Maxwell Young
+
+- [How to Spread Adversarial Nodes?
+Rotate!](www14.in.tum.de/personen/scheideler/papers/f85-scheideler.ps.gz) By
+Christian Scheideler
+
+- [Studies in Secure Multiparty Computation and
+Applications](http://www.cs.tau.ac.il/~canetti/materials/thesis.ps) By Ran
+Canetti
+
+
+- [Random Oracles in Constantinople: Practical Asynchronous Byzantine Agreement
+using Cryptography](https://www.zurich.ibm.com/~cca/papers/abba.pdf) By
+Christian Cachin, Klaus Kursawe, Victor Shoup
+
+- [Bitcoin: A Peer-to-Peer Electronic Cash
+System](https://bitcoin.org/bitcoin.pdf) By Satoshi Nakamoto
 
