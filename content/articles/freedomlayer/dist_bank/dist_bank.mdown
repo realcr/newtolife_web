@@ -167,7 +167,9 @@ $z$ will inspect $x$'s balance and make sure that $x$ has at least $k$ money.
 If this is the case, $z$ will subtract $k$ from $x$'s balance, and add $k$ to
 $y$'s balance.
 
-(TODO: Add picture of a transaction done by $z$)
+![A transaction processed by z]({filename}images/centralized_bank_z.svg)
+
+*In the picture: A transaction as processed by a centralized bank $z$.*
 
 This solution is somewhat equivalent to the usual centralized bank. (The banks
 that we have in the real world).
@@ -580,7 +582,7 @@ signature over his current structure as a proof for his validity.
 
 We call the above process **chain shortening.**
 
-(TODO: Add a picture that describes chain shortening.)
+![Basic Chain Shortening]({filename}images/basic_chain_shortening.svg)
 
 
 $sup$ should perform the chain shortening process regularly to keep his proof
