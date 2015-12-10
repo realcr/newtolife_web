@@ -35,8 +35,11 @@ pay according to his use.
 
 If we want to use payments in our network, we need to maintain some kind of a
 bank: A distributed bank over the mesh network. In this document we discuss an
-idea for creating such a bank.
+idea for creating such a bank. 
 
+This document will not really consider the structure of the mesh network.
+Instead, we will assume some kind of underlying communication channel, and
+explain how to create a distributed bank on top of it.
 
 ## Requirements for Distributed Banking
 
@@ -176,9 +179,9 @@ economy between those people, we have to take into account the fact that some
 people might try to cheat, given the opportunity.
 
 To be able to talk formally, we need to have some model of when people might
-cheat. We choose the following model: Every person in $S$ is either **Good** or
-**Bad**. A good person always goes by the rules. All the Bad people collude
-together to try to subvert the system.
+cheat. We choose the following simplistic model: Every person in $S$ is either
+**Good** or **Bad**. A good person always goes by the rules. All the Bad people
+collude together to try to subvert the system.
 
 We are going to assume that there are more good people than bad people in $S$.
 There is some philosophy behind this assumption and we won't get to it now. For
@@ -248,8 +251,8 @@ $1/3$ bad people into one "virtual good person".
 How does it work? An ABA algorithm is some kind of a smart vote between the
 memebers of the set. It allows the set of people to make correct decisions with
 very high probability, despite the existence of a minority of bad people in the
-set.  (We will give the details of ABA in this document, but you can learn
-about it from Ran Caneti's Thesis: Studies in Secure Multiparty Computation and
+set. (We will give the details of ABA in this document, but you can learn
+about it from Ran Canetti's Thesis: Studies in Secure Multiparty Computation and
 Applications, chapter 4.)
 
 You might be wondering: Why didn't we use ABA from the first place, on the
@@ -598,6 +601,8 @@ shortest path to $W$ on the DHT. In the chord DHT the longest distance is
 logarithmic. Therefore the shortest proof chain should be of size at most
 $O(\log(N))$, where $N$ is the amount of supernodes in the network.
 
+Note that the resulting DHT will be connected, because of the ability of $W$ to
+broadcast.
 
 ## Network Stickiness
 
@@ -606,11 +611,11 @@ learns about the current structure of $W$, and is given a copy of the history
 of structure of $W$ (Of size $C$ steps backwards).
 
 If $x$ ever connects again to the network after some not too long amount of
-time, $x$ can show his last known structure of the supernode $W$ and
-receive a proof chain from that old structure all the way to the current
-structure of $W$. This is possible because all the nodes in the network
-remember a long enough history of changes to the structure of the supernode
-$W$.
+time, $x$ can show his last known structure of the supernode $W$ to any other
+node $y$, and receive back a proof chain from that old structure all the way to
+the current structure of $W$. This is possible because all the nodes in the
+network remember a long enough history of changes to the structure of the
+supernode $W$.
 
 Using this method, $x$ can also verify that he has arrived to the same network
 like the one he saw in his first visit. $x$ can not be put into a different
