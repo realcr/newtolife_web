@@ -787,7 +787,7 @@ Attacks](https://www.cs.unm.edu/~saia/papers/swarm.pdf) By Amos Fiat, Jared
 Saia and Maxwell Young
 
 - [How to Spread Adversarial Nodes?
-Rotate!](www14.in.tum.de/personen/scheideler/papers/f85-scheideler.ps.gz) By
+Rotate!](http://www14.in.tum.de/personen/scheideler/papers/f85-scheideler.ps.gz) By
 Christian Scheideler
 
 - [Studies in Secure Multiparty Computation and
