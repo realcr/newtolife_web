@@ -203,7 +203,7 @@ message to each of the landmarks that asks them to prove their identity (The
 message will be sent along the shortest path known to $x$). In return, the
 landmarks will respond with a proof that they are alive.
 
-![Landmarks Challenge Response]({images}landmarks_navigation_rw.svg)
+![Landmarks Challenge Response]({filename}images/landmarks_navigation_rw.svg)
 
 $x$ sends a challenge message to one of the landmarks
 ($l_3$) through a shortest path. $x$ then waits for a proof of identity
@@ -227,7 +227,7 @@ $$Coord(x) = (c_x^1,\dots,c_x^k) := (dist(x,l_1),\dots,dist(x,l_k))$$
 
 and we call it **$x$'s network coordinate**.
 
-![Network Coordinates]({images}network_coordinate.svg)
+![Network Coordinates]({filename}images/network_coordinate.svg)
 
 The picture illustrates network coordinates. 
 $x$ maintains a shorest path to each of the landmarks
@@ -267,7 +267,7 @@ contradiction](http://en.wikipedia.org/wiki/Proof_by_contradiction). Assume
 path between $x$ and $l_j$ is two hops longer than the shortest path between
 $y$ and $l_j$. 
 
-![Coord continuity]({images}coord_continuity.svg)
+![Coord continuity]({filename}images/coord_continuity.svg)
 
 Illustration of $c_x^j$ and $c_y^j$.
 
@@ -317,7 +317,7 @@ In particular, this means that not every coordinate is valid. Some combinations
 of numbers can never form a network coordinate. (With respect to a given set of
 landmarks and distances between landmarks).
 
-![Coordinates triangle inequality]({images}coord_triangle_ineq.svg)
+![Coordinates triangle inequality]({filename}images/coord_triangle_ineq.svg)
 
 Illustration of the triangle inequality for network
 coordinates.
