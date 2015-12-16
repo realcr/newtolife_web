@@ -203,7 +203,7 @@ message to each of the landmarks that asks them to prove their identity (The
 message will be sent along the shortest path known to $x$). In return, the
 landmarks will respond with a proof that they are alive.
 
-![Landmarks Challenge Response]({filename}images/landmarks_navigation_rw.svg)
+![Landmarks Challenge Response]({filename}images/landmarks_challenge_response.svg)
 
 $x$ sends a challenge message to one of the landmarks
 ($l_3$) through a shortest path. $x$ then waits for a proof of identity
